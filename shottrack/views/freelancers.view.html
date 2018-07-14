@@ -1,0 +1,98 @@
+<div class="wrapper">
+<header class="clearfix">
+<div class="main-header container">
+<img  ng-src="app/images/logo.jpg"/>
+<a href="#/login" class="btn btn-primary pull-right">Logout</a>
+</div>
+</header>
+<!-- sidebar view Begins-->
+<div>
+<div class="side-bardiv section_layout">
+				<div class="sidebar">
+				<div class="user-panel">
+				<div class="pull-left info">
+				<h5><p>Welcome ! {{username}} </p></h5>
+				</div>
+				</div>
+				<div class="list" id="list">
+				<li class="header">MENU NAVIGATION</li>
+				<nav>
+   				 <ul id="menu" class="nav" ng-repeat="row in useraccess">
+   				 <li><a  ng-class="{active : activeMenu === row.name}" href="#/{{row.name}}/{{row.id}}" >
+				{{row.title}}</a></li>        
+   				 </ul>
+   				 	</nav>
+                        </div>
+</div> 
+</div>
+</div>
+<style>
+li.active {
+    color: red;
+}
+</style>
+<!-- sidebar view Ends-->
+<div class="content-wrapper">  
+			<div class="section_layout">
+            <section class="content-header">
+                    <h3>Freelancers</h3>
+                    </section> 
+                     <div class="panel">         
+					<div class="row">                  
+   						 <div class="panel-body" >                         
+                         <div class="col-md-12" > 
+                         <div class="col-md-10" >    
+   						 					   <button class="btn btn-lg btn-success" ng-click="exportToExcel('#emptable')"><span class="glyphicon glyphicon-share"></span>Export to Excel</button>
+                                               </div>                                               
+                                               <div class="col-md-2" > 
+   	   										 <a class="btn btn-lg btn-success" href="#/edit_freelancers/0"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add new Freelancer</a>
+                                             </div>
+    						
+    						</div>
+    				
+                     <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
+    <!-- Search Bar Begins-->
+  <!-- <div id="search">
+    		<table>   
+    		<tr>
+            <td align="right">Search : </td>&nbsp;
+            <td><input class="form-control" ng-model="search" style="margin-left:0.5em"/></td>
+        	</tr>     
+     </table> 
+        </div>-->
+      <!-- Listing of Users-->
+     
+     <form id="empform" method="post"> 
+        <table class="table table-striped table-bordered" id="emptable" datatable="ng"  dt-options="vm.dtOptions">
+        <thead>   		
+          		<th></th>   
+        	    <th >Name</th>
+                <th>View</th>
+         		<!--<th ng-if="userroleid == 2 || userroleid == 3">Edit</th>
+         		<th ng-if="userroleid == 2 || userroleid == 3">Delete</th>-->
+                <th>Edit</th>
+                <th>Delete</th>
+               
+        </thead>
+        <tbody>    
+        		<tr ng-repeat="row in users"> 
+                <td align="center"><input type="checkbox" name="checked_id[]" class="checkbox" value="{{row.freelancerid}}"/></td> 
+                       		
+                <td>{{row.freelancername}} </td>    			
+                <td><a href="#/view_freelancers/{{row.freelancerid}}" class="btnaction">&nbsp;<i class="glyphicon glyphicon-eye-open"></i>&nbsp;</a></td>      
+                <!--<td ng-if="userroleid == 2 || userroleid == 3"><a href="#/edit_freelancers/{{row.freelancerid}}" class="btnaction">&nbsp;<i class="glyphicon glyphicon-edit"></i>&nbsp;</a></td>
+                <td ng-if="userroleid == 2 || userroleid == 3"><a href="#/freelancers/{{freelancersid}}" class="btnaction" ng-click="vm.deleteEmp(row.freelancerid)">&nbsp;<i class="glyphicon glyphicon-remove"></i>&nbsp;</a></td>-->
+
+                    <td><a href="#/edit_freelancers/{{row.freelancerid}}" class="btnaction">&nbsp;<i class="glyphicon glyphicon-edit"></i>&nbsp;</a></td>
+                    <td><a href="#/freelancers/{{freelancersid}}" class="btnaction" ng-click="vm.deleteEmp(row.freelancerid)">&nbsp;<i class="glyphicon glyphicon-remove"></i>&nbsp;</a></td>
+            	</tr>
+        </tbody>
+        </table>
+           			<div><input type="checkbox" name="select_all" id="select_all" value=""/> Check all</div>
+                     <input type="submit" class="deletelogg" name="bulk_delete_submit" value="Delete Selected"/>   
+           
+           </form>
+          
+  </div>
+  </div>
+ </div>   

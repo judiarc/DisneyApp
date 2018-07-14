@@ -1,0 +1,187 @@
+﻿<style type="text/css">
+  .form-horizontal input.ng-invalid.ng-dirty {
+    border-color: #FA787E;
+  }
+
+  .form-horizontal input.ng-valid.ng-dirty {
+    border-color: #78FA89;
+  }
+</style>
+<!-- PROCESS FORM WITH AJAX (OLD) -->
+<script>
+$(document).ready(function() {
+
+
+// process the form
+$('form').submit(function(event) {
+
+
+  // get the form data
+  var formData = {
+	   'name'             	 	 : $('input[name=name]').val(),  
+      'client'             	 	 : $('select[name=client]').val(),     	  
+      'projectdetails'    		 : $('select[name=projectdetails]').val(),	 	  
+      'startdate'    		     : $('input[name=startdate]').val(),	     
+	  'targetdate'				 : $('input[name=targetdate]').val(),
+	  'shotdetails'        	 	 : $('select[name=shotdetails]').val(),     	  
+      'artist'    				 : $('select[name=artist]').val(),	
+	  'framesgiven'    		     : $('input[name=framesgiven]').val(),
+	  'framescompletion'		 : $('input[name=framescompletion]').val(),
+	  'completeddate'    		 : $('input[name=completeddate]').val(),
+	  'expectedtime'    		 : $('input[name=expectedtime]').val(),	 	  
+      'skill'    		         : $('textarea[name=skill]').val(), 
+	  'resourcestatus'    		 : $('select[name=resourcestatus]').val(),
+	  'status'    		         : $('select[name=status]').val(),		   
+	  'entityid'    		 	 : $('input[name=entityid]').val(),	  
+	  'editprojallocid'		     : $('input[name=editprojallocid]').val(), 	 
+  };
+
+  // process the form
+  $.ajax({
+    type        : 'POST',
+    url         : 'services/process.php?function=projectalloc',
+    data        : formData,
+    dataType    : 'json',
+    success     : function(data) {
+
+      // log data to the console so we can see
+      console.log(data);
+
+        // if validation is good add success message
+		if ( data.success) {		
+       			alert(data.message);
+				window.location = "#/projectallocation/8";
+		}
+      }
+  });
+
+  // stop the form from submitting and refreshing
+  event.preventDefault();
+});
+
+});
+</script>
+<div class="wrapper1">
+<header class="clearfix">
+<div class="main-header container">
+<img  ng-src="app/images/logo.jpg"/>
+<a href="#/login" class="btn btn-primary pull-right">Logout</a>
+</div>
+</header>
+<!-- sidebar view Begins-->
+<div>
+<div class="side-bardiv section_layout">
+				<div class="sidebar">
+				<div class="user-panel">
+				<div class="pull-left info">
+				<h5><p>Welcome !  {{username}} </p></h5>
+				</div>
+				</div>
+				<div class="list" id="list">
+				<li class="header">MENU NAVIGATION</li>
+				<nav>
+   				 <ul id="menu" class="nav" ng-repeat="row in useraccess">
+   				 <li><a  ng-class="{active : activeMenu === row.name}" href="#/{{row.name}}/{{row.id}}" >
+				{{row.title}}</a></li>        
+   				 </ul>
+   				 	</nav>
+                        </div>
+</div> 
+</div>
+</div>
+<style>
+li.active {
+    color: red;
+}
+</style>
+<!-- sidebar view Ends-->
+<div class="content-wrapper" style="min-height: 491px;">
+<div class="section_layout">
+	<div class="view">
+    	<div class="">     		       		
+        <nav class= "navbar" role= "navigation" >
+        <div class= "navbar-header" >
+        <h3>{{title}}</h3>
+        </div>
+        </nav>
+          <div class="panel">         
+					<div class="row">   
+        <div class="col-md-12">
+  
+<form role="form" name="myForm" id="formedit" class="form-horizontal">
+<div class="form inline">
+	<div ng-repeat="field in fields">
+		<span ng-switch on="field.type">
+  			<span ng-switch-when="text">
+    			<div class="col-xs-6 form-group">
+    				<label class="col-sm-3">{{ field.title }}<em  class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   						 <div  class="col-sm-3">
+   							 <input type="text" ng-model="entity['projectallocation'+field.name]"     class= "form-control"   name="{{field.name}}" ng-pattern="{{field.validation}}" ng-required="field.required"/>
+    							<span ng-show="{{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}" class="help-inline">Required</span>                         
+    					</div>
+   				</div>
+  		</span> 
+    		<span ng-switch-when="date">
+    			<div  class="col-xs-6 form-group">
+    				<label class="col-sm-3">{{ field.title }}<em  class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   						 <div  class="col-sm-3">
+                         <datepicker date-format="yyyy-MM-dd">
+   							 <input type="date" class= "form-control" ng-model="entity['projectallocation'+field.name]"     name="{{field.name}}"   ng-required="field.required"/>
+                             </datepicker>
+    							
+   						</div>
+   				</div>
+  		</span>
+        <span ng-switch-when="email">
+    			<div class="col-xs-6 form-group">
+    				<label class= "col-sm-3">{{ field.title }}<em  class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   						 <div class="col-sm-3">
+                       			 <input type="email" class= "form-control" ng-model="entity['projectallocation'+field.name]"    name="{{field.name}}"   ng-required="field.required"/> 
+                                  <span ng-show="{{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}" class="help-inline">Email Required</span>
+   								 <span ng-show="{{'myForm.'+field.name+'.$error.'+field.name}}" class="help-inline">Email is not valid</span>                         
+    					</div>
+   				</div>
+  		</span> 
+        
+      <span ng-switch-when="select"> 
+         <div  class="col-xs-6 form-group">
+    		<label class= "col-sm-3">{{ field.title }}<em   class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   				<div class="col-sm-3">
+   					<select  ng-model="entity" id="{{field.name}}" name="{{field.name}}" ng-options="{{'item as item.projectallocation'+field.name+'name for item in' + ' ' +'projectallocation'+field.endpoint+ ' ' +'track by item.'+'projectallocation'+field.endpoint}}" class= "form-control" ng-required="field.required"/></select>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+              	</div>
+   		</div>
+   </span>
+   
+ 	<span ng-switch-when="textarea"> 
+            <div  class="col-xs-6 form-group">
+    				<label class= "col-sm-3">{{ field.title }}<em   class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-sm-3">
+   							 <textarea  name="{{field.name}}" ng-model="entity['projectallocation'+field.name]"    class= "form-control" ng-required="field.required"/></textarea>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+   </span> 
+</div>
+<input type="hidden"  value="8" name="entityid" />
+<input type="hidden"  value="{{editprojallocid}}" name="editprojallocid" />
+<div class= "col-xs-12 form-group">   
+    <div class="col-md-6 cancel">
+    <a href="#/projectallocation/8" class="btn">Cancel</a>
+    </div>
+      <div class="col-md-3">
+    <button type="submit" ng-disabled="isClean() || myForm.$invalid"  class="btn btn-primary">{{buttonText}}</button>
+    </div>
+   
+</div>
+</div>
+</div>
+</form>
+     		   		</div>
+       			</div>
+    		</div>
+		</div>
+	</div>
+</div>
+
+ 

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html ng-app="app" style="overflow-y:scroll">
+<head>
+
+    <meta charset="utf-8" />
+    <base href="/shottrack/">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<!--<link rel="icon" type="image/png" href="app/images/favicon.png" />-->
+    <link rel="shortcut icon" href="app/images/KImage.jpg" type="image/x-icon" /> 
+    <link href="app/css/fonts/icon_family.css" rel="stylesheet">
+	<title>KnitVFX</title>
+   	<link rel="stylesheet" href="app/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="app/css/angular/angular-datepicker.css" />   
+    <link rel="stylesheet" href="app/css/jquery/jquery.datetimepicker.min.css" />
+    <link href="app/css/bootstrap/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="app/css/bootstrap/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" href="app/css/jquery/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="app/css/bootstrap/datatables.bootstrap.css" />
+    <link href="app/css/custom/app.css" rel="stylesheet" />
+    <link rel="stylesheet" href="app/css/custom/loginstyle.css">
+     <style>
+     html { overflow-y: hidden; }
+     
+     </style>
+</head>
+<body style="margin-right: 0px; margin-top: -44px;">
+   <div class="main-content" style="margin-left: 200px;margin-right: 0px;">             
+                <div ng-view></div>
+            </div>
+            <script type="text/javascript" src="app/js/jquery/jquery-2.0.3.min.js" charset="UTF-8"></script>
+             <script src="app/js/angular/angular.js"></script>
+    <script src="app/js/customs/dirPagination.js"></script>
+    <script src="app/js/angular/angular-route.js"></script>
+    <script src="app/js/angular/angular-cookies.js"></script>
+    <script src="app/js/angular/angular-datepicker.js"></script>
+    <script src="app/js/angular/angular-messages.js"></script>    
+            
+  	   
+	<script type="text/javascript" src="app/js/bootstrap/bootstrap.min.js"></script>
+	<script type="text/javascript" src="app/js/bootstrap/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="app/js/jquery/jquery.datetimepicker.full.js"></script>
+  <!--   <script src="app/js/jquery-2.0.3.min.js"></script> -->
+   
+    <script src="app/js/jquery/jquery.dataTables.min.js"></script>
+    <script src="app/js/angular/angular-datatables.min.js"></script>
+    <script src="app/js/customs/dataTables.fixedColumns.min.js"></script>
+    <script src="app/js/customs/app.js"></script>
+    <script src="app/js/customs/checkbox.select.js"></script>
+    <script src="services/authentication.service.js"></script>
+    <script src="services/flash.service.js"></script>
+    <!-- Real user service that uses an api -->
+    <script src="services/user.service.js"></script>    
+	  <!--including all controllers here -->
+    <script src="controllers/home.controller.js"></script>
+    <script src="controllers/login.controller.js"></script>
+    <script src="controllers/register.controller.js"></script>
+    <script src="controllers/users.controller.js"></script>
+    <script src="controllers/dashboard.controller.js"></script>
+    <script src="controllers/edituser.controller.js"></script>
+    <script src="controllers/forgotpassword.controller.js"></script>
+    <script src="controllers/artist.controller.js"></script> 
+    <script src="controllers/editartist.controller.js"></script>
+    <script src="controllers/vendor.controller.js"></script> 
+    <script src="controllers/editvendor.controller.js"></script>  
+    <script src="controllers/client.controller.js"></script> 
+    <script src="controllers/editclient.controller.js"></script>  
+    <script src="controllers/projectdetails.controller.js"></script> 
+    <script src="controllers/editprojectdetails.controller.js"></script>
+    <script src="controllers/editprojectpayment.controller.js"></script>  
+    <script src="controllers/shotdetails.controller.js"></script> 
+    <script src="controllers/editshotdetails.controller.js"></script> 
+     <script src="controllers/projalloc.controller.js"></script> 
+    <script src="controllers/editprojalloc.controller.js"></script> 
+    <script src="controllers/projectstatus.controller.js"></script> 
+    <script src="controllers/resourceavailabilityy.controller.js"></script> 
+    <script src="controllers/resourceperformance.controller.js"></script> 
+    <script src="controllers/viewuser.controller.js"></script> 
+    <script src="controllers/viewartist.controller.js"></script> 
+    <script src="controllers/viewvendor.controller.js"></script> 
+    <script src="controllers/viewclient.controller.js"></script> 
+    <script src="controllers/viewprojectdet.controller.js"></script> 
+    <script src="controllers/shotalloc.controller.js"></script> 
+    <script src="controllers/editshotalloc.controller.js"></script>
+    <script src="controllers/viewshotallocation.controller.js"></script>
+    <script src="controllers/freelancers.controller.js"></script> 
+    <script src="controllers/editfreelancers.controller.js"></script>  
+    <script src="controllers/viewfreelancers.controller.js"></script> 
+    <script src="controllers/viewpayment.controller.js"></script> 
+    <script src="controllers/header.controller.js"></script> 
+    <script src="controllers/purchase.controller.js"></script> 
+    <script src="controllers/invoice.controller.js"></script> 
+  
+<script src="app/js/customs/jspdf.min.js"></script>
+<script src='app/js/customs/jspdf.debug.js'> 
+<script src='app/js/customs/jspdf-autotable@2.3.2'></script>
+
+</body>
+</html>

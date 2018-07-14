@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html ng-app="app" >
+<head>
+	<title id="page">projectstatus</title>   
+</head>
+<body>
+<div class="wrapper">
+<header class="clearfix">
+<div class="main-header container">
+<img  ng-src="app/images/logo.jpg"/>
+<a href="#/login" class="btn btn-primary pull-right">Logout</a>
+</div>
+</header>
+<!-- sidebar view Begins-->
+<div>
+<div class="side-bardiv section_layout">
+				<div class="sidebar">
+				<div class="user-panel">
+				<div class="pull-left info">
+				<h5><p>Welcome ! {{username}}</p></h5>
+				</div>
+				</div>
+				<div class="list" id="list">
+				<li class="header">MENU NAVIGATION</li>
+				<nav>
+   				 <ul id="menu" class="nav" ng-repeat="row in useraccess">
+   				 <li><a  ng-class="{active : activeMenu === row.name}" href="#/{{row.name}}/{{row.id}}" >
+				{{row.title}}</a></li>        
+   				 </ul>
+   				 	</nav>
+                        </div>
+</div> 
+</div>
+</div>
+<style>
+li.active {
+    color: red;
+}
+</style>
+<!-- sidebar view Ends-->
+	<div class="content-wrapper style="min-height: 491px;"">  
+			<div class="section_layout">
+              <section class="content-header">
+                    <h3>Project Status</h3>
+                      </section> 
+                     	 <div class="panel">         
+					 		 <div class="row">                  
+   						 		<div class="panel-body" >                         
+                        			 <div class="col-md-12" > 
+                        					 <div class="col-md-10" >     
+   						 					   <button class="btn btn-lg btn-success" ng-click="exportToExcel('#emptable')"><span class="glyphicon glyphicon-share"></span>Export to Excel</button>
+                                               </div> 
+    									</div>   
+      <!-- Listing of Users-->      
+    <form id="empform" method="post"> 
+      <table class="table table-striped table-bordered" id="emptable" datatable="ng"  dt-options="vm.dtOptions">
+        <thead>   		          		
+         		 <th>Project</th>
+         		 <th>Shot</th>  
+                 <th>Department</th>
+         		 <th>Status</th>              
+        </thead>
+        <tbody>    
+        		<tr ng-repeat="row in projects"> 
+                             
+                 <td>{{row.projectname}}</td>
+                  <td>{{row.shotcode}}</td>
+                    <td> <span ng-if="row.shotallocationdepartmentid.indexOf('1') > -1">Roto</span>&nbsp;
+                         <span ng-if="row.shotallocationdepartmentid.indexOf('2') > -1">Paint</span>&nbsp;
+                         <span ng-if="row.shotallocationdepartmentid.indexOf('3') > -1">Matchmove</span>&nbsp;
+                         <span ng-if="row.shotallocationdepartmentid.indexOf('4') > -1">Compositing</span>&nbsp;
+                         <span ng-if="row.shotallocationdepartmentid.indexOf('5') > -1">3D</span>
+                       </td>                        
+                   	<td>
+                         <span ng-if="row.shotallocationshotstatusid == 1">assigned</span>
+                         <span ng-if="row.shotallocationshotstatusid == 2">inprogress</span>
+                         <span ng-if="row.shotallocationshotstatusid == 3">completed</span>
+                         <span ng-if="row.shotallocationshotstatusid == 4">Redo</span>
+                         <span ng-if="row.shotallocationshotstatusid == 5">needs fixing(or)feedback received</span>
+                         <span ng-if="row.shotallocationshotstatusid == 6">feedback fix & uploaded</span>
+                         <span ng-if="row.shotallocationshotstatusid == 7">on hold(Post delivery)</span>
+                         <span ng-if="row.shotallocationshotstatusid == 8">on hold(Pre delivery)</span>
+                         <span ng-if="row.shotallocationshotstatusid == 9">omitted</span>
+                         <span ng-if="row.shotallocationshotstatusid == 10">awaiting updated input</span>
+                         <span ng-if="row.shotallocationshotstatusid == 11">allocated and yet to start</span>
+                         <span ng-if="row.shotallocationshotstatusid == 12">Allocated and work in progress</span>
+                         <span ng-if="row.shotallocationshotstatusid == 13">uploaded and waiting for feedback</span>
+                         <span ng-if="row.shotallocationshotstatusid == 14">approved</span>    
+                         <span ng-if="row.shotallocationshotstatusid == 0">not assigned</span>                        
+                   </td>                             
+            	</tr>
+        </tbody>
+       </table>
+           		
+                          
+           </form>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>   
+  </body>
+ 

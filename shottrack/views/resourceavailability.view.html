@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html ng-app="app" >
+<head>
+	<title id="page">resourceavailability</title>   
+</head>
+<body>
+<div class="wrapper">
+<header class="clearfix">
+<div class="main-header container">
+<img  ng-src="app/images/logo.jpg"/>
+<a href="#/login" class="btn btn-primary pull-right">Logout</a>
+</div>
+</header>
+<!-- sidebar view Begins-->
+<div>
+<div class="side-bardiv section_layout">
+	<div class="sidebar">
+		<div class="user-panel">
+			<div class="pull-left info">
+				<h5><p>Welcome ! {{username}} </p></h5>
+			</div>
+		</div>
+	<div class="list" id="list">
+		<li class="header">MENU NAVIGATION</li>
+			<nav>
+   			  <ul id="menu" class="nav" ng-repeat="row in useraccess">
+   			  <li><a  ng-class="{active : activeMenu === row.name}" href="#/{{row.name}}/{{row.id}}" >{{row.title}}</a></li>        
+   			  </ul>
+   			</nav>
+     </div>
+</div> 
+</div>
+</div>
+<style>
+li.active {
+    color: red;
+}
+</style>
+<!-- sidebar view Ends-->
+	<div class="content-wrapper style="min-height: 491px;"">  
+		<div class="section_layout">
+              <section class="content-header">
+               <h3>Resource Availability</h3>
+               </section> 
+                     	 <div class="panel">         
+					 		 <div class="row">                  
+   						 		<div class="panel-body" >                         
+                        			 <div class="col-md-12" > 
+                        					 <div class="col-md-11" >     
+   						 					   <button class="btn btn-lg btn-success" ng-click="exportToExcel('#emptable')"><span class="glyphicon glyphicon-share"></span>Export to Excel</button>
+                                               </div> 
+    									</div>
+     
+    <!-- Listing of Users-->      
+    <form id="empform" method="post"> 
+      <table class="table table-striped table-bordered" datatable="ng" id="emptable" dt-options="vm.dtOptions">
+        <thead>   		
+          		 <th>Artist name</th>         	  
+                 <th>Artist id</th>
+         		 <th>Department</th>
+         		 <th>Availability start date</th>                 
+                 <th>Resource Status</th>
+                 <th>Booked project name</th>
+                        
+        </thead>
+        <tbody>    
+        		<tr ng-repeat="row in projects|filter:searchTerm"> 
+               
+                <td>{{row.artistid}}</td>
+                 <td>{{row.artistname}}</td>               
+                 <td> <span ng-if="row.artistdepartmentid.indexOf('1') > -1">Roto</span> &nbsp;
+                         <span ng-if="row.artistdepartmentid.indexOf('2') > -1">Paint</span> &nbsp;
+                         <span ng-if="row.artistdepartmentid.indexOf('3') > -1">Matchmove</span> &nbsp;
+                         <span ng-if="row.artistdepartmentid.indexOf('4') > -1">Compositing</span> &nbsp;
+                         <span ng-if="row.artistdepartmentid.indexOf('5') > -1">3D</span>
+                       </td>
+                <td>{{row.projectallocationstartdate}}</td>               
+                <td> assigned </td>
+                 <td >{{row.status}}</td>
+               
+                 </div>           
+            	</tr>
+        </tbody>
+        </table>
+           	                      
+     </form>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>   
+  </body>
+ 

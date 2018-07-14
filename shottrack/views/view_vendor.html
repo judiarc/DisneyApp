@@ -1,0 +1,266 @@
+﻿<style type="text/css">
+  .form-horizontal input.ng-invalid.ng-dirty {
+    border-color: #FA787E;
+  }
+
+  .form-horizontal input.ng-valid.ng-dirty {
+    border-color: #78FA89;
+  }
+</style>
+<div class="wrapper1">
+<header class="clearfix">
+<div class="main-header container">
+<img  ng-src="app/images/logo.jpg"/>
+<a href="#/login" class="btn btn-primary pull-right">Logout</a>
+</div>
+</header>
+<!-- sidebar view Begins-->
+<div>
+<div class="side-bardiv section_layout">
+				<div class="sidebar">
+				<div class="user-panel">
+				<div class="pull-left info">
+				<h5><p>Welcome ! {{username}}</p></h5>
+				</div>
+				</div>
+				<div class="list" id="list">
+				<li class="header">MENU NAVIGATION</li>
+				<nav>
+   				 <ul id="menu" class="nav" ng-repeat="row in useraccess">
+   				 <li><a  ng-class="{active : activeMenu === row.name}" href="#/{{row.name}}/{{row.id}}" >
+				{{row.title}}</a></li>        
+   				 </ul>
+   				 	</nav>
+                        </div>
+</div> 
+</div>
+</div>
+<style>
+li.active {
+    color: red;
+}
+</style>
+<!-- sidebar view Ends-->
+<div class="content-wrapper" style="min-height: 491px;">  
+<div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
+<div class="section_layout">
+<div class="view">
+    <div class="">
+        <div class="">
+        <nav class= "navbar" role= "navigation" >
+        <div class= "navbar-header" >
+        <h3>{{title}}</h3>
+        </div>
+        </nav>
+       
+	<div class="modal-body">
+		<div class="panel-body">
+		<div class="col-md-10">
+							<div class="row">
+					<div class="col-sm-12 col-md-12">
+                   
+						<table class="table table-hover">
+							<tbody>
+								<tr>
+								<th>Vendor Name</th>
+								<td><b>{{vendors.vendorname}}</b></td>
+								</tr>					
+                                 <tr>
+								 <th>Contact Name</th>
+								<td><b>{{vendors.vendorcontactperson}}</b></td>
+								<th>Email</th>
+								<td><b>{{vendors.vendoremail}}</b></td>
+								<th>Mobile</th>
+								<td><b>{{vendors.vendormobile}}</b></td>
+								</tr>	
+                                <tr>
+                                 <tr ng-if="vendors.vendoremail1">
+								 <th>Contact Name</th>
+								<td><b>{{vendors.vendorcontactperson1}}</b></td>
+								<th>Email</th>
+								<td><b>{{vendors.vendoremail1}}</b></td>								
+								<th>Mobile</th>
+								<td><b>{{vendors.vendormobile1}}</b></td>
+								</tr>	
+                                <tr ng-if="vendors.vendoremail2" >
+                                <th>Contact Name</th>
+								<td><b>{{vendors.vendorcontactperson2}}</b></td>
+								<th>Email</th>
+								<td><b>{{vendors.vendoremail2}}</b></td>								
+								<th>Mobile</th>
+								<td><b>{{vendors.vendormobile2}}</b></td>
+								</tr>	
+								<tr ng-if="vendors.vendoremail3">
+                                <th>Contact Name</th>
+								<td><b>{{vendors.vendorcontactperson3}}</b></td>
+								<th>Email</th>
+								<td><b>{{vendors.vendoremail3}}</b></td>								
+								<th>Mobile</th>
+								<td><b>{{vendors.vendormobile3}}</b></td>
+								</tr>	
+                                 <tr ng-if="vendors.vendoremail4">
+                                <th>Contact Name</th>
+								<td><b>{{vendors.vendorcontactperson4}}</b></td>
+								<th>Email</th>
+								<td><b>{{vendors.vendoremail4}}</b></td>								
+								<th>Mobile</th>
+								<td><b>{{vendors.vendormobile4}}</b></td>
+								</tr>	
+								<tr>
+								<th>Address</th>
+								<td><b>{{vendors.vendoraddress}}</b></td>
+								</tr>					
+                                 <tr>
+								<th>City</th>
+								<td><b>{{vendors.vendorcity}}</b></td>
+								</tr>
+                                 <tr>
+								<th>State</th>
+								<td><b>{{vendors.vendorstate}}</b></td>
+								</tr>
+                                <tr>
+								<th>Country</th>
+								<td><b>{{vendors.vendorcountry}}</b></td>
+								</tr>					
+                                 <tr>
+                                <th>Department</th>
+                                <td ng-if="vendors.vendordepartmentid.indexOf('1') > -1"><b>Roto</b>
+                                 <td ng-if="vendors.vendordepartmentid.indexOf('2') > -1"><b>Paint</b></td>
+                                  <td ng-if="vendors.vendordepartmentid.indexOf('3') > -1"><b>Match move</b></td>
+                                   <td ng-if="vendors.vendordepartmentid.indexOf('4') > -1"><b>Compositing</b></td>
+                                    <td ng-if="vendors.vendordepartmentid.indexOf('5') > -1"><b>3D</b></td>
+								</tr>
+                                 <tr ng-if="vendors.vendorpriceroto">
+                                <th>Price Per Manday for Roto</th>
+                                <td><b>{{vendors.vendorpriceroto}}</b></td>
+								</tr>
+                                 <tr ng-if="vendors.vendorpriorityroto">
+                                <th>Priority for Roto</th>
+                                <td><b>{{vendors.vendorpriorityroto}}</b></td>
+								</tr>
+								<tr ng-if="vendors.vendormandaysperdayroto ">
+                                <th>Mandays Per Day for roto</th>
+                                <td><b>{{vendors.vendormandaysperdayroto }}</b></td>
+								</tr>
+                                 <tr ng-if="vendors.vendorpricepaint">
+                                <th>Price Per Manday for Paint</th>
+                                <td><b>{{vendors.vendorpricepaint}}</b></td>
+								</tr>
+                                 <tr ng-if="vendors.vendorprioritypaint">
+                                <th>Priority for Paint</th>
+                                <td><b>{{vendors.vendorprioritypaint}}</b></td>
+								</tr>
+								<tr ng-if="vendors.vendormandaysperdaypaint">
+                                <th>Mandays Per Day for paint</th>
+                                <td><b>{{vendors.vendormandaysperdaypaint}}</b></td>
+								</tr>
+                                 <tr ng-if="vendors.vendorpricematch">
+                                <th>Price Per Manday for MatchMove</th>
+                                <td><b>{{vendors.vendorpricematch}}</b></td>
+								</tr>
+                                 <tr ng-if="vendors.vendorprioritymatch">
+                                <th>Priority for MatchMove</th>
+                                <td><b>{{vendors.vendorprioritymatch}}</b></td>
+								</tr>
+								<tr ng-if="vendors.vendormandaysperdaymm">
+                                <th>Mandays Per Day for Match Move</th>
+                                <td><b>{{vendors.vendormandaysperdaymm}}</b></td>
+								</tr>
+                                <tr ng-if="vendors.vendorpricecomp">
+                                <th>Price Per Manday for Compositing</th>
+                                <td><b>{{vendors.vendorpricecomp}}</b></td>
+								</tr>
+                                 <tr ng-if="vendors.vendorprioritycomp">
+                                <th>Priority for Compositing</th>
+                                <td><b>{{vendors.vendorprioritycomp}}</b></td>
+								</tr>
+								<tr ng-if="vendors.vendormandaysperdaycomp">
+                                <th>Mandays Per Day for compositing </th>
+                                <td><b>{{vendors.vendormandaysperdaycomp}}</b></td>
+								</tr>
+                                <tr ng-if="vendors.vendorprice3d">
+                                <th>Price Per Manday for 3D</th>
+                                <td><b>{{vendors.vendorprice3d}}</b></td>
+								</tr>
+                                 <tr ng-if="vendors.vendorpriority3d">
+                                <th>Priority for 3D</th>
+                                <td><b>{{vendors.vendorpriority3d}}</b></td>
+								</tr>
+								<tr ng-if="vendors.vendormandaysperdaymm">
+                                <th>Mandays Per Day for 3d</th>
+                                <td><b>{{vendors.vendormandaysperday3d}}</b></td>
+								</tr>
+							
+								</tbody>
+						</table> 
+				</div>
+                 <nav class= "navbar" role= "navigation" >
+        <div  ng-if="userroleid == 0 || userroleid == 3 || userroleid == 2" class= "navbar-header" >
+        <h3>Bank Details</h3>
+        </div>
+        </nav>
+        
+        
+        <table ng-if="userroleid == 0 || userroleid == 3 || userroleid == 2" class="table table-hover">
+							<tbody>
+								<tr>
+								<th>Account No</th>
+								<td><b>{{vendors.vendoraccountno}}</b></td>
+                                 <td>{{vendors.vendoraccountno ? '' : 'nill'}}</td>
+								</tr>					
+                                 <tr>
+								<th>Account Name</th>
+								<td><b>{{vendors.vendoraccountname}}</b></td>
+                                 <td>{{vendors.vendoraccountname ? '' : 'nill'}}</td>
+								</tr>	
+                                <tr>
+								<th>IFSC CODE</th>
+								<td><b>{{vendors.vendorifsc}}</b></td>
+                                 <td>{{vendors.vendorifsc ? '' :'nill'}}</td>
+								</tr>
+                                </tbody>	
+            </table>
+             <nav class= "navbar" role= "navigation" >
+        <div ng-if="userroleid == 0 || userroleid == 3 || userroleid == 2" class= "navbar-header" >
+        <h3 >FTP or ASPERA</h3>
+        </div>
+        </nav>        
+        <table ng-if="userroleid == 0 || userroleid == 3 || userroleid == 2" class="table table-hover">
+							<tbody>
+								<tr>
+								<th>Url</th>
+								<td  ng-if ="vendors.vendorurl"><b>{{vendors.vendorurl}}</b></td>
+                                <td>{{vendors.vendorurl ? 'yes' : 'nill'}}</td>
+								</tr>					
+                                 <tr>
+								<th>HostName</th>
+								<td   ng-if="vendors.vendorhostname"><b>{{vendors.vendorhostname}}</b></td>
+                                 <td>{{vendors.vendorhostname ? '' : 'nill'}}</td>
+								</tr>	
+                                <tr >
+								<th>Username</th>
+								<td  ng-if="vendors.vendorusername"><b>{{vendors.vendorusername}}</b></td>
+                                <td>{{vendors.vendorusername ? '' : 'nill'}}</td>
+								</tr>
+                                 <tr>
+								<th>Password</th>
+								<td  ng-if="vendors.vendorpassword"><b>{{vendors.vendorpassword}}</b></td>
+                                <td>{{vendors.vendorpassword ? '' : 'nill'}}</td>
+								</tr>
+                                <tr>
+								<th>Port</th>
+								<td  ng-if="vendors.vendorport"><b>{{vendors.vendorport}}</b></td>
+                                <td>{{vendors.vendorport ? '' : 'nill'}}</td>
+								</tr>
+                              </tbody>	
+            </table>
+            	
+					 <div class="col-md-6 cancel">
+    <a href="#/vendor/{{entityid}}" class="btn">back</a>
+    </div>
+					
+		</div>
+	</div>
+	
+</div></div>
+ 

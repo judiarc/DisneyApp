@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script> 
+    $(function(){
+      $("#headContent").load("views/HeaderForUsers.html");
+      $("#actionContent").load("views/actionheader.html");
+    });
+    </script>
+</head>	
+<body>
+	<!-- Header Section -->
+<div id="headContent"></div>
+<!--Header Section  Ends-->
+
+ <!-- Add user form starts here-->
+
+
+<div class="content-wrapper" style="min-height: 450px;">
+
+<div class="panel" style="min-height: 481px;">
+
+<section class="content-header">
+<h3>Add User</h3>
+</section>	
+<div class="">
+		<div class="col-md-10">
+		<form action="" id="adduser" ng-submit="adduser(addname,addpassword,addemail,addrole)" class="form-horizontal">
+		<div class="row">
+		<div class="col-sm-12 col-md-12">
+			<div>
+					<div class="col-xs-6 form-group">
+					<label class="col-sm-3">UserName</label>
+					<div class="col-sm-6">
+					<input type="text" id="addusername" name="add_name" ng-model="addname" placeholder="EnterName"   class= "form-control" required>
+					</div>
+		 			</div>
+			</div>
+			<div>
+					<div class="col-xs-6 form-group">
+					<label class="col-sm-3">Password</label>
+					<div class="col-sm-6">
+					<input type="text" id="adduserpassword" name="add_password" ng-model="addpassword" placeholder="EnterPassword"   class= "form-control">
+					</div>
+		 			</div>
+			</div>
+			<div>
+					<div class="col-xs-6 form-group">
+					<label class="col-sm-3">Email</label>
+					<div class="col-sm-6">
+					<input type="email" id="adduseremail" name="add_email" ng-model="addemail" placeholder="EnterEmail"   class= "form-control">
+					</div>
+		 			</div>
+			</div>
+			<div>
+					<div class="col-xs-6 form-group">
+					<label class="col-sm-3">Role</label>
+					<div class="col-sm-6">
+					<select id="addrole" ng-model="add_role" required  >
+						<option value="">Select role</option>
+						<option value="0">Management</option>
+						<option value="1">Project Head</option>
+						<option value="2">Project coordinator</option>
+						<option value="3">VP</option>
+						<option value="4">Artist</option>
+					</select>
+					</div>
+		 			</div>
+			</div>
+			<div>
+<div class="col-xs-6 form-group">
+</div>
+</div>
+	<div>
+								<div class="col-xs-6 form-group">
+									<label class="col-sm-3">			
+										<a href="#/users" class="btn">back</a>
+										</label>
+									 <div class="col-sm-6">
+										<input type="submit" value="Add"  size="20px">									 </div>
+							 	</div>
+							</div>
+		</div>
+		</div>
+		
+		</form>
+		
+			
+		</div>
+		</div>
+
+</div>
+</div>
+</body>
+</html>

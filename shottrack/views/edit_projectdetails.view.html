@@ -1,0 +1,257 @@
+<style type="text/css">
+.form-horizontal input.ng-invalid.ng-dirty {
+	border-color: #FA787E;
+}
+
+.form-horizontal input.ng-valid.ng-dirty {
+	border-color: #78FA89;
+}
+</style>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<script>
+	$(function() {
+		$("#headContent").load("views/header.view.html");
+	});
+	$('#project')
+			.submit(
+					function(event) {
+						$('button[type=submit], input[type=submit]')
+						.val("Please wait..")
+						.prop('disabled',true);
+						$
+								.ajax({
+									type : 'POST',
+									url : 'services/project.php?function=addOrUpdateProject',
+									data : $(this).serialize(),
+									dataType : 'json',
+									success : function(data) {
+										if (data.success) {
+											$('button[type=submit], input[type=submit]')
+											.val("Save")
+											.prop('disabled',false);
+											//alert("added");
+											document.getElementById('projectId').value = data.projectId;
+												//$scope.projectId = data.projecttId;
+											document
+													.getElementById("responseMessage").innerHTML = "<span style=color:'green'>"
+													+ data.message + "</span>";
+											document
+													.getElementById("responseMessage").style.color = '#008000'; // red or #ffffff
+											document
+													.getElementById("responseMessage").style.fontWeight = 'bold';
+											window.scrollTo(500, 0);
+										} else {
+											$('button[type=submit], input[type=submit]')
+											.val("Save")
+											.prop('disabled',false);
+											document
+													.getElementById("responseMessage").innerHTML = "<span style=color:'green'>"
+													+ data.message + "</span>";
+											document
+													.getElementById("responseMessage").style.color = '#ffffff'; // red or #ffffff
+											document
+													.getElementById("responseMessage").style.fontWeight = 'bold';
+											window.scrollTo(500, 0);
+										}
+									}
+								});
+						// stop the form from submitting and refreshing
+						event.preventDefault();
+					}); 
+	var back = function() {
+		window.location = "#/projectdetails";
+	}
+</script>
+</head>
+<body>
+<!-- sidebar view Ends-->
+<div id="headContent"></div>
+<div class="content-wrapper" style="min-height: 491px;">
+<div class="main-content" style="margin-right: -22px;    margin-left: 180px;">
+			<div class="title" >
+			<span>Edit Project</span>
+			</div>
+			</div>
+	<div class="section_layout">
+		<div class="view">
+
+			<div ng:show="editprojectdetid > 0">
+				<nav role="tablist" id="tablist">
+					<a href ng:click="selected=1" ng-class="{active: selected == 1}"
+						ng-init="selected=1">Add Project</a> 
+				</nav>
+			</div>
+
+			<div ng:show="editprojectdetid == 0">
+				<nav role="tablist" id="tablist">
+					<a href ng:click="selected=1" ng-class="{active: selected == 1}"
+						ng-init="selected=1">Add Project</a> 				</nav>
+			</div>
+
+			<div ng:show="selected == 1">
+				<div class="panel">
+				<div style="text-align: center;">
+				<p id="responseMessage"></p>
+			</div>
+					<div class="row">
+
+						<div class="col-md-12">
+							<form role="form" name="project" id="project" autocomplete="off"	class="form-horizontal">
+								<div class="form inline">
+									<div ng-repeat="field in projectFields">
+										<span ng-switch on="field.type"> <span
+											ng-switch-when="text">
+												<div class="col-xs-6 form-group">
+													<label class="col-sm-3">{{ field.title }}<em
+														class="rclass" ng-hide ng-if="field.required == 'true'">*</em>
+													</label>
+													<div class="col-sm-6">
+														<input type="text" ng-model="entity[field.name]"
+															class="form-control" ng-pattern="{{field.validation}}"
+															name="{{field.name}}" ng-required="{{field.required}}" />
+														<span
+															ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+													</div>
+												</div>
+										</span> <span ng-switch-when="date">
+													<div class="col-xs-6 form-group">
+														<label class="col-sm-3">{{ field.title }}<em
+															class="rclass" ng-hide ng-if="field.required == 'true'">*</em>
+														</label>
+														<div class="input-append date form_datetime col-sm-6"
+															data-link-field="dtp_receiveddate">
+															<input class="form-control" size="16" type="text"
+																datetimepicker ng-model="entity[field.name]"
+																name="{{field.name}}" ng-required="{{field.required}}">
+															<span class="add-on"><i class="icon-th"></i></span>
+														</div>
+													</div>
+											</span> <span ng-switch-when="email">
+												<div class="col-xs-6 form-group">
+													<label class="col-sm-3">{{ field.title }}<em
+														class="rclass" ng-hide ng-if="field.required =='true'">*</em>
+													</label>
+													<div class="col-sm-6">
+														<input type="email" class="form-control"
+															ng-model="entity[field.name]" name="{{field.name}}"
+															ng-required="{{field.required}}" /> <span
+															ng-show="{{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}"
+															class="help-inline">Email Required</span> <span
+															ng-show="{{'myForm.'+field.name+'.$error.'+field.name}}"
+															class="help-inline">Email is not valid</span>
+													</div>
+												</div>
+										</span>
+
+											<div ng-hide ng-if="field.name == 'client'">
+											
+												<div class="col-xs-6 form-group">
+													<label class="col-sm-3">{{field.title}}
+													<em
+															class="rclass" ng-hide ng-if="field.required =='true'">*</em></label>
+													<div class="col-sm-6">
+														<select id="{{field.name}}" name="{{field.name}}"
+															ng-model="entity[field.name]" 
+															ng-required="{{field.required}}">
+															<option value="">Select Client</option>
+															<option ng-repeat="client in clientList"
+																ng-selected="client.id==entity[field.name]"
+																value="{{client.id}}">{{client.name}}</option>
+														</select>
+													</div>
+												</div>
+											</div>
+
+											<div ng-hide ng-if="field.name == 'entitystatus'">
+												<span ng-switch-when="select">
+													<div class="col-xs-6 form-group">
+														<label class="col-sm-3">{{ field.title }}<em
+															class="rclass" ng-hide ng-if="field.required =='true'">*</em>
+														</label>
+														<div class="col-sm-6">
+															<select id="{{field.name}}" name="{{field.name}}"
+																ng-model="entity[field.name]"
+																 ng-required="{{field.required}}">
+																 <option value="">Select Status</option>
+																<option ng-repeat="dropdown in entitystatus"
+																	ng-selected="dropdown.id==entity[field.name]"
+																	value="{{dropdown.id}}">{{dropdown.value}}</option>
+															</select> <span
+																ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+														</div>
+													</div>
+												</span>
+											</div>
+
+											<div ng-hide
+												ng-if="field.name != 'client' && field.name != 'entitystatus'">
+												<span ng-switch-when="select">
+													<div class="col-xs-6 form-group">
+														<label class="col-sm-3">{{ field.title }}<em
+															class="rclass" ng-hide ng-if="field.required =='true'">*</em>
+														</label>
+														<div class="col-sm-6">
+															<select ng-model="entity" id="{{field.name}}"
+																name="{{field.name}}"
+																ng-options="{{'item as item.name for item in' + ' ' +'projectdetails'+field.endpoint+ ' ' +'track by item.'+'projectdetails'+field.endpoint}}"
+																class="form-control" ng-required="{{field.required}}"><option
+																	value="">Select</option></select> <span
+																ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+														</div>
+													</div>
+
+												</span>
+											</div> <span ng-switch-when="textarea">
+												<div class="col-xs-6 form-group">
+													<label class="col-sm-3">{{ field.title }}<em
+														class="rclass" ng-hide ng-if="field.required =='true'">*</em>
+													</label>
+													<div class="col-sm-6">
+														<textarea name="{{field.name}}"
+															ng-model="entity[field.name]" class="form-control"
+															ng-required="{{field.required}}" /></textarea>
+														<span
+															ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+													</div>
+												</div>
+										</span>
+									</div>
+									<input type="hidden" value="" name="selectedclientid"
+										id="selectedclientid" /> <input type="hidden"
+										value="{{entity.clientname}}" name="selectedclientidd"
+										id="selectedclientidd" /> <input type="hidden"
+										value="{{entityid}}" name="entityid" /> <input type="hidden"
+										id="projectId" value="{{entity.id}}"
+										name="projectId" />
+									<div>
+										<div class="col-xs-4 form-group">
+											<label class="col-sm-2"> <input type="button"
+												style="size: 20px" onClick="back()" value="Back" size="20px">
+												<!-- <a href="#/client" class="btn">back</a> -->
+											</label>
+											<!-- <div class="col-sm-2">
+												<input type="submit" style="size: 20px" value="Save">
+											</div> -->
+											<div class="col-sm-2">
+											<input type="submit" style="size: 20px" value="Save">
+											<!-- <button ng-click="addProject()" class="btn btn-primary">Save</button> -->
+										</div>
+										</div>
+									</div>
+								</div>
+						</div>
+					</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>
+</body>
+</html>

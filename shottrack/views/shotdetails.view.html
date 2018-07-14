@@ -1,0 +1,172 @@
+<html>
+<head>
+<script>
+	$(function() {
+		$("#headContent").load("views/header.view.html");
+	});
+</script>
+
+</head>
+<body>
+	<div id="headContent"></div>
+	<div class="content-wrapper">
+		<!-- <div class="panel">
+			<form id="artist" method="post"> -->
+			<div class="section_layout">
+					<div class="main-content">
+			<div class="title">
+				<span>Shot</span>
+				<div class="addButton">
+					<button onclick="location.href = '#/edit_artist/';">
+						<image>
+						<img src="app/images/add.png" style="width: 25px; height: 25px;"></image>
+					</button>
+				</div>
+				<div class="deleteButton">
+					<button ng-click="vm.deleteEmp()">
+						<image>
+						<img src="app/images/delete.png"
+							style="width: 25px; height: 25px;"></image>
+					</button>
+				</div>
+				</div>
+				</div>
+				<br>
+				<br>
+				<br>
+				  <div class="col-md-12" s> 
+                         <div class="col-md-8" >   
+   						 					   <button class="btn btn-lg btn-success" ng-click="exportToExcel('#emptable')"><span class="glyphicon glyphicon-share"></span>Export to Excel</button>
+                                               </div>                                             
+                                               <div class="col-md-1" > 
+   	   										 <a class="btn btn-lg btn-success" href="#/edit_shotdet/0"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add new Shot</a>
+                                             </div>
+    						
+    						</div>
+    				
+                     <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
+
+<!--    <div id="search">
+    		<table>   
+    		<tr>
+            <td align="right">Search : </td>&nbsp;
+            <td><input class="form-control" ng-model="search" style="margin-left:0.5em"/></td>
+        	</tr>     
+     </table> 
+        </div> -->
+    
+     
+    <!--  <form id="empform" method="post">  -->
+        <table id="emptable" 
+        datatable="ng" dt-options="vm.dtOptions">
+        <thead class="widget" style="background:#C0C0C0;">   		
+          		 <th class="title" style="width:260px;"><input type="checkbox" name="select_all" id="select_all" value=""/></th>          	    
+                <th class="title" style="width:260px;" ng-click="sort('name')">Name</th>
+         		<th class="title" style="width:260px;">Edit</th>
+         		<th class="title" style="width:260px;">Delete</th>
+               
+        </thead>
+        <tbody>    
+        		<tr dir-paginate="row in users | filter:search | orderBy:sortKey:reverse | itemsPerPage:5"> 
+                <td align="center"><input type="checkbox" name="checked_id[]" class="checkbox" value="{{row.shotdetailsid}}"/></td>	
+                       		
+               			
+                <td>{{row.shotdetailsname}}</td>
+                <td><a href="#/edit_shotdet/{{row.shotdetailsid}}" class="btnaction">&nbsp;<i class="glyphicon glyphicon-edit"></i>&nbsp;</a></td>
+                <td><a href="#/shotdetails/{{shotdetid}}" class="btnaction" ng-click="vm.deleteEmp(row.shotdetailsid)">&nbsp;<i class="glyphicon glyphicon-remove"></i>&nbsp;</a></td>                 
+            	</tr>
+        </tbody>
+        </table>
+           			<dir-pagination-controls max-size="5"	direction-links="true"	boundary-links="true" >	</dir-pagination-controls> 
+                       <input type="submit" class="deletelogg" name="bulk_delete_submit" value="Delete Selected"/>       
+         
+          
+  </div>
+  </div>
+ </div>   
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+<!-- <html>
+<head>
+<script>
+	$(function() {
+		$("#headContent").load("views/header.view.html");
+	});
+</script>
+</head>
+<body> -->
+<!-- 
+<div ng-include src="'includes/sidebar.php?pagename=shotdetails'"></div>
+
+<div class="content-wrapper style="min-height: 491px;"">  
+			<div class="section_layout">
+            <section class="content-header">
+                    <h3>Shot details</h3>
+                    </section> 
+                     <div class="panel">         
+					<div class="row">                  
+   						 <div class="panel-body" >                         
+                         <div class="col-md-12" > 
+                         <div class="col-md-8" >   
+   						 					   <button class="btn btn-lg btn-success" ng-click="exportToExcel('#emptable')"><span class="glyphicon glyphicon-share"></span>Export to Excel</button>
+                                               </div>                                             
+                                               <div class="col-md-1" > 
+   	   										 <a class="btn btn-lg btn-success" href="#/edit_shotdet/0"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add new Shot</a>
+                                             </div>
+    						
+    						</div>
+    				
+                     <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
+
+   <div id="search">
+    		<table>   
+    		<tr>
+            <td align="right">Search : </td>&nbsp;
+            <td><input class="form-control" ng-model="search" style="margin-left:0.5em"/></td>
+        	</tr>     
+     </table> 
+        </div>
+    
+     
+     <form id="empform" method="post"> 
+        <table class="table table-striped table-bordered" id="emptable">
+        <thead>   		
+          		 <th><input type="checkbox" name="select_all" id="select_all" value=""/></th>          	    
+                <th ng-click="sort('name')">Name</th>
+         		<th>Edit</th>
+         		<th>Delete</th>
+               
+        </thead>
+        <tbody>    
+        		<tr dir-paginate="row in users | filter:search | orderBy:sortKey:reverse | itemsPerPage:5"> 
+                <td align="center"><input type="checkbox" name="checked_id[]" class="checkbox" value="{{row.shotdetailsid}}"/></td>	
+                       		
+               			
+                <td>{{row.shotdetailsname}}</td>
+                <td><a href="#/edit_shotdet/{{row.shotdetailsid}}" class="btnaction">&nbsp;<i class="glyphicon glyphicon-edit"></i>&nbsp;</a></td>
+                <td><a href="#/shotdetails/{{shotdetid}}" class="btnaction" ng-click="vm.deleteEmp(row.shotdetailsid)">&nbsp;<i class="glyphicon glyphicon-remove"></i>&nbsp;</a></td>                 
+            	</tr>
+        </tbody>
+        </table>
+           			<dir-pagination-controls max-size="5"	direction-links="true"	boundary-links="true" >	</dir-pagination-controls> 
+                       <input type="submit" class="deletelogg" name="bulk_delete_submit" value="Delete Selected"/>       
+           </form>
+          
+  </div>
+  </div>
+ </div>   
+ </div>
+ </div>  -->
+<!--  </body>
+</html> -->

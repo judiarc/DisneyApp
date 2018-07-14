@@ -1,0 +1,319 @@
+<style>
+.wrapper
+{
+	width:100%;
+	margin:0 auto;
+}
+.section_layout
+{
+	width:100%;
+	float:left;
+	padding-right:0.5px;
+		
+}
+/* .dashboard_box
+{
+	width:100%;
+	height: 15%	
+	padding-right:1px;
+		
+} */
+#roto {
+    display: none;
+}
+
+
+.dataTables_info {
+    display: none;
+}
+
+.content-wrapper {
+    margin-left: 20px;
+    margin-top: 35px;
+	float:left;
+	width:100%;
+    transition: transform 0.3s ease-in-out 0s, margin 0.3s ease-in-out 0s;    
+}
+.login-page {
+    background: #ebebeb none repeat scroll 0 0;
+    clear: both;
+    display: block;
+    margin: 90px auto 0;
+    max-width: 350px;
+    padding: 20px 20px;
+}
+.login-page h2 {
+    text-align: center;
+}
+
+#header {
+  	padding: 11px 20px 31px;
+    background: #036;
+}
+.side-bardiv {
+    background:#334048 none repeat scroll 0 0;
+    height: 1000px;
+    width: 250px;
+}
+.inner-page {
+    margin: 10px 0 0 30px;
+}
+
+.logo
+{
+	float:left;
+}
+.pull-right {
+    float: right !important;
+}
+.btn-primary {
+    background-color: #F65F44;
+    border-color:#FFF;
+    color: #fff;
+}
+.adduser{
+	font-size:5px;
+}
+.commentuser{
+	font-size:20px;
+	color:0000ff;
+}
+
+.btn-success {
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+    color: #fff;
+    float: right;
+	padding:5px;
+	font-size:16px;	
+}
+.btn-danger {
+    color: #fff;
+    float: right;
+	padding:5px;
+	font-size:16px;	
+}
+.navbar-default {
+    background-color: none !important;
+    border-color: none !important;
+}
+#search {
+    float: right;
+    padding: 30px 30px 30px 40px;
+	margin-right: 12.2em;
+}
+#adduserbutton {
+    width: 2em;  height: 2em;
+}
+.addButton{
+	float : right;
+}
+.deleteButton{
+	float : right;
+}
+.deletelogg {
+	border-radius: 6px;
+    font-size: 18px;
+    line-height: 0.33;
+    padding: 10px;
+    background-color: #dd4b39;
+    border-color: #d73925;
+    color: #fff;
+    float: left;
+	margin-left:1.2em;
+	margin-top:1.2em;
+}
+.approvelogg {
+	border-radius: 6px;
+    font-size: 18px;
+    line-height: 0.33;
+    padding: 10px;
+    background-color: #0C0;
+    border-color: #0C0;
+    color: #fff;
+    float: left;
+	margin-left:1.2em;
+	margin-top:1.2em;
+}
+.navbar-default {
+   background-color:none !important;
+   border-color: none !important;
+}
+li.active {
+   background : #456;
+   color:#000;
+}
+.errorspan
+{
+	color:red;
+}
+select {
+  	  background-color: #fff;
+  	  background-image: none;
+  	  border: 1px solid #ccc;
+	  border-radius: 4px;
+	  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+	  color: #555;
+	  display: block;
+	  font-size: 14px;
+	  height: 34px;
+	  line-height: 1.42857;
+	  padding: 6px 12px;
+	  transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+	  width: 100%;
+}
+
+/* For status Dropdown */
+#entity_status
+{
+		  box-shadow: 0 0px 0px rgba(0, 0, 0, 0.075) inset;
+	border:none;
+	-webkit-appearance: none;
+text-align-last:center;	
+}
+
+
+
+
+.ng-hide:not(.ng-hide-animate) {
+  /* this is just another form of hiding an element */
+	  display: block!important;
+	  position: absolute;
+	  top: -9999px;
+	  left: -9999px;
+}
+th,td {
+	width:260px;
+	    text-align: -webkit-center;
+}
+.user-panel::before, .user-panel::after {
+    content: " ";
+    display: table;
+	padding:5px;	
+    position: relative;
+    width: 100%;
+}
+.user-panel > .info {
+    left: 33px;
+	padding-left:40px;   
+	color:#fff;
+	white-space: nowrap;
+	float:left;
+}
+li.header {
+     font-size: 12px;
+     padding: 10px 25px 10px 15px;
+	 background: #1a2226 none repeat scroll 0 0;
+     color: #4b646f;
+	 overflow: hidden;
+     text-overflow: clip;
+	 white-space: nowrap;
+}
+
+
+
+.col-md-12 {
+    width: 100%;
+}
+dir-pagination-controls {
+    float: right;
+    margin-right: 4.2em;
+}
+.form.inline {
+    margin-left: 20px;
+	padding-top:20px;
+}
+
+.userPermissionPanel{  
+	margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 50px;
+  height:400px;
+  background-color: #ffffff;  
+  border: 5px solid #D3D3D3;
+  border-radius: 4px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+
+}
+
+.userPermissiondiv { width: 50%; height: 50%; float: left; }
+.userPermissiondiv1 { background: #DDD; }
+.userPermissiondiv2 { background: #AAA; }
+
+.btnaction {
+     -moz-user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857;
+    margin-bottom: 0;
+    padding: 6px 12px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    background-color: lavender;
+}
+.dataTables_wrapper {
+    padding-top: 50px;
+    position: relative;
+}
+.rclass
+{
+	color:red;
+}
+.all
+{
+	float:right;
+}
+.red {
+    background-color:#3399FF;
+}
+/* .dashboard_div1{
+	width: 100%;	
+}
+.dashboard_dashboarddiv{
+	width: 50%;	
+	float: left;
+}
+.dashboard_leveldiv{
+	width: 50%;	
+	float: right;
+} */
+
+/*highlight logout option */
+
+
+/* active menu tab */
+#mainmenu a.active {
+    background-color:  #456;
+    color: #21841d;
+    font-weight: bold;
+    
+}
+li:hover {
+    
+}
+
+#tablist 
+{
+	 margin-bottom:  1em;
+}
+#tablist a.active {
+     border-color: #2c90c6;
+}
+#tablist a {
+    font-weight:  500;
+    text-transform:  uppercase;
+    text-decoration:  none;
+    padding: 0.5em;
+    margin: 0 0.25em;
+    color:  #222;
+    border-bottom:  0.25rem solid transparent;
+    &.active {border-color:  #2c90c6;}
+}
+</style>

@@ -1,0 +1,550 @@
+<html>  <head>     
+    <script> 
+    $(function(){
+      $("#headContent").load("views/header.view.html");
+    });
+    </script> 
+    <style>
+/*    
+.main {
+	display: flex;
+	flex-flow: row wrap;
+}
+
+.widget {
+	flex-basis: 300px;
+	-webkit-max-logical-width: 360px;
+	flex-grow: 10;
+	height: 400px;
+	margin: 15px;
+	border-radius: 6px;
+	background-color: #ffffff;
+	position: relative;
+}
+	
+.widget .title {
+	background-color: #eef1f7;
+	border-bottom: 1px solid #dfe4ec;
+	padding: 10px;
+	border-top-left-radius: 6px;
+	border-top-right-radius: 6px;
+	color: #617085;
+	font-weight: 600;
+}
+ */
+    
+    
+    
+/*     
+    html { overflow-y: hidden; }
+    .section_layout {
+    width: 100%;
+    float: left;
+    margin-left: 181px;
+    } */
+   /*  .panel{	background-color:#d7e1ef;
+    		padding-top:150	px;
+            padding-left: 0px;
+            padding-right:4px;
+            padding-bottom:250px;
+            margin-right: -119px;
+    }
+    .panel-body {
+    padding-top: 100px;
+	padding-left:9px;
+	
+	} */
+/*     .content-wrapper {
+    margin-left: 20px;
+    margin-top: 44px;
+    padding-right: 43px;
+    float: left;
+    width: 100%;}
+     */
+  
+    </style>
+  </head> 
+<!-- sidebar view Begins-->
+<body >
+	<div id="headContent"></div>
+	<!-- sidebar view Ends-->
+	<!-- sidebar view Ends-->
+	<div class="content-wrapper">
+		<div class="section_layout">
+					<div class=" main-content">	
+			<div class="title">
+				Dashboard
+			</div>
+			
+			</div>
+			<table datatable="ng"
+					id="artiststable" dt-options="vm.dtOptions">
+					<thead class="widget" style="-webkit-max-logical-width: 79%" >
+						<th class="title"><input type="checkbox" onClick="toggle(this)"></th>
+						<!-- <th class="title">Id</th> -->
+						<th class="title">Shotcode</th>
+						<th class="title">Dept</th>
+						<th class="title">Status</th>
+					</thead>
+				
+					<tr ng-repeat="shotdetail in shotdetails">
+						<td align="center"><input type="checkbox" name="checked_id[]"  class="checkbox"
+							value="{{row.id}}" ></td>
+						<!-- <td><a href="#/edit_user/:{{shotdetail.id}}">{{shotdetail.id}}</a></td> -->
+						<td><a href="#/edit_shotallocation/{{shotdetail.id}}">{{shotdetail.shotcode}}</td>
+						<td>{{shotdetail.dept}}</td>
+						<td> {{shotdetail.status}}</td>
+					</tr>
+				</table>
+		</div>	
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			</div>
+</body>
+</html>
+			<!-- <div class="main">
+				<div class="widget"> 
+				<div class="title">
+				<input type="checkbox"
+							id="selected_client" name="checked_id[]" />
+							</div>
+							</div>
+				<div class="widget">
+					<div class="title">Id</div>
+					<div class="chart"></div>
+				</div>
+				<div class="widget">
+					<div class="title">Name</div>
+					<div class="chart"></div>
+				</div>
+				<div class="widget">
+					<div class="title">Email</div>
+					<div class="chart"></div>
+				</div>
+			</div> -->
+		
+				<!-- <div class="panel ">
+				<div class="panel-body">
+						<div class="col-md-10">
+							<div class="col-md-8">
+								<button class="btn btn-lg btn-success"
+									ng-click="exportToExcel('#artisttable')"  style="background-color:#80b3ff">
+									<span class="glyphicon glyphicon-share"></span>Export to Excel
+								</button>
+							</div>
+							<div class="col-md-2">
+								<a class="btn btn-lg btn-success" href="#/edit_artist/0" style="background-color:#233245"><i
+									class="glyphicon glyphicon-plus"></i>&nbsp;Add new Artist</a>
+							</div>
+
+						</div>
+						
+
+					<div
+							ng-class="{ 'alert': flash, 'alert-suc cess': flash.type === 'success', 'alert-danger': flash.type === 'error' }"
+							ng-if="flash" ng-bind="flash.message"></div>
+
+						<form>
+							<div ng-app="app" ng-controller="DashboardController">
+								<div class="col-md-10">
+									<div class="col-md-5">
+										<span>Dashboard List : </span> <select name="dashboardList"
+											id="dashboardList" ng-model="dashboard">
+											<option ng-repeat="dashboard in dashBoardList"
+												value="{{dashboard.id}}">{{dashboard.name}}</option>
+										</select>
+									</div>
+									<div class="col-md-3">
+										<button name="querySearch" id="querySearch"
+											ng-click="getDashboardDetails()">Search</button>
+									</div>
+								</div>
+								
+								<div class="col-md-8">
+									<div class="col-md-5">
+										<span>Dashboard Name : </span> <input type="text"
+											id="dashboardName" name="dashboardName"></input>
+									</div>
+									<div class="col-md-3">
+										<span>Level : </span> <select name="retrieveLevel" id="level">
+											<option value=""></option>
+											<option value="sdd">ShotDeptLevel</option>
+											<option value="swd">ShotArtistLevel</option>
+										</select>
+									</div>
+								</div>
+
+								<hr>
+								<hr>
+								<div class="col-md-10">
+									<div class="col-md-6">
+										<b> Query: </b>
+										<textarea ng-model="Query" name="dashboardQuery"
+											id="dashboardQuery"></textarea>
+									</div>
+									<div class="col-md-2">
+										<button name="querySearch" id="querySearch"
+											ng-click="searchDashBoard()">Search</button>
+									</div>
+									<div class="col-md-2">
+										<button name="querySave" id="querySave"
+											ng-click="saveDashBoard()">Save</button>
+									</div>
+									<br />
+								</div>
+							</div>
+						</form>
+						<form id="{{username+'form'}}" method="post">
+							<table class="table table-striped table-bordered"
+								id="{{username + 'table'}}" datatable="ng"
+								dt-options="vm.dtOptions">
+								<thead>
+									<th></th>
+									<th ng-repeat="header in headers">{{header}}</th>
+
+								</thead>
+								<tbody>
+									<tr ng-repeat="dashboard in dashboarddetails | filter : search">
+										<td align="center"><input type="checkbox"
+											name="checked_id[]" class="checkbox" value="{{row.artistid}}" /></td>
+										<td ng-repeat="header in headers"><span
+											ng-if="header == 'id'"> <a href=""
+												ng-click="viewDetails(dashboard)">{{dashboard[header]}}</a></span>
+											<span ng-if="header != 'id'">{{dashboard[header]}}</span></td>
+
+									</tr>
+								</tbody>
+							</table>
+							<div>
+								<input type="checkbox" name="select_all" id="select_all"
+									value="" /> Check all
+							</div>
+							<input type="submit" class="deletelogg" name="bulk_delete_submit"
+								value="Delete Selected" />
+						</form>
+					</div>	 		
+			</div>
+
+			<div ng-if="shotdetailFlag == true">
+				<div class="panel">
+					<div class="row">
+						<form role="form" id="shotDashboardDetailForm"
+							name="shotDashboardDetailForm">
+							<div class="col-xs-6 form-group"></div>
+							<button name="start" id="start" value="start"
+								ng-click="startShotWork(this.id)">Start</button>
+							<button name="pause" id="pause" value="pause"
+								ng-click="pauseShotWork(this.id)">Pause</button>
+							<button name="complete" id="complete" value="complete"
+								ng-click="completeShotWork(this.id)">Complete</button>
+							<div class="form inline">
+								<div class="col-xs-6 form-group">
+									<label class="col-sm-3">Work Range<em class="rclass">*</em>
+									</label>
+									<div class="col-sm-6" data-link-field="dtp_input4">
+										<input class="form-control" size="16" type="text"
+											ng-readonly="true" ng-model="shotDashboardDetail.workrange"
+											ng-required="true"> <span class="add-on"><i
+											class="icon-th"></i></span>
+									</div>
+									<input type="hidden" id="dtp_input4"
+										value="{{shotDashboardDetail.workrange}}" name="workrange">
+
+								</div>
+								<div class="col-xs-6 form-group">
+									<label class="col-sm-3">Frames Given<em class="rclass">*</em>
+									</label>
+									<div class="col-sm-6" data-link-field="dtp_input4">
+										<input class="form-control" size="16" type="text"
+											ng-readonly="true" ng-model="shotDashboardDetail.framesgiven"
+											ng-required="true"> <span class="add-on"><i
+											class="icon-th"></i></span>
+									</div>
+									<input type="hidden" id="dtp_input4"
+										value="{{shotDashboardDetail.framesgiven}}" name="framesgiven">
+
+								</div>
+								<div class="col-xs-6 form-group">
+									<label class="col-sm-3">Complexity<em class="rclass">*</em>
+									</label>
+									<div class="col-sm-6" data-link-field="dtp_input4">
+										<input class="form-control" size="16" type="text"
+											ng-readonly="true"
+											ng-model="shotDashboardDetail.complexityid"
+											ng-required="true"> <span class="add-on"><i
+											class="icon-th"></i></span>
+									</div>
+									<input type="hidden" id="dtp_input4"
+										value="{{shotDashboardDetail.complexityid}}"
+										name="complexityid">
+
+								</div>
+
+
+								<div class="col-xs-6 form-group">
+									<label class="col-sm-3">Planned Start Date<em
+										class="rclass">*</em>
+									</label>
+									<div class="input-append date form_datetime col-sm-6"
+										data-link-field="dtp_inputinternaldate">
+										<input class="form-control" datetimepicker size="16"
+											ng-readonly="true" type="text"
+											ng-model="shotDashboardDetail.planned_start_date"
+											ng-required="true"> <span class="add-on"><i
+											class="icon-th"></i></span>
+									</div>
+									<input type="hidden" id="dtp_inputinternaldate"
+										value="{{shotDashboardDetail.planned_start_date}}"
+										name="planned_start_date">
+								</div>
+
+								<div class="col-xs-6 form-group">
+									<label class="col-sm-3">Actual Start Date<em
+										class="rclass">*</em>
+									</label>
+									<div class="input-append date form_datetime col-sm-6"
+										data-link-field="dtp_inputinternaldate">
+										<input class="form-control" datetimepicker size="16"
+											ng-readonly="true" type="text"
+											ng-model="shotDashboardDetail.actual_start_date"
+											ng-required="true"> <span class="add-on"><i
+											class="icon-th"></i></span>
+									</div>
+									<input type="hidden" id="dtp_inputinternaldate"
+										value="{{shotDashboardDetail.actual_start_date}}"
+										name="actual_start_date">
+								</div>
+
+								<div class="col-xs-6 form-group">
+									<label class="col-sm-3">Planned Complete Date<em
+										class="rclass">*</em>
+									</label>
+									<div class="input-append date form_datetime col-sm-6"
+										data-link-field="dtp_inputinternaldate">
+										<input class="form-control" datetimepicker size="16"
+											type="text"
+											ng-model="shotDashboardDetail.planned_completed_date"
+											ng-readonly="true" ng-required="true"> <span
+											class="add-on"><i class="icon-th"></i></span>
+									</div>
+									<input type="hidden" id="dtp_inputinternaldate"
+										value="{{shotDashboardDetail.planned_completed_date}}"
+										name="planned_completed_date">
+								</div>
+								<div class="col-xs-6 form-group">
+									<label class="col-sm-3">Actual Complete Date<em
+										class="rclass">*</em>
+									</label>
+									<div class="input-append date form_datetime col-sm-6"
+										data-link-field="dtp_inputinternaldate">
+										<input class="form-control" datetimepicker size="16"
+											ng-readonly="true" type="text"
+											ng-model="shotDashboardDetail.actual_completed_date"
+											ng-required="true"> <span class="add-on"><i
+											class="icon-th"></i></span>
+									</div>
+									<input type="hidden" id="dtp_inputinternaldate"
+										value="{{shotDashboardDetail.actual_completed_date}}"
+										name="actual_completed_date">
+								</div>
+
+								<div class="col-xs-6 form-group">
+									<label class="col-sm-3">Percentage</label>
+									<div class="col-sm-6">
+										<input class="form-control" size="16" type="text"
+											ng-readonly="true" ng-model="shotDashboardDetail.percentage"
+											value="{{shotDashboardDetail.percentage}}" name="percentage">%
+									</div>
+								</div>
+
+								<div class="col-xs-6 form-group">
+									<label class="col-sm-3">QC person<em class="rclass">*</em>
+									</label>
+									<div class="col-sm-6">
+										<select name="qcperson"
+											ng-model="shotDashboardDetail.qcperson">
+											<option ng-repeat="lead in leads"
+												ng-selected="isSelected(shotDashboardDetail.qcperson, lead.entity_det_id)"
+												value="{{lead.entity_det_id}}">{{lead.value}}</option>
+										</select> <span class="add-on"><i class="icon-th"></i></span>
+									</div>
+								</div>
+
+								<div class="col-xs-6 form-group">
+									<label class="col-sm-3">Allocated Minutes</label>
+									<div class="col-sm-6">
+										<input class="form-control" size="16" type="text"
+											ng-readonly="true"
+											ng-model="shotDashboardDetail.allocated_hours"
+											value="{{shotDashboardDetail.allocated_hours}}"
+											name="allocated_hours">
+									</div>
+								</div>
+
+								<div class="col-xs-6 form-group">
+									<label class="col-sm-3">Worked Minutes</label>
+									<div class="col-sm-6">
+										<input class="form-control" size="16" type="text"
+											ng-readonly="true"
+											ng-model="shotDashboardDetail.worked_hours"
+											value="{{shotDashboardDetail.worked_hours}}"
+											name="worked_hours">
+									</div>
+								</div>
+								<div class="col-xs-6 form-group">
+									<label class="col-sm-3">Input Path</label>
+									<div class="col-sm-6">
+										<input class="form-control" size="16" type="text"
+											ng-readonly="true" ng-model="shotDashboardDetail.input_path"
+											value="{{shotDashboardDetail.input_path}}" name="input_path">
+									</div>
+
+								</div>
+								<div class="col-xs-6 form-group">
+									<label class="col-sm-3">Mid Path</label>
+									<div class="col-sm-6">
+										<input class="form-control" size="16" type="text"
+											ng-model="shotDashboardDetail.mid_path"
+											value="{{shotDashboardDetail.mid_path}}" name="mid_path">
+									</div>
+
+								</div>
+								<div class="col-xs-6 form-group">
+									<label class="col-sm-3">Comments</label>
+									<div class="col-sm-6">
+										<input class="form-control" size="16" type="text"
+											ng-model="shotDashboardDetail.comments"
+											value="{{shotDashboardDetail.comments}}" name="comments">
+									</div>
+
+								</div>
+
+								<div class="col-xs-6 form-group">
+									<label class="col-sm-3">Feedback Path</label>
+									<div class="col-sm-6">
+										<input class="form-control" size="16" type="text"
+											ng-model="shotDashboardDetail.feedback_path"
+											value="{{shotDashboardDetail.feedback_path}}"
+											name="feedback_path">
+									</div>
+
+								</div>
+								<div class="col-xs-6 form-group">
+									<label class="col-sm-3">Client Feedback</label>
+									<div class="col-sm-6">
+										<input class="form-control" size="16" type="text"
+											ng-readonly="true" ng-model="shotAllocDetail.client_feedback"
+											value="{{shotAllocDetail.client_feedback}}"
+											name="client_feedback">
+									</div>
+
+								</div>
+
+								<div class="col-xs-6 form-group">
+									<label class="col-sm-3">Client Feedback Path</label>
+									<div class="col-sm-6">
+										<input class="form-control" size="16" type="text"
+											ng-readonly="true"
+											ng-model="shotAllocDetail.client_feedback_path"
+											value="{{shotAllocDetail.client_feedback_path}}"
+											name="client_feedback_path">
+									</div>
+
+								</div>
+
+								<div class="col-xs-6 form-group">
+									<label class="col-sm-3">Status<em class="rclass">*</em>
+									</label>
+									<div class="col-sm-6" data-link-field="dtp_input8">
+										<select ng-model="shotDashboardDetail.status">
+											<option ng-repeat="statustemp in statusList"
+												ng-selected="isSelected(shotDashboardDetail.status, statustemp.id)"
+												value="{{statustemp.id}}">{{statustemp.status}}</option>
+										</select> <span class="add-on"><i class="icon-th"></i></span>
+									</div>
+									<input type="hidden" id="dtp_input8"
+										value="{{shotDashboardDetail.status}}" name="status">
+								</div>
+
+								<div class="col-xs-6 form-group">
+									<label class="col-sm-3">Final Path</label>
+									<div class="col-sm-6">
+										<input class="form-control" size="16" type="text"
+											ng-model="shotDashboardDetail.final_path"
+											value="{{shotDashboardDetail.final_path}}" name="final_path">
+									</div>
+
+								</div>
+
+								<div class="col-xs-6 form-group">
+									<label class="col-sm-3">Shot Version</label>
+									<div class="col-sm-6">
+										<input class="form-control" size="16" type="text"
+											ng-readonly="true"
+											ng-model="shotDashboardDetail.shot_version"
+											value="{{shotDashboardDetail.shot_version}}"
+											name="shot_version">
+									</div>
+								</div>
+
+								<div class="col-xs-6 form-group">
+									<label class="col-sm-3">Artist Version</label>
+									<div class="col-sm-6">
+										<input class="form-control" size="16" type="text"
+											ng-readonly="true"
+											ng-model="shotDashboardDetail.artist_version"
+											value="{{shotDashboardDetail.artist_version}}"
+											name="artist_version">
+									</div>
+								</div>
+
+								<input type="hidden" value="{{shotDashboardDetail.dept_id}}"
+									name="department" /> <input type="hidden"
+									value="{{shotDashboardDetail.version}}" name="version" /> <input
+									type="hidden" id="shot_work_detail_id"
+									value="{{shotDashboardDetail.id}}" name="shot_work_detail_id" />
+								<input type="hidden" id="internalmandays"
+									value="{{shotDashboardDetail.internalmandays}}"
+									name="internalmandays" /> <input type="hidden"
+									value="{{shotDashboardDetail.shot_det_id}}" name="shot_det_id" />
+								<input type="hidden" value="{{shotDashboardDetail.worker_id}}"
+									name="worker_id" /> <input type="hidden"
+									name="shot_work_detail_identify_id"
+									value="{{shotDashboardDetail.identify_id}}" /> <input
+									type="hidden" name="shot_dept_details_identify_id"
+									value="{{shotDashboardDetail.shot_dept_details_identify_id}}" />
+								<input type="hidden" name="shot_dept_det_id"
+									value="{{shotDashboardDetail.shot_dept_det_id}}" /> <input
+									type="hidden" name="worker_team_type"
+									value="{{shotDashboardDetail.worker_team_type}}" /> <input
+									type="hidden" name="worker_name"
+									value="{{shotDashboardDetail.worker_name}}" />
+
+
+								<div class="col-xs-12 form-group">
+									<div class="col-md-3">
+										<button type="submit"
+											ng-click="submitWorkDetails('shotDashboardDetailForm')"
+											class="btn btn-primary">Update</button>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div> -->
+		
+

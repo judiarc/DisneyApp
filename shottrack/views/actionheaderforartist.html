@@ -1,0 +1,30 @@
+
+<head>
+
+
+
+
+</head>
+<style>
+.delete_artist{
+    background-color: #ECF0F5;
+
+}
+.add_artist{
+background-color:#ECF0F5;
+font-size: 24px;
+}
+
+</style>
+<header id='actionheader'>
+	<div>
+	<div class="col-md-12">
+<div class="col-md-8"></div>
+<div class="col-md-4" overflow: auto;>
+<div class="col-md-3"><button class="add_artist" onclick="location.href = '#/edit_artist/';"><i class="material-icons">add</i></button></div>
+<div class="col-md-3"><button class="delete_artist" ng-click="vm.deleteEmp(row.artistid)" style="font-size:24px"><i class="material-icons">delete</i></button></div>
+</div>
+</div>
+
+	</div>
+</header>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+
+
+
+
+</style>
+<meta charset="ISO-8859-1">    
+    <script> 
+    $(function(){
+      $("#headContent").load("views/header.view.html");
+    });
+    $('#vendor').submit(function(event) {	
+		  $.ajax({
+		    type        : 'POST',
+		    url         : 'services/vendor.php?function=addOrUpdateVendorDepart',
+		    data        : $(this).serialize(),
+			dataType    : 'json',  
+		    success     : function(data) {			    	
+		     	if(data.success){
+		     		alert("vendor response id"+data.vendorId);
+		     		document.getElementById('vendorId').value = data.vendorId;
+		     		document.getElementById("responseMessage").innerHTML = "<span style=color:'green'>" +data.message+ "</span>";
+		     		document.getElementById("responseMessage").style.color = '#008000'; // red or #ffffff
+		     		document.getElementById("responseMessage").style.fontWeight = 'bold';
+		     		window.scrollTo(500, 0);
+		     	}else {
+		     		document.getElementById("responseMessage").innerHTML = "<span style=color:'green'>" +data.message+ "</span>";
+		     		document.getElementById("responseMessage").style.color = '#ffffff'; // red or #ffffff
+		     		document.getElementById("responseMessage").style.fontWeight = 'bold';
+		     		window.scrollTo(500, 0);
+		     	}
+		      }
+		  });
+		 // stop the form from submitting and refreshing
+		  event.preventDefault();
+		});
+    var back = function() {
+		window.location = "/shottrack/#/vendor";
+	}
+    </script> 
+</head>	
+<body>
+	<!-- Header Section -->
+<div id="headContent"></div>
+<div class="content-wrapper">
+			<!-- <nav style="backgroundcolor=#C0C0C0" role="tablist" id="tablist">              
+				<a href='#/edit_vendor/' ng:click="selected=1" ng-class="{active: selected == 1}" ng-init="selected=1">Vendor Profile Details</a> 
+				<a href='#/edit_vendorDepartDetails/' ng:click="selected=2" ng-class="{active: selected == 2}">Vendor Department Details</a>	
+			</nav> -->
+<div class="panel" style="min-height: 650px;">
+<div style="text-align:center;">
+			<p id="responseMessage"></p>
+		</div>
+<div>
+		<div style="padding:50px">		
+		<form  name ="vendor" id="vendor"  class="form-horizontal">
+		<div class="row">
+		<div>			
+        </div>
+		<div class="col-sm-12 col-md-12">
+		<div>
+			<div>
+								<div class="col-xs-6 form-group">
+									<label class="col-sm-3">Department</label>
+									<div class="col-sm-6">
+										<select id="department" name="department"
+											ng-model="vendorDetails.department_id" required >
+											<option value="">Select Department</option>
+											<option ng-repeat="department in departments"
+												ng-selected="{{department.id==vendorDetails.department_id}}"
+												value="{{department.id}}">{{department.dept}}</option>
+										</select>
+									</div>
+								</div>
+							</div>
+			<div>
+									<div class="col-xs-6 form-group">
+											<label class="col-sm-3">Priority</label>
+											<div class="col-sm-6">
+												<select name='priority' id="priority" ng-model="vendorDetails.priority"
+													class="form-control">
+													<option value="">Select Priority</option>
+													<option value="1">1</option>
+													<option value="2">2</option>
+													<option value="3">3</option>													
+												</select>
+											</div>
+										</div>
+			</div>
+			<div>
+					<div class="col-xs-6 form-group">
+					<label class="col-sm-3">Price</label>
+					<div class="col-sm-6">
+					<input type="number" id="price" name="price" ng-model="vendorDetails.price" placeholder="Price"   class= "form-control">
+					</div>
+		 			</div>
+			</div>
+			<div>
+					<div class="col-xs-6 form-group">
+					<label class="col-sm-3">No of Man</label>
+					<div class="col-sm-6">
+					<input type="number" id="no_of_man" name="no_of_man" ng-model="vendorDetails.no_of_man" placeholder="No Of Man"   class= "form-control">
+					</div>
+		 			</div>
+			</div>
+			<div>
+										<div class="col-xs-6 form-group">
+											<label class="col-sm-3">Status</label>
+											<div class="col-sm-6">
+												<select name='status' id="status" ng-model="vendorDetails.dept_status"
+													class="form-control">
+													<option value="">Select Status</option>
+													<option value="1">Active</option>
+													<option value="2">InActive</option>
+												</select>
+											</div>
+										</div>
+									</div>
+			
+			<div>
+					<div class="col-xs-6 form-group">				
+		 			</div>
+			</div>		
+			<div>
+				<input type="text" name="vendorId" id = "vendorId" value="{{vendorDetails.id}}" ></input>
+			</div>		
+			<div>
+<div class="col-xs-6 form-group">
+<input type="hidden" value="done" id="additional" ng-model="additional">
+</div>
+<div class="col-xs-6 form-group">				
+		 			</div>
+</div>
+	<div>
+		<div class="col-xs-4 form-group">
+			<label class="col-sm-2">	
+				<input type="button" style="size:20px" onClick="back()" value="Back"  size="20px">					
+			<!-- <a href="#/client" class="btn">back</a> -->
+			</label>
+			<div class="col-sm-2">
+				<input type="submit" style="size:20px"  value="Save" >									
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>
+	</div>
+		
+</form>
+		</div>
+		</div>
+
+</div>
+</div>
+
+ 

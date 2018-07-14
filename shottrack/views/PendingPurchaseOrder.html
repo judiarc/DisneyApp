@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script>
+	$(function() {
+		$("#headContent").load("views/header.view.html");
+	});
+</script>
+<style>
+#submenu a {
+    color: black;   
+}
+
+/* #submenu a:hover {
+    
+    background-color:white;
+}
+#submenun a:hover ul li {
+    
+    background-color:white;
+}
+ */
+#submenu{
+background-color:white;
+position:relative;
+top:35px;
+left:1.5%;
+}
+#submenu ul li{
+display:block;
+float: left;
+color:black;
+    border: 0px solid #8d929c;
+    border-bottom-width: 0;
+        margin: -74px 79px 40px 0;
+    padding: 18px 21px 6px 15px;
+    margin-left: -78px;
+    background-color: #eef1f7;
+}
+
+
+</style>
+
+</head>
+<body>
+<div id="headContent"></div>
+
+
+<div class="content-wrapper">
+	<div class="section_layout">
+					<div class="main-content">
+			<div class="title" style="padding-bottom: 9px;margin-left: 0px;">
+				<nav id='submenu'>
+		<ul style="margin-top:25px;">
+		<li id="pending_order" style="background-color:#d5dae5;"><a href="#/pending_order" style="text-decoration:none;">Pending Order</a></li>
+				<li id="raised_order" style="padding-top:17px;" onmouseover="this.style.backgroundColor='#d5dae5'" onmouseout="this.style.backgroundColor='#eef1f7'"><a href="#/raised_order" style="text-decoration:none;">Raised Order</a></li>
+				
+				</ul>
+				</nav>
+					<div class="raiseorder" style="float: right;margin-right: -7px;margin-top: -27px;">
+					<button ng-click="raiseOrder()">
+						<image>
+						<img src="app/images/add.png" style="width: 25px; height: 25px;"></image>
+					</button>
+				</div>
+				</div>
+				</div>
+		<!-- <div class="panel" style="margin-top: 90px;margin-left: 188px;margin-right: -18px;"> -->
+			<form id="raise_order" method="post" style="margin-right:0px;padding-top:0px;background-color: #d5dae5;">
+				<table datatable="ng"
+					id="pendingordertable" dt-options="vm.dtOptions">
+					<thead class="widget" style="background:#C0C0C0;">
+						<th class="title"><input type="checkbox" onClick="toggle(this)"/></th>
+						<th class="title">Date</th>
+						<th class="title" >Shot Code</th>
+						<th class="title" >Vendor Name</th>
+						<th class="title">Manday</th>
+						<th class="title">Price</th>
+						<th class="title" >Total Price</th>
+						<th class="title" >Shot Status</th>
+												
+					</thead>
+				
+					<tr ng-repeat="pendingorder in pendingorders">
+						<td align="center"><input type="checkbox" name="checked_id[]" class="checkbox"
+							value="{{pendingorder.identify_id}}" /></td>
+						
+						<td><input type="hidden" id="shotcode_date" name="shotcode_date" value="{{pendingorder.reciveddate}}">{{pendingorder.receiveddate}}</td>
+						<td><input type="hidden" id="shotcode_identify_id" name="shotcode_identify_id" class="shotcode_identify_id" value="{{pendingorder.identify_id}}">{{pendingorder.shotcode}}</td>
+						<td><input type="hidden" id="vendor_id" name="vendor_id" class="vendor_id" value="{{pendingorder.id}}">{{pendingorder.name}}</td>
+						<td><input type="hidden" id="shotcode_manday" name="shotcode_manday" class="shotcode_manday" value="{{pendingorder.internalmandays}}">{{pendingorder.internalmandays}}</td>
+						<td><input type="hidden" id="shotcode_price" name="shotcode_price" class="shotcode_price" value="{{pendingorder.price}}">Rs.{{pendingorder.price}}</td>
+						<td><input type="hidden" id="shotcode_total" name="shotcode_total" class="shotcode_total" value="{{pendingorder.price*pendingorder.internalmandays}}">Rs.{{pendingorder.price*pendingorder.internalmandays}}</td>
+						<td><input type="hidden" id="shotcode_status" name="shotcode_status" class="shotcode_status" value="{{pendingorder.shotstatus}}"><input type="hidden" id="shotcode_shotwork" name="shotcode_shotwork" class="shotcode_shotwork" value="{{pendingorder.shotWork_Identify}}">{{pendingorder.shot_status}}</td>
+					</tr>
+				</table>
+				
+			</form>
+		</div>
+	</div>
+</body>
+</html>

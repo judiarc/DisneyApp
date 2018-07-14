@@ -1,0 +1,208 @@
+<style type="text/css">
+  .form-horizontal input.ng-invalid.ng-dirty {
+    border-color: #FA787E;
+  }
+
+  .form-horizontal input.ng-valid.ng-dirty {
+    border-color: #78FA89;
+  }
+  .delete_user{
+    background-color: #ECF0F5;
+
+}
+.add_user{
+background-color:#ECF0F5;
+font-size: 24px;
+}
+    
+</style>
+
+  <head>     
+    <script> 
+    $(function(){
+      $("#headContent").load("views/header.view.html");    
+
+    });
+    </script> 
+  </head> 
+<!-- sidebar view Begins-->
+<body >
+<div id="headContent"></div>
+<div></div>
+
+<div class="content-wrapper" style="min-height: 450px;">
+
+<!-- sidebar view Ends-->
+
+<div class="panel" style="min-height: 491px;"> 
+<!--form starts here  -->
+<form  action="" class="form-horizontal">
+<div class="col-md-12">
+<div class="col-md-6"><section class="content-header">
+<h3>User Details</h3>
+</section></div>
+<div class="col-md-6">
+	<div class="col-md-12">
+<div class="col-md-8"></div>
+<div class="col-md-4" overflow: auto;>
+<div class="col-md-3"><button class="add_user" onclick="location.href = '#/add_user';"><i class="material-icons">add</i></button></div>
+<div class="col-md-3"><button class="delete_user" style="font-size:24px"><i class="material-icons">delete</i></button></div>
+</div>
+</div></div>
+</div> 
+
+<div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
+<div class="section_layout">
+<div class="view">
+    <div class="">
+        <div class="">
+        <nav class= "navbar" role= "navigation" >
+        <div class= "navbar-header" >
+        </div>
+        </nav>
+       
+		<div class="">
+		<div class="col-md-10">
+							<div class="row">
+					<div class="col-sm-12 col-md-12">
+
+                   <!--Accessing User details enabled  -->
+                    
+  					<div class="center" ng-if="(users.userroleid == '0' || users.userroleid == '1'|| users.userroleid == '2' || users.userroleid == '5')">
+						<div>
+								<div class="col-xs-6 form-group">
+									<label class="col-sm-3">UserName</label>
+									 <div class="col-sm-6">
+									 	<input type="text" ng-init="viewname=users.name" id="viewname" ng-model="viewname" name="view_name" class= "form-control">
+									 </div>
+							 	</div>
+							</div>
+								<div>
+								<div class="col-xs-6 form-group">
+									<label class="col-sm-3">Password</label>
+									 <div class="col-sm-6">
+									 	<input type="text" ng-init="viewpassword=users.password" id="viewpassword" ng-model="viewpassword" name="view_password" class= "form-control">
+									 </div>
+							 	</div>
+							</div>
+								<div>
+								<div class="col-xs-6 form-group">
+									<label class="col-sm-3">Email</label>
+									 <div class="col-sm-6">
+									 	<input type="email" ng-init="viewemail=users.email" id="viewemail" ng-model="viewemail" name="view_email" class= "form-control">
+									 </div>
+							 	</div>
+							</div>
+								<div>
+								<span ng-switch-when="select">
+								<div class="col-xs-6 form-group">
+									<label class="col-sm-3">Role</label>
+									 <div class="col-sm-6">
+									 
+									 <!-- Dropdown box function starts here -->
+									<select name="roleid" ng-model="userrole" ng-options="item as item.name for item in userroleid track by item.userroleid"
+									 class="form-control ng-pristine ng-valid ng-valid-required" ng-required="true" required="required">
+									 <option value="" class="">Select</option></select>
+
+									</div>
+							 	</div>
+							 	</span>
+							</div>
+						<br><br>
+						<br><div class="col-xs-6 form-group">
+						</div>
+							<div>
+								<div class="col-xs-6 form-group">
+									<label class="col-sm-3">			
+										<a href="#/users" class="btn">back</a>
+										</label>
+										<input type="hidden" ng-model="userid" id="userid" name="user_id" ng-init="userid=users.id">
+									 <div class="col-sm-6">
+										<input type="submit"  ng-click="edituser(userid,viewname,viewpassword,viewemail,userroleid)" value="Update">									 </div>
+							 	</div>
+							</div>
+						
+						<!-- <div class="col-xs-6">
+						<div class="col-sm-3">
+						<a href="#/users" class="btn">back</a>
+						</div>
+						<div class="col-sm-6">
+						<input type="submit" value="Update">
+						</div>
+						</div> -->
+						</div>
+						
+						
+						
+						
+						<!--Accessing User details disabled  -->
+						<div class="center" ng-if="(users.userroleid == '3' || users.userroleid == '4')">
+						<div>
+								<div class="col-xs-6 form-group">
+									<label class="col-sm-3">UserName</label>
+									 <div class="col-sm-6">
+									 	<input type="text" ng-init="viewname=users.name" id="viewname" ng-model="viewname" name="view_name"   class= "form-control" disabled>
+									 </div>
+							 	</div>
+							</div>
+								<div>
+								<div class="col-xs-6 form-group">
+									<label class="col-sm-3">Password</label>
+									 <div class="col-sm-6">
+									 	<input type="text" ng-init="viewpassword=users.password" id="viewpassword" ng-model="viewpassword" name="view_password"   class= "form-control" disabled>
+									 </div>
+							 	</div>
+							</div>
+								<div>
+								<div class="col-xs-6 form-group">
+									<label class="col-sm-3">Email</label>
+									 <div class="col-sm-6">
+									 	<input type="email" ng-init="viewemail=users.email" id="viewemail" ng-model="viewemail" name="view_email"   class= "form-control" disabled>
+									 </div>
+							 	</div>
+							</div>
+								<div>
+								<div class="col-xs-6 form-group">
+									<label class="col-sm-3">Role</label>
+									 <div class="col-sm-6">
+										<input type="text" ng-if="users.userroleid == '0'" ng-model="userrole" id="userrole" name="user_role" ng-init="userrole='management'"  class= "form-control" disabled>
+										<input type="text" ng-if="users.userroleid == '1'" ng-model="userrole" id="userrole" name="user_role" ng-init="userrole='Project Head'"  class= "form-control" disabled>
+										<input type="text" ng-if="users.userroleid == '2'" ng-model="userrole" id="userrole" name="user_role" ng-init="userrole='Project coordinator'"  class= "form-control" disabled>
+										<input type="text" ng-if="users.userroleid == '3'" ng-model="userrole" id="userrole" name="user_role" ng-init="userrole='VP'"  class= "form-control" disabled>
+										<input type="text" ng-if="users.userroleid == '4'" ng-model="userrole" id="userrole" name="user_role" ng-init="userrole='artist'"  class= "form-control" disabled>									 </div>
+							 	</div>
+							</div>
+						<br><br>
+						<br><div class="col-xs-6 form-group">
+						</div>
+							<div>
+								<div class="col-xs-6 form-group">
+									<label class="col-sm-3">	
+											
+										<a href="#/users" class="btn" class="btn btn-back">back</a>
+										</label>
+									 <!-- <div class="col-sm-6">
+										<input type="submit" value="Update">									 </div>
+							 	</div> -->
+							</div>
+						
+						</div>
+						
+						</div>
+						</div>
+				</div>
+		</div>
+	</div>
+	</div></div>
+</div>
+</div>
+</form>
+<!-- form ends here -->
+
+
+</div>
+
+
+</div>
+ </body>
+ </html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script>
+	$(function() {
+		$("#headContent").load("views/header.view.html");
+	});
+</script>
+<style>
+#submenu a {
+    color: black;   
+}
+
+/* #submenu a:hover {
+    
+    background-color:white;
+}
+#submenun a:hover ul li {
+    
+    background-color:white;
+} */
+
+#submenu{
+background-color:white;
+position:relative;
+top:35px;
+left:1.5%;
+}
+/* #submenu ul li{
+display:block;
+float: left;
+color:black;
+    border: 2px solid #c0c0c0;
+    border-bottom-width: 0;
+    margin: 2px 0px 0px 0px;
+    padding: 6px 8px 1px 2px;
+    background-color: #c0c0c0;
+} */
+#submenu ul li{
+display:block;
+float: left;
+color:black;
+    border: 0px solid #8d929c;
+    border-bottom-width: 0;
+	/* margin: 2px 0px 0px 0px;
+    padding: 6px 8px 1px 2px; */
+/*           margin: -26px 21px 0 0px; */
+   /*  padding: 3px 23px 9px 25px;
+    margin-left: -22px; */
+    
+          margin: -74px 79px 40px 0;
+    padding: 18px 21px 6px 15px;
+    margin-left: -78px;
+    background-color: #eef1f7;
+
+}
+</style>
+</head>
+<body>
+<div id="headContent"></div>
+
+<div class="content-wrapper">
+<div class="section_layout">
+					<div class="main-content">
+			<div class="title" style="padding-bottom: 9px;margin-left: 0px;">
+				<nav id='submenu'>
+		<ul style="margin-top:25px;">
+			<li id="pending_invoice" style="background-color:#d5dae5;"><a href="#/pending_invoice" style="text-decoration:none;">Pending Invoice</a></li>
+				<li id="raised_invoice" style="padding-top:17px;" onmouseover="this.style.backgroundColor='#d5dae5'" onmouseout="this.style.backgroundColor='#eef1f7'"><a href="#/raised_invoice" style="text-decoration:none;">Raised Invoice</a></li>
+			
+				</ul>
+				</nav>
+				<div class="raiseorder" style="float: right;margin-right: -7px;margin-top: -27px;">
+					<button ng-click="raiseInvoice()">
+						<image>
+						<img src="app/images/add.png" style="width: 25px; height: 25px;"></image>
+					</button>
+				</div>
+		<!-- <div class="panel" style="margin-left: 189px;margin-right: -14px;"> -->
+	
+				</div>
+				</div>
+			<form id="pending_invoice" method="post" style="margin-right:0px;padding-top:0px;background-color: #d5dae5;">
+				<table datatable="ng"
+					id="pendinginvoice" dt-options="vm.dtOptions">	
+					<thead class="widget" style="background:#C0C0C0;">
+						<th class="title" ><input type="checkbox" onClick="toggle(this)"/></th>
+						<th class="title">Date</th>
+						<th class="title">ProjectName</th>
+						<th class="title" >Client Name</th>
+						<th class="title">Manday</th>
+						<th class="title">Price</th>
+						<th class="title">Shot Status</th>
+						<th class="title">Total Price</th>
+					</thead>
+				
+					<tr ng-repeat="row in invoiceShotDetails">
+						<td align="center"><input type="checkbox" name="checked_id[]" class="checkbox"
+							value="{{row.identify_id}}" /></td>
+						
+						<td><input type="hidden" id="invoice_date" name="invoice_date" class="invoice_date" value="{{row.reciveddate}}">{{row.receiveddate}}</td>
+						<td><input type="hidden" id="invoice_shot" name="invoice_shot" class="invoice_shot" value="{{row.shotcode}}">{{row.projectname}}</a></td>
+						<td><input type="hidden" id="invoice_client" name="invoice_client" class="invoice_client" value="{{row.clientid}}">{{row.name}}</td>
+						<td><input type="hidden" id="invoice_manday" name="invoice_manday" class="invoice_manday" value="{{row.internalmandays}}">{{row.internalmandays}}</td>
+						<td><input type="hidden" id="invoice_price" name="invoice_price" class="invoice_price" value="{{row.price}}">{{row.price}}</td>
+						<td><input type="hidden" id="invoice_status" name="invoice_status" class="invoice_status" value="{{row.shotstatus}}">{{row.shot_status}}</td>
+						<td> <input type="hidden" id="invoice_shot_dept_ID" name="invoice_shot_dept_ID" class="invoice_shot_dept_ID" value="{{row.shot_dept_details_identify_id}}"> <input type="hidden" id="invoice_total" name="invoice_total" class="invoice_total" value="{{row.internalmandays*row.price}}">{{row.internalmandays*row.price}}</td>
+					</tr>
+				</table>
+				
+			</form>
+		</div>
+	</div>
+</body>
+</html>

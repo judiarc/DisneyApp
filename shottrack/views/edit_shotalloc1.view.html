@@ -1,0 +1,2285 @@
+﻿<style type="text/css">
+  .form-horizontal input.ng-invalid.ng-dirty {
+    border-color: #FA787E;
+  }
+
+  .form-horizontal input.ng-valid.ng-dirty {
+    border-color: #78FA89;
+  }
+</style>
+<!-- PROCESS FORM WITH AJAX (OLD) -->
+
+<script>
+$(".click").click(function()
+{
+	alert("please add shot");
+});
+</script>
+<script type="text/javascript">
+    $(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii',autoclose: true,
+        todayBtn: true,
+        pickerPosition: "bottom-left",
+		 startDate: "2013-02-14 10:00",});
+</script> 
+<script>
+$(document).ready(function() {
+// process the form
+$('#formaddshot').submit(function(event) {
+
+ // process the form
+  $.ajax({
+    type        : 'POST',
+    url         : 'services/process.php?function=addshot',
+    data        : $(this).serialize(),
+	dataType    : 'json',  
+    success     : function(data) {
+
+      // log data to the console so we can see
+      console.log(data);
+
+        // if validation is good add success message
+		if ( data.success) {		
+       			alert(data.message);
+				window.location = "#/shotallocation/12";
+				window.location.reload(true);
+		}
+      }
+  });
+
+  // stop the form from submitting and refreshing
+  event.preventDefault();
+});
+
+
+
+// process the form
+$('#formshotallocroto').submit(function(event) {
+ // process the form
+  $.ajax({
+    type        : 'POST',
+    url         : 'services/process.php?function=shotallocroto',
+    data        : $(this).serialize(),
+	 dataType    : 'json',  
+    success     : function(data) {
+
+      // log data to the console so we can see
+      console.log(data);
+
+        // if validation is good add success message
+		if ( data.success) {		
+       			alert(data.message);
+				window.location = "#/shotallocation/12";
+				window.location.reload(true);
+		}
+      }
+  });
+
+  // stop the form from submitting and refreshing
+  event.preventDefault();
+});
+
+
+
+// process the form
+$('#formshotallocrototime').submit(function(event) {
+ // process the form
+  $.ajax({
+    type        : 'POST',
+    url         : 'services/process.php?function=shotallocrototime',
+    data        : $(this).serialize(),
+	 dataType    : 'json',  
+    success     : function(data) {
+
+      // log data to the console so we can see
+      console.log(data);
+
+        // if validation is good add success message
+		if ( data.success) {		
+       			alert(data.message);
+				window.location = "#/shotallocation/12";
+				window.location.reload(true);
+		}
+      }
+  });
+
+  // stop the form from submitting and refreshing
+  event.preventDefault();
+});
+
+
+
+// process the form
+$('#formshotallocrototimeupdate').submit(function(event) {
+ // process the form
+  $.ajax({
+    type        : 'POST',
+    url         : 'services/process.php?function=shotallocrototime',
+    data        : $(this).serialize(),
+	 dataType    : 'json',  
+    success     : function(data) {
+
+      // log data to the console so we can see
+      console.log(data);
+
+        // if validation is good add success message
+		if ( data.success) {		
+       			alert(data.message);
+				window.location = "#/shotallocation/12";
+				window.location.reload(true);
+		}
+      }
+  });
+
+  // stop the form from submitting and refreshing
+  event.preventDefault();
+});
+// process the form
+$('#formshotallocpaint').submit(function(event) {
+ // process the form
+  $.ajax({
+    type        : 'POST',
+    url         : 'services/process.php?function=shotallocpaint',
+    data        : $(this).serialize(),
+	 dataType    : 'json',  
+    success     : function(data) {
+
+      // log data to the console so we can see
+      console.log(data);
+
+        // if validation is good add success message
+		if ( data.success) {		
+       			alert(data.message);
+				window.location = "#/shotallocation/12";
+				window.location.reload(true);
+		}
+      }
+  });
+
+  // stop the form from submitting and refreshing
+  event.preventDefault();
+});
+
+// process the form
+$('#formshotallocpainttime').submit(function(event) {
+ // process the form
+  $.ajax({
+    type        : 'POST',
+    url         : 'services/process.php?function=shotallocpainttime',
+    data        : $(this).serialize(),
+	 dataType    : 'json',  
+    success     : function(data) {
+
+      // log data to the console so we can see
+      console.log(data);
+
+        // if validation is good add success message
+		if ( data.success) {		
+       			alert(data.message);
+				window.location = "#/shotallocation/12";
+				window.location.reload(true);
+		}
+      }
+  });
+
+  // stop the form from submitting and refreshing
+  event.preventDefault();
+});
+// process the form
+$('#formshotallocpainttimeupdate').submit(function(event) {
+ // process the form
+  $.ajax({
+    type        : 'POST',
+    url         : 'services/process.php?function=shotallocpainttime',
+    data        : $(this).serialize(),
+	 dataType    : 'json',  
+    success     : function(data) {
+
+      // log data to the console so we can see
+      console.log(data);
+
+        // if validation is good add success message
+		if ( data.success) {		
+       			alert(data.message);
+				window.location = "#/shotallocation/12";
+				window.location.reload(true);
+		}
+      }
+  });
+
+  // stop the form from submitting and refreshing
+  event.preventDefault();
+});
+// process the form
+$('#formshotallocmatch').submit(function(event) {
+ // process the form
+  $.ajax({
+    type        : 'POST',
+    url         : 'services/process.php?function=shotallocmatch',
+    data        : $(this).serialize(),
+	 dataType    : 'json',  
+    success     : function(data) {
+
+      // log data to the console so we can see
+      console.log(data);
+
+        // if validation is good add success message
+		if ( data.success) {		
+       			alert(data.message);
+				window.location = "#/shotallocation/12";
+				window.location.reload(true);
+		}
+      }
+  });
+
+  // stop the form from submitting and refreshing
+  event.preventDefault();
+});
+
+
+// process the form
+$('#formshotallocmatchmovetime').submit(function(event) {
+ // process the form
+  $.ajax({
+    type        : 'POST',
+    url         : 'services/process.php?function=shotallocmatchmovetime',
+    data        : $(this).serialize(),
+	 dataType    : 'json',  
+    success     : function(data) {
+
+      // log data to the console so we can see
+      console.log(data);
+
+        // if validation is good add success message
+		if ( data.success) {		
+       			alert(data.message);
+				window.location = "#/shotallocation/12";
+				window.location.reload(true);
+		}
+      }
+  });
+
+  // stop the form from submitting and refreshing
+  event.preventDefault();
+});
+
+// process the form
+$('#formshotallocmatchmovetimeupdate').submit(function(event) {
+ // process the form
+  $.ajax({
+    type        : 'POST',
+    url         : 'services/process.php?function=shotallocmatchmovetime',
+    data        : $(this).serialize(),
+	 dataType    : 'json',  
+    success     : function(data) {
+
+      // log data to the console so we can see
+      console.log(data);
+
+        // if validation is good add success message
+		if ( data.success) {		
+       			alert(data.message);
+				window.location = "#/shotallocation/12";
+				window.location.reload(true);
+		}
+      }
+  });
+
+  // stop the form from submitting and refreshing
+  event.preventDefault();
+});
+// process the form
+$('#formshotalloccomp').submit(function(event) {
+ // process the form
+  $.ajax({
+    type        : 'POST',
+    url         : 'services/process.php?function=shotalloccomp',
+    data        : $(this).serialize(),
+	 dataType    : 'json',  
+    success     : function(data) {
+
+      // log data to the console so we can see
+      console.log(data);
+
+        // if validation is good add success message
+		if ( data.success) {		
+       			alert(data.message);
+				window.location = "#/shotallocation/12";
+				window.location.reload(true);
+		}
+      }
+  });
+
+  // stop the form from submitting and refreshing
+  event.preventDefault();
+});
+
+
+// process the form
+$('#formshotalloccomptime').submit(function(event) {
+ // process the form
+  $.ajax({
+    type        : 'POST',
+    url         : 'services/process.php?function=shotalloccomptime',
+    data        : $(this).serialize(),
+	 dataType    : 'json',  
+    success     : function(data) {
+
+      // log data to the console so we can see
+      console.log(data);
+
+        // if validation is good add success message
+		if ( data.success) {		
+       			alert(data.message);
+				window.location = "#/shotallocation/12";
+				window.location.reload(true);
+		}
+      }
+  });
+
+  // stop the form from submitting and refreshing
+  event.preventDefault();
+});
+
+
+
+// process the form
+$('#formshotalloccomptimeupdate').submit(function(event) {
+ // process the form
+  $.ajax({
+    type        : 'POST',
+    url         : 'services/process.php?function=shotalloccomptime',
+    data        : $(this).serialize(),
+	 dataType    : 'json',  
+    success     : function(data) {
+
+      // log data to the console so we can see
+      console.log(data);
+
+        // if validation is good add success message
+		if ( data.success) {		
+       			alert(data.message);
+				window.location = "#/shotallocation/12";
+				window.location.reload(true);
+		}
+      }
+  });
+
+  // stop the form from submitting and refreshing
+  event.preventDefault();
+});
+
+
+// process the form
+$('#formshotalloc3d').submit(function(event) {
+ // process the form
+  $.ajax({
+    type        : 'POST',
+    url         : 'services/process.php?function=shotalloc3d',
+    data        : $(this).serialize(),
+	 dataType    : 'json',  
+    success     : function(data) {
+
+      // log data to the console so we can see
+      console.log(data);
+
+        // if validation is good add success message
+		if ( data.success) {		
+       			alert(data.message);
+				window.location = "#/shotallocation/12";
+				window.location.reload(true);
+		}
+      }
+  });
+
+  // stop the form from submitting and refreshing
+  event.preventDefault();
+});
+
+
+// process the form
+$('#formshotalloc3dtime').submit(function(event) {
+ // process the form
+  $.ajax({
+    type        : 'POST',
+    url         : 'services/process.php?function=shotalloc3dtime',
+    data        : $(this).serialize(),
+	 dataType    : 'json',  
+    success     : function(data) {
+
+      // log data to the console so we can see
+      console.log(data);
+
+        // if validation is good add success message
+		if ( data.success) {		
+       			alert(data.message);
+				window.location = "#/shotallocation/12";
+				window.location.reload(true);
+		}
+      }
+  });
+
+  // stop the form from submitting and refreshing
+  event.preventDefault();
+});
+
+// process the form
+$('#formshotalloc3dtimeupdate').submit(function(event) {
+ // process the form
+  $.ajax({
+    type        : 'POST',
+    url         : 'services/process.php?function=shotalloc3dtime',
+    data        : $(this).serialize(),
+	 dataType    : 'json',  
+    success     : function(data) {
+
+      // log data to the console so we can see
+      console.log(data);
+
+        // if validation is good add success message
+		if ( data.success) {		
+       			alert(data.message);
+				window.location = "#/shotallocation/12";
+				window.location.reload(true);
+		}
+      }
+  });
+
+  // stop the form from submitting and refreshing
+  event.preventDefault();
+});
+
+
+// process the form
+$('#interim').submit(function(event) {
+
+  // process the form
+  $.ajax({
+    type        : 'POST',
+    url         : 'services/process.php?function=interim',
+    data        : $(this).serialize(),
+	 dataType    : 'json',  
+    success     : function(data) {
+
+      // log data to the console so we can see
+      console.log(data);
+
+        // if validation is good add success message
+		if ( data.success) {		
+       			alert(data.message);
+				window.location = "#/shotallocation/12";
+				window.location.reload(true);
+		}
+      }
+  });
+
+  // stop the form from submitting and refreshing
+  event.preventDefault();
+});
+
+// process the form
+$('#final').submit(function(event) {
+
+  // process the form
+  $.ajax({
+    type        : 'POST',
+    url         : 'services/process.php?function=final',
+    data        : $(this).serialize(),
+	 dataType    : 'json',  
+    success     : function(data) {
+
+      // log data to the console so we can see
+      console.log(data);
+
+        // if validation is good add success message
+		if ( data.success) {		
+       			alert(data.message);
+				window.location = "#/shotallocation/12";
+				window.location.reload(true);
+		}
+      }
+  });
+
+  // stop the form from submitting and refreshing
+  event.preventDefault();
+});
+});
+</script>
+<div class="wrapper1">
+<header class="clearfix">
+<div class="main-header container">
+<img  ng-src="app/images/logo.jpg"/>
+<a href="#/login" class="btn btn-primary pull-right">Logout</a>
+</div>
+</header>
+<!-- sidebar view Begins-->
+<div>
+<div class="side-bardiv section_layout">
+				<div class="sidebar">
+				<div class="user-panel">
+				<div class="pull-left info">
+				<h5><p>Welcome ! </p></h5>
+				</div>
+				</div>
+				<div class="list" id="list">
+				<li class="header">MENU NAVIGATION</li>
+				<nav>
+   				 <ul id="menu" class="nav" ng-repeat="row in useraccess">
+   				 <li><a  ng-class="{active : activeMenu === row.name}" href="#/{{row.name}}/{{row.id}}" >
+				{{row.title}}</a></li>        
+   				 </ul>
+   				 	</nav>
+                        </div>
+</div> 
+</div>
+</div>
+<style>
+li.active {
+    color: red;
+}
+</style>
+<!-- sidebar view Ends-->
+<div class="content-wrapper" style="min-height: 491px;">
+<div class="section_layout">
+	<div class="view">
+    	<div class="">     		       		
+        		<nav class= "navbar" role= "navigation" >
+        			<div class= "navbar-header" >
+        			<h3>{{title}}</h3>
+        			</div>
+        		</nav>
+		</div>
+   
+        <div ng:show="editshotallocid > 0 && versioneditalert == 1">
+				<nav role="tablist" id="tablist">              
+				<a href ng:click="selected=1" ng-class="{active: selected == 1}" ng-init="selected=1">Add Shot</a>
+				<a href ng:click="selected=2" ng-class="{active: selected == 2}">shot allocation</a>	
+                <a href ng:click="selected=3" ng-class="{active: selected == 3}">Interim Status</a>
+				<a href ng:click="selected=4" ng-class="{active: selected == 4}">Final</a>			
+				</nav>
+        </div>
+        
+         <div ng:show="editshotallocid == 0">
+				<nav role="tablist" id="tablist">              
+				<a href ng:click="selected=1" ng-class="{active: selected == 1}" ng-init="selected=1">Add Shot</a>
+				<a class="click" href  ng-class="{active: selected == 2}">shot allocation</a>	
+                <a class="click" href  ng-class="{active: selected == 3}">Interim Status</a>
+				<a class="click" href  ng-class="{active: selected == 4}">Final</a>			
+				</nav>
+        </div>
+        
+         <div ng:show="editshotallocid > 0 && versioneditalert == 0">
+				<nav role="tablist" id="tablist">              
+				<a href ng:click="selected=1" ng-class="{active: selected == 1}" ng-init="selected=1">Add Shot</a>
+				<a class="click" href  ng-class="{active: selected == 2}">shot allocation</a>	
+                <a class="click" href  ng-class="{active: selected == 3}">Interim Status</a>
+				<a class="click" href  ng-class="{active: selected == 4}">Final</a>			
+				</nav>
+        </div>
+        
+      
+<div ng:show="selected == 1">
+  <div class="panel">         
+					<div class="row">   
+        				<div class="col-md-12">
+  
+<form role="form" name="formaddshot" id="formaddshot" class="form-horizontal">
+<div class="form inline">
+	<div ng-repeat="field in fieldsadd">
+		<span ng-switch on="field.type">
+  			<span ng-switch-when="text">
+    			<div class="col-xs-6 form-group">
+    				<label class="col-sm-3">{{ field.title }}<em  class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div  class="col-sm-6">
+   							 <input type="text" ng-model="entity[field.name]"     class= "form-control"   name="{{field.name}}" ng-pattern="{{field.validation}}"  ng-required="{{field.required}}"/>
+    							<span ng-show="{{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}" class="help-inline">Required</span>                         
+    					</div>
+   				</div>
+  		</span> 
+        
+    
+        <span ng-switch-when="email">
+    			<div class="col-xs-6 form-group">
+    				<label class= "col-sm-3">{{ field.title }}<em  class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						<div  class="col-sm-6">
+                       			 <input type="email" class= "form-control" ng-model="entity[field.name]"    name="{{field.name}}"   ng-required="{{field.required}}"/> 
+                                  <span ng-show="{{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}" class="help-inline">Email Required</span>
+   								 <span ng-show="{{'myForm.'+field.name+'.$error.'+field.name}}" class="help-inline">Email is not valid</span>                         
+    					</div>
+   				</div>
+  		</span> 
+        
+       <div ng-hide ng-if="field.name == 'projectdetailsid'" >
+         <span ng-switch-when="select"> 
+           <div class="col-xs-6 form-group">
+    		<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   				<div  class="col-sm-6">
+                 <select  id="{{field.name}}" ng-model="entity"  name="{{field.name}}" ng-options="{{'item as item.shotallocationprojectdetailsname for item in' + ' ' +'shotallocation'+field.endpoint+ ' ' +'track by item.'+'shotallocation'+field.endpoint}}" ng-init="selectAction()" ng-change="selectAction()" class= "form-control" ng-required="{{field.required}}"><option value="">Select</option></select>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+   </span>
+   </div>
+   
+    <div ng-hide ng-if="field.name == 'departmentid'" >
+         <span ng-switch-when="select"> 
+           <div class="col-xs-6 form-group">
+    		<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   				<div  class="col-sm-6">              
+                  <select id="shotallocationdepartmentid" name="shotallocationdepartmentid[]"  multiple="true" ng-required="{{field.required}}" ng-model="entity['shotallocationdepartmentid']"   ng-options="{{'item as item.name for item in' + ' ' +'shotallocation'+field.endpoint+ ' ' +'track by item.'+'shotallocation'+field.endpoint}}" class= "form-control" ><option value="">select</option></select>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+                
+   </span>
+   </div>
+   
+   
+   
+    <div ng-hide ng-if="field.name == 'complexityid'" >
+         <span ng-switch-when="select"> 
+           <div class="col-xs-6 form-group">
+    		<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   				<div  class="col-sm-6">              
+                  <select id="complexityid" name="complexityid"  ng-required="{{field.required}}" ng-model="entity"   ng-options="{{'item as item.name for item in' + ' ' +field.endpoint+ ' ' +'track by item.'+field.endpoint}}" class= "form-control"  ng-init="selectAction()" ng-change="selectAction()"><option value="">select</option></select>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+                
+   </span>
+   </div>
+   
+    <div ng-hide ng-if="field.name != 'projectdetailsid' && field.name != 'departmentid' && field.name != 'complexityid'" >
+         <span ng-switch-when="select"> 
+           <div class="col-xs-6 form-group">
+    		<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   				<div  class="col-sm-6">                
+   				<select  ng-model="entity" id="{{field.name}}" name="{{field.name}}" ng-options="{{'item as item.name for item in' + ' ' +'shotallocation'+field.endpoint+ ' ' +'track by item.'+'shotallocation'+field.endpoint}}" class= "form-control" ng-required="{{field.required}}"><option value="">Select</option></select>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+                
+   </span>
+   </div>
+   
+ 	<span ng-switch-when="textarea"> 
+            <div  class="col-xs-6 form-group">
+    				<label class= "col-sm-3">{{ field.title }}<em   class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div  class="col-sm-6">
+   							 <textarea  name="shotallocation{{field.name}}" ng-model="entity[field.name]"    class= "form-control"  ng-required="{{field.required}}"/></textarea>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+   </span> 
+</div>
+
+	
+       	 <div  class="col-xs-6 form-group">
+        	<label class="col-sm-3">Shot received date<em  class="rclass">*</em> </label>
+    			<div class="input-append date form_datetime col-sm-6"  data-link-field="dtp_input1">
+                 <input class="form-control" size="16" type="text" ng-model="entity.receiveddate"  ng-required="true" >
+    				<span class="add-on"><i class="icon-th"></i></span>
+          </div>
+           <input  type="hidden"  id="dtp_input1" value="{{entity.receiveddate}}" name="receiveddate">
+  		</div>
+        <div  class="col-xs-6 form-group">
+            <label class="col-sm-3">Target date<em  class="rclass">*</em> </label> 
+    			 <div class="input-append date form_datetime col-sm-6"  data-link-field="dtp_input2">
+                   <input class="form-control" size="16" type="text" ng-model="entity.targetdate"   ng-required="true" >
+    			 <span class="add-on"><i class="icon-th"></i></span>
+                 </div>
+                  <input  type="hidden"  id="dtp_input2" value="{{entity.targetdate}}" name="targetdate" >
+                  		
+		</div>
+ 	  <div  class="col-xs-6 form-group">
+        	<label class="col-sm-3">Internal Target date<em  class="rclass">*</em> </label>
+    			<div class="input-append date form_datetime col-sm-6"  data-link-field="dtp_input3">
+   				  <input class="form-control"  size="16" type="text" ng-model="entity.internaltargetdate" ng-required="true" >
+   				 <span class="add-on"><i class="icon-th"></i></span>
+		</div>
+         <input  type="hidden"  id="dtp_input3" value="{{entity.internaltargetdate}}" name="internaltargetdate" >
+     </div>
+
+<input type="hidden"  value="{{entity.version}}" name="version" />      
+<input type="hidden"  value="{{shotstatusidd}}" name="shotstatusid" />        
+<input type="hidden"  value="{{entityid}}" name="entityid" />
+<input type="hidden"  value="{{editshotallocid}}" name="editshotallocid" />
+<div class= "col-xs-12 form-group">   
+    <div class="col-md-6 cancel">
+    <a href="#/shotallocation/{{entityid}}" class="btn">Cancel</a>
+    </div>
+      <div class="col-md-3">
+    <button type="submit" ng-disabled="isClean() || formaddshot.$invalid"  class="btn btn-primary">{{buttonText}}</button>
+    </div>
+   
+</div>
+</div>
+</div>
+</form>
+     		   		</div>
+       			</div>
+    		</div>
+		</div>
+	
+
+<div ng:show="selected == 2">
+
+<!-- /* ROTO FORM   */ --> 
+ <div id="roto" > 
+ <div class="panel" >        
+					<div class="row">  
+        				<div class="col-md-12">
+                        <div class="col-md-10">
+   						ROTO
+  						</div>
+<form role="form" name="formshotallocroto" id="formshotallocroto"   class="form-horizontal">
+<div class="form inline">
+	<div ng-repeat="field in fieldsallocate">
+		<span ng-switch on="field.type">
+  			<span ng-switch-when="text">
+    			<div class="col-xs-6 form-group">
+    				<label class="col-sm-3">{{ field.title }}<em  class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div  class="col-sm-6">
+   							 <input type="text" ng-model="entityshotalloc1[field.name]" class= "form-control"   name="{{field.name}}" ng-pattern="{{field.validation}}" 
+                             ng-required="{{field.required}}"/>
+    							<span ng-show="{{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}" class="help-inline">Required</span>                         
+    					</div>
+   				</div>
+  		</span>
+    <div ng-hide ng-if="field.name == 'artistdepartmentid'" >
+         <span ng-switch-when="select"> 
+           <div class="col-xs-6 form-group">
+    		<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   				<div  class="col-sm-6">
+   				<select  id="shotallocationrotoartistid" title="letters should be white to select" name="shotallocationrotoartistid[]" multiple="true" ng-required="{{field.required}}" ng-model="entityshotalloc1['shotallocationrotoartistid']"  ng-options="{{'item as item.shotallocationrotoartistname for item in shotallocationrotoartistid track by item.shotallocationrotoartistid'}}" class= "form-control"><option value="">Select</option></select>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+                
+   </span>
+   </div>
+   
+   
+    <div ng-hide ng-if="field.name == 'vendordepartmentid'" >
+         <span ng-switch-when="select"> 
+           <div class="col-xs-6 form-group">
+    		<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   				<div  class="col-sm-6">
+                <select  id="vendorrotodepartmentid" ng-model="entityshotalloc1"  name="shotallocationrotovendorid" ng-options="{{'item as item.shotallocationrotovendorname for item in' + ' ' +'shotallocationrotovendorid'+ ' ' +'track by item.shotallocationrotovendorid'}}" class= "form-control" ng-required="{{field.required}}"><option value="">Select</option></select> 
+    						<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+                
+   </span>
+   </div>
+   
+    <div ng-hide ng-if="field.name == 'freelancerdepartmentid'" >
+         <span ng-switch-when="select"> 
+           <div class="col-xs-6 form-group">
+    		<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   				<div  class="col-sm-6">
+                <select  id="freelancerrotodepartmentid" ng-model="entityshotalloc1"  name="shotallocationrotofreelancerid" ng-options="{{'item as item.shotallocationrotofreelancername for item in' + ' ' +'shotallocationrotofreelancerid'+ ' ' +'track by item.shotallocationrotofreelancerid'}}" class= "form-control" ng-required="{{field.required}}"><option value="">Select</option></select> 
+    						<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+   </span>
+   </div>
+   
+    <div ng-hide ng-if="field.name == 'shotstatus'" >
+         <span ng-switch-when="select"> 
+           <div class="col-xs-6 form-group">
+    		<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   				<div  class="col-sm-6">                   
+   				<select  ng-model="entityshotalloc1"  name="shotstatusroto" ng-options="{{'item as item.name for item in' + ' ' +'shotallocation'+field.endpoint+ ' ' +'track by item.'+'shotallocation'+field.endpoint}}" class= "form-control" ng-required="field.required"><option value="">Select</option></select>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+                
+   </span>
+   </div>
+    <div ng-hide ng-if="field.name == 'teamtypeid'" >
+         <span ng-switch-when="select"> 
+           <div class="col-xs-6 form-group">
+    		<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   				<div  class="col-sm-6">                   
+   				<select  ng-disabled="{{field.disabled}}" ng-model="entityshotalloc1"  id="rototeamtypeid" name="rototeamtypeid" ng-init="selectAction()" ng-change="selectAction()" ng-options="item as item.name for item in rototeamtypeid track by item.rototeamtypeid" class= "form-control" ng-required="field.required"><option value="">Select</option></select>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+                
+   </span>
+   </div>
+   
+    <div ng-hide ng-if="field.name != 'projectdetailsid' && field.name != 'shotdetailsid' && field.name != 'artistdepartmentid' && field.name != 'vendordepartmentid' && field.name != 'freelancerdepartmentid' && field.name != 'shotstatus' && field.name != 'teamtypeid'" >
+         <span ng-switch-when="select"> 
+           <div class="col-xs-6 form-group">
+    		<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   				<div  class="col-sm-6">                
+   				<select  ng-disabled="{{field.disabled}}" ng-model="entityshotalloc1"  id="{{field.name}}" name="{{field.name}}" ng-init="selectAction()" ng-change="selectAction()" ng-options="{{'item as item.name for item in' + ' ' +'shotallocation'+field.endpoint+ ' ' +'track by item.'+'shotallocation'+field.endpoint}}" class= "form-control" ng-required="field.required"><option value="">Select</option></select>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+                
+   </span>
+   </div>
+   
+ 	<span ng-switch-when="textarea"> 
+            <div  class="col-xs-6 form-group">
+    				<label class= "col-sm-3">{{ field.title }}<em   class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						<div  class="col-sm-6">
+   							 <textarea  name="{{field.name}}" ng-model="entityshotalloc1[field.name]"    class= "form-control" ng-required="field.required"/></textarea>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+   </span> 
+</div>
+       	 <div  class="col-xs-6 form-group">
+        	<label class="col-sm-3">Work start date<em  class="rclass">*</em> </label>
+    			<div class="input-append date form_datetime col-sm-6"  data-link-field="shotallocroto1">
+                 <input class="form-control" size="16" type="text" value="{{entityshotalloc1.workstartdateroto}}" id="workstartdateroto">
+    				<span class="add-on"><i class="icon-th"></i></span>
+          </div>
+           <input  type="hidden"  id="shotallocroto1" value="{{entityshotalloc1.workstartdateroto}}" name="workstartdateroto">
+  		</div>
+        <div  class="col-xs-6 form-group">
+            <label class="col-sm-3">Time to complete<em  class="rclass">*</em> </label> 
+    			 <div class="input-append date form_datetime col-sm-6"  data-link-field="shotallocroto2">
+                   <input class="form-control" size="16" type="text"  value="{{entityshotalloc1.targettimeroto}}" id="targettimeroto"   >
+    			 <span class="add-on"><i class="icon-th"></i></span>
+                 </div>
+                  <input  type="hidden"  id="shotallocroto2" value="{{entityshotalloc1.targettimeroto}}" name="targettimeroto" >
+                  		
+		</div>
+ 	  <div  class="col-xs-6 form-group">
+        	<label class="col-sm-3">Completed time</label>
+    			<div class="input-append date form_datetime col-sm-6"  data-link-field="shotallocroto3">
+   				  <input class="form-control"  size="16" type="text" id="completedtimeroto" value="{{entityshotalloc1.completedtimeroto}}"  >
+   				 <span class="add-on"><i class="icon-th"></i></span>
+		</div>
+         <input  type="hidden"  id="shotallocroto3" value="{{entityshotalloc1.completedtimeroto}}" name="completedtimeroto" >
+     </div>
+     
+<input type="hidden"  value="1" name="department" />
+<input type="hidden"  value="{{entity.version}}" name="version" />      
+<input type="hidden"  value="12" name="entityid" />
+<input type="hidden"  value="{{editshotallocid}}" name="editshotallocid" />
+
+<div class= "col-xs-12 form-group">   
+    <div class="col-md-6 cancel">
+    <a href="#/shotallocation/12" class="btn">Cancel</a>
+    </div>
+      <div class="col-md-3">
+    <button type="submit" ng-disabled="isClean() || formshotallocroto.$invalid"  class="btn btn-primary">{{buttonText}}</button>
+    </div>
+   
+</div>
+</div>
+</div>
+</form>
+
+     		   					</div>
+         					</div>
+ <!--roto timing --> 
+             <div  id="rototiming" style="display:none">
+				 <div class="panel">        
+					<div class="row">  
+        				<div class="col-md-12">
+                        <div class="col-md-10">
+   						Roto Timing {{entityids1}}
+  						</div>
+                       
+<form role="form" name="formshotallocrototime" id="formshotallocrototime"   class="form-inline">
+
+    <div ng-repeat="value in entityids1 | commaBreak">
+  
+		 <div  class="col-xs-3 form-group">
+       		 <div class="col-sm-3">ID:{{value}}</div>
+    	</div>	
+       	 <div  class="col-xs-3 form-group">
+        	<label class="col-sm-3">Work start date<em  class="rclass">*</em> </label>    			
+              <div class="input-append date form_datetime col-sm-6"  datetimepicker >
+                <input class="form-control" size="16" type="text" name="workstartdateroto{{$index+1}}" value="">
+                <span class="add-on"><i class="icon-th"></i></span>
+              </div>
+          </div>
+        <div  class="col-xs-3 form-group">
+            <label class="col-sm-3">Time to complete<em  class="rclass">*</em> </label> 
+    			 <div class="input-append date form_datetime col-sm-6" datetimepicker  >
+                   <input class="form-control" size="16" type="text"  value=""  name="targettimeroto{{$index+1}}">
+    			 <span class="add-on"><i class="icon-th"></i></span>
+                 </div>                 	
+		</div>
+ 	  <div  class="col-xs-3 form-group">
+        	<label class="col-sm-3">Completed time</label>
+    			<div class="input-append date form_datetime col-sm-6" datetimepicker >
+   				  <input class="form-control"  size="16" type="text"  value="" name="completedtimeroto{{$index+1}}"  >
+   				 <span class="add-on"><i class="icon-th"></i></span>
+				</div>         
+       </div>
+       
+        <input type="hidden"  value="{{$index+1}}" name="multiid{{$index+1}}" />   
+        <input type="hidden"  value="{{$index}}" name="length" />   
+        <input type="hidden"  value="{{value}}" name="artistid{{$index+1}}" />   
+		<input type="hidden"  value="{{entity.version}}" name="version{{$index+1}}" />      
+		<input type="hidden"  value="12" name="entityid{{$index+1}}" />
+		<input type="hidden"  value="{{editshotallocid}}" name="editshotallocid{{$index+1}}" />  
+		</div> 
+        
+        
+       <div  class="col-xs-12 form-group">
+       		 <div class="col-md-9" style="float:right" ng-if="!entityids1"> no artist selected</div>
+    	</div>	
+        
+        
+	<div class= "col-xs-12 form-group">   
+    <div class="col-md-6 cancel">
+    <a href="#/shotallocation/12" class="btn">Cancel</a>
+    </div>
+    <div class="col-md-3">
+    <button type="submit" ng-disabled="isClean() || formshotallocrototime.$invalid"  class="btn btn-primary">update time</button>
+    </div>
+	</div>
+</form>
+					
+					</div>
+     			</div>   		
+            </div> 
+         </div>
+         
+         <!--roto timing update--> 
+             <div  id="rototimingupdate" style="display:none">
+				 <div class="panel">        
+					<div class="row">  
+        				<div class="col-md-12">
+                        <div class="col-md-10">
+   						Roto Timing
+  						</div>
+                        
+<form role="form" name="formshotallocrototime" id="formshotallocrototimeupdate"   class="form-inline">
+
+    <div ng-repeat="value in timedetailsroto">
+  
+		 <div  class="col-xs-3 form-group">
+       		 <div class="col-sm-3">ID:{{value.shotallocationrotoartistid}}</div>
+    	</div>	
+       	 <div  class="col-xs-3 form-group">
+        	<label class="col-sm-3">Work start date<em  class="rclass">*</em> </label>    			
+              <div class="input-append date form_datetime col-sm-6"  datetimepicker >
+                <input class="form-control" size="16" type="text" name="workstartdateroto{{$index+1}}" value="{{value.workstartdateroto}}">
+                <span class="add-on"><i class="icon-th"></i></span>
+              </div>
+          </div>
+        <div  class="col-xs-3 form-group">
+            <label class="col-sm-3">Time to complete<em  class="rclass">*</em> </label> 
+    			 <div class="input-append date form_datetime col-sm-6" datetimepicker  >
+                   <input class="form-control" size="16" type="text"  value="{{value.targettimeroto}}"  name="targettimeroto{{$index+1}}">
+    			 <span class="add-on"><i class="icon-th"></i></span>
+                 </div>                 	
+		</div>
+ 	  <div  class="col-xs-3 form-group">
+        	<label class="col-sm-3">Completed time</label>
+    			<div class="input-append date form_datetime col-sm-6" datetimepicker >
+   				  <input class="form-control"  size="16" type="text"  value="{{value.completedtimeroto}}" name="completedtimeroto{{$index+1}}"  >
+   				 <span class="add-on"><i class="icon-th"></i></span>
+				</div>         
+       </div>
+        <input type="hidden"  value="{{$index+1}}" name="multiid{{$index+1}}" />   
+        <input type="hidden"  value="{{$index}}" name="length" />   
+        <input type="hidden"  value="{{value.shotallocationrotoartistid}}" name="artistid{{$index+1}}" />   
+		<input type="hidden"  value="{{entity.version}}" name="version{{$index+1}}" />      
+		<input type="hidden"  value="12" name="entityid{{$index+1}}" />
+		<input type="hidden"  value="{{editshotallocid}}" name="editshotallocid{{$index+1}}" />  
+		</div> 
+      
+	<div class= "col-xs-12 form-group">   
+    <div class="col-md-6 cancel">
+    <a href="#/shotallocation/12" class="btn">Cancel</a>
+    </div>
+    <div class="col-md-3">
+    <button type="submit" ng-disabled="isClean() || formshotallocrototime.$invalid"  class="btn btn-primary">update time</button>
+    </div>
+	</div>
+</form>
+						</div>
+					</div>
+     			</div>   		
+            </div> 
+         </div>      
+       
+ <!-- /* PAINT FORM   */ --> 
+ 			<div id="paint" style="display:none" >       
+                 <div class="panel">         
+					<div class="row">   
+        				<div class="col-md-12">
+  							<div class="col-md-10">
+  										 PAINT 
+  										 </div>
+<form role="form" name="formshotallocpaint" id="formshotallocpaint" class="form-horizontal">
+<div class="form inline">
+	<div ng-repeat="field in fieldsallocate">
+		<span ng-switch on="field.type">
+  			<span ng-switch-when="text">
+    			<div class="col-xs-6 form-group">
+    				<label class="col-sm-3">{{ field.title }}<em  class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div  class="col-sm-6">
+   							 <input type="text" ng-model="entityshotalloc2[field.name]"     class= "form-control"   name="{{field.name}}" ng-pattern="{{field.validation}}" ng-required="field.required"/>
+    							<span ng-show="{{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}" class="help-inline">Required</span>                         
+    					</div>
+   				</div>
+  		</span> 
+    	
+    <div ng-hide ng-if="field.name == 'artistdepartmentid'" >
+         <span ng-switch-when="select"> 
+           <div class="col-xs-6 form-group">
+    		<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   				<div  class="col-sm-6">                   
+   				<select  id="shotallocationpaintartistid" multiple="true" title="letters should be white to select" ng-model="entityshotalloc2['shotallocationpaintartistid']"  name="shotallocationpaintartistid[]" ng-options="{{'item as item.shotallocationpaintartistname for item in' + ' ' +'shotallocationpaintartistid'+ ' ' +'track by item.shotallocationpaintartistid'}}" class= "form-control" ng-required="{{field.required}}">
+                <option value="">Select</option></select>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+                
+   </span>
+   </div>
+   
+    <div ng-hide ng-if="field.name == 'vendordepartmentid'" >
+         <span ng-switch-when="select"> 
+           <div class="col-xs-6 form-group">
+    		<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   				<div  class="col-sm-6">
+                <select  id="shotallocationpaintvendorid" ng-model="entityshotalloc2"  name="shotallocationpaintvendorid" ng-options="{{'item as item.shotallocationpaintvendorname for item in' + ' ' +'shotallocationpaintvendorid'+ ' ' +'track by item.shotallocationpaintvendorid'}}" class= "form-control" ng-required="{{field.required}}"><option value="">Select</option></select> 
+    						<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+                
+   </span>
+   </div>
+   
+    <div ng-hide ng-if="field.name == 'freelancerdepartmentid'" >
+         <span ng-switch-when="select"> 
+           <div class="col-xs-6 form-group">
+    		<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   				<div  class="col-sm-6">
+                <select  id="freelancerpaintdepartmentid" ng-model="entityshotalloc2"  name="shotallocationpaintfreelancerid" ng-options="{{'item as item.shotallocationpaintfreelancername for item in' + ' ' +'shotallocationpaintfreelancerid'+ ' ' +'track by item.shotallocationpaintfreelancerid'}}" class= "form-control" ng-required="{{field.required}}"><option value="">Select</option></select> 
+    						<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+                
+   </span>
+   </div>
+   
+    <div ng-hide ng-if="field.name == 'shotstatus'" >
+         <span ng-switch-when="select"> 
+           <div class="col-xs-6 form-group">
+    		<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   				<div  class="col-sm-6">                   
+   				<select  ng-model="entityshotalloc2"  name="shotstatuspaint" ng-options="{{'item as item.name for item in' + ' ' +'shotallocation'+field.endpoint+ ' ' +'track by item.'+'shotallocation'+field.endpoint}}" class= "form-control" ng-required="field.required"><option value="">Select</option></select>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+                
+   </span>
+   </div>
+   
+     <div ng-hide ng-if="field.name == 'teamtypeid'" >
+         <span ng-switch-when="select"> 
+           <div class="col-xs-6 form-group">
+    		<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   				<div  class="col-sm-6">                   
+   				<select  ng-disabled="{{field.disabled}}" ng-model="entityshotalloc2"  id="paintteamtypeid" name="paintteamtypeid" ng-init="selectAction()" ng-change="selectAction()" ng-options="item as item.name for item in paintteamtypeid track by item.paintteamtypeid" class= "form-control" ng-required="field.required"><option value="">Select</option></select>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+                
+   </span>
+   </div>
+   
+    <div ng-hide ng-if="field.name != 'projectdetailsid' && field.name != 'shotdetailsid' && field.name != 'artistdepartmentid' && field.name != 'vendordepartmentid' && field.name != 'freelancerdepartmentid' && field.name != 'shotstatus' && field.name != 'teamtypeid'" >
+         <span ng-switch-when="select"> 
+           <div class="col-xs-6 form-group">
+    		<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   				<div  class="col-sm-6">                
+   				<select  ng-disabled="{{field.disabled}}" ng-model="entityshotalloc2"  id="{{field.name}}" name="shotallocation{{field.name}}" ng-init="selectAction()" ng-change="selectAction()" ng-options="{{'item as item.name for item in' + ' ' +'shotallocation'+field.endpoint+ ' ' +'track by item.'+'shotallocation'+field.endpoint}}" class= "form-control" ng-required="field.required"><option value="">Select</option></select>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+                
+   </span>
+   </div>
+ 	<span ng-switch-when="textarea"> 
+            <div  class="col-xs-6 form-group">
+    				<label class= "col-sm-3">{{ field.title }}<em   class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						<div  class="col-sm-6">
+   							 <textarea  name="shotallocation{{field.name}}" ng-model="entityshotalloc2[field.name]"    class= "form-control" ng-required="field.required"/></textarea>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+   </span> 
+</div>	
+       	 <div  class="col-xs-6 form-group">
+        	<label class="col-sm-3">Work start date<em  class="rclass">*</em> </label>
+    			<div class="input-append date form_datetime col-sm-6"  data-link-field="shotallocpaint1">
+                 <input class="form-control" size="16" id="workstartdatepaint" value="{{entityshotalloc2.completedtimepaint}}" type="text">
+    				<span class="add-on"><i class="icon-th"></i></span>
+          </div>
+           <input  type="hidden"  id="shotallocpaint1" value="{{entityshotalloc2.workstartdatepaint}}" name="workstartdatepaint">
+  		</div>
+        <div  class="col-xs-6 form-group">
+            <label class="col-sm-3">Time to complete<em  class="rclass">*</em> </label> 
+    			 <div class="input-append date form_datetime col-sm-6"  data-link-field="shotallocpaint2">
+                   <input class="form-control" size="16"  	 value="{{entityshotalloc2.completedtimepaint}}"  id="targettimepaint" type="text" >
+    			 <span class="add-on"><i class="icon-th"></i></span>
+                 </div>
+                  <input  type="hidden"  id="shotallocpaint2" value="{{entityshotalloc2.targettimepaint}}" name="targettimepaint" >
+                  		
+		</div>
+ 	  <div  class="col-xs-6 form-group">
+        	<label class="col-sm-3">Completed time</label>
+    			<div class="input-append date form_datetime col-sm-6"  data-link-field="shotallocpaint3">
+   				  <input class="form-control"  size="16" id="completedtimepaint" value="{{entityshotalloc2.completedtimepaint}}" type="text" >
+   				 <span class="add-on"><i class="icon-th"></i></span>
+		</div>
+         <input  type="hidden"  id="shotallocpaint3" value="{{entityshotalloc2.completedtimepaint}}" name="completedtimepaint" >
+     </div>
+ 
+ 
+<input type="hidden"  value="2" name="department" />
+<input type="hidden"  value="{{entity.version}}" name="version" />      
+<input type="hidden"  value="12" name="entityid" />
+<input type="hidden"  value="{{editshotallocid}}" name="editshotallocid" />
+
+
+<div class= "col-xs-12 form-group">   
+    <div class="col-md-6 cancel">
+    <a href="#/shotallocation/12" class="btn">Cancel</a>
+    </div>
+      <div class="col-md-3">
+    <button type="submit" ng-disabled="isClean() || formshotallocpaint.$invalid"  class="btn btn-primary">{{buttonText}}</button>
+    </div>
+   
+</div>
+</div>
+</div>
+</form>
+     		   		</div>
+       			</div>
+            <!--paint timing --> 
+             <div  id="painttiming" style="display:none">
+				 <div class="panel" >        
+					<div class="row">  
+        				<div class="col-md-12">
+                        <div class="col-md-10">
+   						Paint Timing
+  						</div>
+<form role="form" name="formshotallocpainttime" id="formshotallocpainttime"   class="form-inline">
+
+    <div ng-repeat="value in entityids2 | commaBreak">
+  <div  class="col-xs-3 form-group">
+       		 <div class="col-sm-3">ID:{{value}}</div>
+    	</div>	
+       	 <div  class="col-xs-3 form-group">
+        	<label class="col-sm-3">Work start date<em  class="rclass">*</em> </label>    			
+              <div class="input-append date form_datetime col-sm-6"  datetimepicker >
+                <input class="form-control" size="16" type="text" name="workstartdatepaint{{$index+1}}" value="">
+                <span class="add-on"><i class="icon-th"></i></span>
+              </div>
+          </div>
+        <div  class="col-xs-3 form-group">
+            <label class="col-sm-3">Time to complete<em  class="rclass">*</em> </label> 
+    			 <div class="input-append date form_datetime col-sm-6" datetimepicker  >
+                   <input class="form-control" size="16" type="text"  value=""  name="targettimepaint{{$index+1}}">
+    			 <span class="add-on"><i class="icon-th"></i></span>
+                 </div>                 	
+		</div>
+ 	  <div  class="col-xs-3 form-group">
+        	<label class="col-sm-3">Completed time</label>
+    			<div class="input-append date form_datetime col-sm-6" datetimepicker >
+   				  <input class="form-control"  size="16" type="text"  value="" name="completedtimepaint{{$index+1}}"  >
+   				 <span class="add-on"><i class="icon-th"></i></span>
+				</div>         
+       </div>
+        <input type="hidden"  value="{{$index+1}}" name="multiid{{$index+1}}" />   
+        <input type="hidden"  value="{{$index}}" name="length" />   
+        <input type="hidden"  value="{{value}}" name="artistid{{$index+1}}" />   
+		<input type="hidden"  value="{{entity.version}}" name="version{{$index+1}}" />      
+		<input type="hidden"  value="12" name="entityid{{$index+1}}" />
+		<input type="hidden"  value="{{editshotallocid}}" name="editshotallocid{{$index+1}}" />  
+		</div> 
+        
+       <div  class="col-xs-12 form-group">
+       		 <div class="col-md-9" style="float:right" ng-if="!entityids2"> no artist selected</div>
+    	</div>	
+        
+	<div class= "col-xs-12 form-group">   
+    <div class="col-md-6 cancel">
+    <a href="#/shotallocation/12" class="btn">Cancel</a>
+    </div>
+    <div class="col-md-3">
+    <button type="submit" ng-disabled="isClean() || formshotallocpainttime.$invalid"  class="btn btn-primary">update time</button>
+    </div>
+	</div>
+</form>
+					
+					</div>
+     			</div>   		
+            </div> 
+         </div> 
+         
+          <!--paint timing --> 
+             <div  id="painttimingupdate" style="display:none">
+				 <div class="panel" >        
+					<div class="row">  
+        				<div class="col-md-12">
+                        <div class="col-md-10">
+   						Paint Timing
+  						</div>
+<form role="form" name="formshotallocpainttimeupdate" id="formshotallocpainttimeupdate"   class="form-inline">
+
+     <div ng-repeat="value in timedetailspaint">
+  
+		 <div  class="col-xs-3 form-group">
+       		 <div class="col-sm-3">ID:{{value.shotallocationpaintartistid}}</div>
+    	</div>	
+       	 <div  class="col-xs-3 form-group">
+        	<label class="col-sm-3">Work start date<em  class="rclass">*</em> </label>    			
+              <div class="input-append date form_datetime col-sm-6"  datetimepicker >
+                <input class="form-control" size="16" type="text" name="workstartdatepaint{{$index+1}}" value="{{value.workstartdatepaint}}">
+                <span class="add-on"><i class="icon-th"></i></span>
+              </div>
+          </div>
+        <div  class="col-xs-3 form-group">
+            <label class="col-sm-3">Time to complete<em  class="rclass">*</em> </label> 
+    			 <div class="input-append date form_datetime col-sm-6" datetimepicker  >
+                   <input class="form-control" size="16" type="text"  value="{{value.targettimepaint}}"  name="targettimepaint{{$index+1}}">
+    			 <span class="add-on"><i class="icon-th"></i></span>
+                 </div>                 	
+		</div>
+ 	  <div  class="col-xs-3 form-group">
+        	<label class="col-sm-3">Completed time</label>
+    			<div class="input-append date form_datetime col-sm-6" datetimepicker >
+   				  <input class="form-control"  size="16" type="text"  value="{{value.completedtimepaint}}" name="completedtimepaint{{$index+1}}"  >
+   				 <span class="add-on"><i class="icon-th"></i></span>
+				</div>         
+       </div>
+        <input type="hidden"  value="{{$index+1}}" name="multiid{{$index+1}}" />   
+        <input type="hidden"  value="{{$index}}" name="length" />   
+        <input type="hidden"  value="{{value.shotallocationpaintartistid}}" name="artistid{{$index+1}}" />   
+		<input type="hidden"  value="{{entity.version}}" name="version{{$index+1}}" />      
+		<input type="hidden"  value="12" name="entityid{{$index+1}}" />
+		<input type="hidden"  value="{{editshotallocid}}" name="editshotallocid{{$index+1}}" />  
+		</div> 
+      
+	<div class= "col-xs-12 form-group">   
+    <div class="col-md-6 cancel">
+    <a href="#/shotallocation/12" class="btn">Cancel</a>
+    </div>
+    <div class="col-md-3">
+    <button type="submit" ng-disabled="isClean() || formshotallocpainttimeupdate.$invalid"  class="btn btn-primary">update time</button>
+    </div>
+	</div>
+</form>
+						
+					</div>
+     			</div>   		
+            </div> 
+         </div>      
+                <!-- /* MATCHMOVE FORM   */ -->  
+                <div id="matchmove" style="display:none">     
+                 <div  class="panel">         
+					<div class="row">   
+        				<div class="col-md-12">
+  								<div class="col-md-10">
+  										 MATCH MOVE 
+  										 </div>
+<form role="form" name="formshotallocmatch" id="formshotallocmatch" class="form-horizontal">
+<div class="form inline">
+	<div ng-repeat="field in fieldsallocate">
+		<span ng-switch on="field.type">
+  			<span ng-switch-when="text">
+    			<div class="col-xs-6 form-group">
+    				<label class="col-sm-3">{{ field.title }}<em  class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div  class="col-sm-6">
+   							 <input type="text" ng-model="entityshotalloc3[field.name]"     class= "form-control"   name="{{field.name}}" ng-pattern="{{field.validation}}" ng-required="field.required"/>
+    							<span ng-show="{{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}" class="help-inline">Required</span>                         
+    					</div>
+   				</div>
+  		</span> 
+    	
+    <div ng-hide ng-if="field.name == 'artistdepartmentid'" >
+         <span ng-switch-when="select"> 
+           <div class="col-xs-6 form-group">
+    		<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   				<div  class="col-sm-6">                   
+   				<select  id="artistmatchmovedepartmentid" multiple="true" ng-model="entityshotalloc3"  title="letters should be white to select" name="shotallocationmatchmoveartistid[]" ng-options="{{'item as item.shotallocationmatchmoveartistname for item in' + ' ' +'shotallocationmatchmoveartistid'+ ' ' +'track by item.shotallocationmatchmoveartistid'}}" class= "form-control" ng-required="{{field.required}}">
+                <option value="">Select</option></select>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+                
+   </span>
+   </div>
+   
+    <div ng-hide ng-if="field.name == 'vendordepartmentid'" >
+         <span ng-switch-when="select"> 
+           <div class="col-xs-6 form-group">
+    		<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   				<div  class="col-sm-6">
+                <select  id="vendormatchmovedepartmentid" ng-model="entityshotalloc3"  name="shotallocationmatchmovevendorid" ng-options="{{'item as item.shotallocationmatchmovevendorname for item in' + ' ' +'shotallocationmatchmovevendorid'+ ' ' +'track by item.shotallocationmatchmovevendorid'}}" class= "form-control" ng-required="{{field.required}}"><option ng-model="0">Select</option></select> 
+    						<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+                
+   </span>
+   </div>
+   
+    <div ng-hide ng-if="field.name == 'freelancerdepartmentid'" >
+         <span ng-switch-when="select"> 
+           <div class="col-xs-6 form-group">
+    		<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   				<div  class="col-sm-6">
+                <select  id="freelancermatchmovedepartmentid" ng-model="entityshotalloc3"  name="shotallocationmatchmovefreelancerid" ng-options="{{'item as item.shotallocationmatchmovefreelancername for item in' + ' ' +'shotallocationmatchmovefreelancerid'+ ' ' +'track by item.shotallocationmatchmovefreelancerid'}}" class= "form-control" ng-required="{{field.required}}"><option ng-model="0">Select</option></select> 
+    						<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+                
+   </span>
+   </div>
+   
+   
+    <div ng-hide ng-if="field.name == 'teamtypeid'" >
+         <span ng-switch-when="select"> 
+           <div class="col-xs-6 form-group">
+    		<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   				<div  class="col-sm-6">                   
+   				<select  ng-disabled="{{field.disabled}}" ng-model="entityshotalloc3"  id="matchmoveteamtypeid" name="matchmoveteamtypeid" ng-init="selectAction()" ng-change="selectAction()" ng-options="item as item.name for item in matchmoveteamtypeid track by item.matchmoveteamtypeid"  class= "form-control" ng-required="field.required"><option value="">Select</option></select>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+                
+   </span>
+   </div>
+   
+    <div ng-hide ng-if="field.name == 'shotstatus'" >
+         <span ng-switch-when="select"> 
+           <div class="col-xs-6 form-group">
+    		<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   				<div  class="col-sm-6">                   
+   				<select  ng-model="entityshotalloc3"  name="shotallocation{{field.name}}" ng-options="{{'item as item.name for item in' + ' ' +'shotallocation'+field.endpoint+ ' ' +'track by item.'+'shotallocation'+field.endpoint}}" class= "form-control" ng-required="field.required"><option value="">Select</option></select>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+                
+   </span>
+   </div>
+   
+    <div ng-hide ng-if="field.name != 'projectdetailsid' && field.name != 'shotdetailsid' && field.name != 'artistdepartmentid' && field.name != 'vendordepartmentid' && field.name != 'freelancerdepartmentid' && field.name != 'shotstatus' && field.name != 'teamtypeid'" >
+         <span ng-switch-when="select"> 
+           <div class="col-xs-6 form-group">
+    		<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   				<div  class="col-sm-6">                
+   				<select  ng-disabled="{{field.disabled}}" ng-model="entityshotalloc3"  id="{{field.name}}" name="shotallocation{{field.name}}" ng-init="selectAction()" ng-change="selectAction()" ng-options="{{'item as item.name for item in' + ' ' +'shotallocation'+field.endpoint+ ' ' +'track by item.'+'shotallocation'+field.endpoint}}" class= "form-control" ng-required="field.required"><option value="">Select</option></select>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+                
+   </span>
+   </div>
+ 	<span ng-switch-when="textarea"> 
+            <div  class="col-xs-6 form-group">
+    				<label class= "col-sm-3">{{ field.title }}<em   class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						<div  class="col-sm-6">
+   							 <textarea  name="shotallocation{{field.name}}" ng-model="entityshotalloc3[field.name]"    class= "form-control" ng-required="field.required"/></textarea>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+   </span> 
+</div>	
+       	 <div  class="col-xs-6 form-group">
+        	<label class="col-sm-3">Work start date<em  class="rclass">*</em> </label>
+    			<div class="input-append date form_datetime col-sm-6"  data-link-field="shotallocmatchmove1">
+                 <input class="form-control" size="16" value="{{entityshotalloc3.workstartdatematch}}" id="workstartdatematch" type="text" >
+    				<span class="add-on"><i class="icon-th"></i></span>
+          </div>
+           <input  type="hidden"  id="shotallocmatchmove1" value="{{entityshotalloc3.workstartdatematch}}" name="workstartdatematch">
+  		</div>
+        <div  class="col-xs-6 form-group">
+            <label class="col-sm-3">Time to complete<em  class="rclass">*</em> </label> 
+    			 <div class="input-append date form_datetime col-sm-6"  data-link-field="shotallocmatchmove2">
+                   <input class="form-control" size="16"  value="{{entityshotalloc3.workstartdatematch}}" id="targettimematch"  type="text" >
+    			 <span class="add-on"><i class="icon-th"></i></span>
+                 </div>
+                  <input  type="hidden"  id="shotallocmatchmove2" value="{{entityshotalloc3.targettimematch}}" name="targettimematch" >
+                  		
+		</div>
+ 	  <div  class="col-xs-6 form-group">
+        	<label class="col-sm-3">Completed time</label>
+    			<div class="input-append date form_datetime col-sm-6"  data-link-field="shotallocmatchmove3">
+   				  <input class="form-control"  size="16" value="{{entityshotalloc3.workstartdatematch}}"  id="completedtimematch" type="text">
+   				 <span class="add-on"><i class="icon-th"></i></span>
+		</div>
+         <input  type="hidden"  id="shotallocmatchmove3" value="{{entityshotalloc3.completedtimematch}}" name="completedtimematch" >
+     </div>
+     
+     
+<input type="hidden"  value="{{entity.version}}" name="version" />           
+<input type="hidden"  value="3" name="department" />
+<input type="hidden"  value="12" name="entityid" />
+<input type="hidden"  value="{{editshotallocid}}" name="editshotallocid" />
+
+<div class= "col-xs-12 form-group">   
+    <div class="col-md-6 cancel">
+    <a href="#/shotallocation/12" class="btn">Cancel</a>
+    </div>
+      <div class="col-md-3">
+    <button type="submit" ng-disabled="isClean() || formshotallocmatch.$invalid"  class="btn btn-primary">{{buttonText}}</button>
+    </div>
+   
+</div>
+</div>
+</div>
+</form>
+     		   		</div>
+       			</div>
+              <!--matchmove timing --> 
+             <div  id="matchmovetiming" style="display:none">
+				 <div class="panel" >        
+					<div class="row">  
+        				<div class="col-md-12">
+                        <div class="col-md-10">
+   						Matchmove Timing
+  						</div>
+<form role="form" name="formshotallocmatchmovetime" id="formshotallocmatchmovetime"   class="form-inline">
+
+    <div ng-repeat="value in entityids3 | commaBreak">
+   <div  class="col-xs-3 form-group">
+       		 <div class="col-sm-3">ID:{{value}}</div>
+    	</div>	
+       	 <div  class="col-xs-3 form-group">
+        	<label class="col-sm-3">Work start date<em  class="rclass">*</em> </label>    			
+              <div class="input-append date form_datetime col-sm-6"  datetimepicker >
+                <input class="form-control" size="16" type="text" name="workstartdatematch{{$index+1}}" value="">
+                <span class="add-on"><i class="icon-th"></i></span>
+              </div>
+          </div>
+        <div  class="col-xs-3 form-group">
+            <label class="col-sm-3">Time to complete<em  class="rclass">*</em> </label> 
+    			 <div class="input-append date form_datetime col-sm-6" datetimepicker  >
+                   <input class="form-control" size="16" type="text"  value=""  name="targettimematch{{$index+1}}">
+    			 <span class="add-on"><i class="icon-th"></i></span>
+                 </div>                 	
+		</div>
+ 	  <div  class="col-xs-3 form-group">
+        	<label class="col-sm-3">Completed time</label>
+    			<div class="input-append date form_datetime col-sm-6" datetimepicker >
+   				  <input class="form-control"  size="16" type="text"  value="" name="completedtimematch{{$index+1}}"  >
+   				 <span class="add-on"><i class="icon-th"></i></span>
+				</div>         
+       </div>
+        <input type="hidden"  value="{{$index+1}}" name="multiid{{$index+1}}" />   
+        <input type="hidden"  value="{{$index}}" name="length" />   
+        <input type="hidden"  value="{{value}}" name="artistid{{$index+1}}" />   
+		<input type="hidden"  value="{{entity.version}}" name="version{{$index+1}}" />      
+		<input type="hidden"  value="12" name="entityid{{$index+1}}" />
+		<input type="hidden"  value="{{editshotallocid}}" name="editshotallocid{{$index+1}}" />  
+		</div> 
+      
+       <div  class="col-xs-12 form-group">
+       		 <div class="col-md-9" style="float:right" ng-if="!entityids3"> no artist selected</div>
+    	</div>
+        
+        
+	<div class= "col-xs-12 form-group">   
+    <div class="col-md-6 cancel">
+    <a href="#/shotallocation/12" class="btn">Cancel</a>
+    </div>
+    <div class="col-md-3">
+    <button type="submit" ng-disabled="isClean() || formshotallocmatchmovetime.$invalid"  class="btn btn-primary">update time</button>
+    </div>
+	</div>
+</form>
+					</div>
+     			</div>   		
+            </div> 
+         </div>  
+                      <!--matchmove timing --> 
+             <div  id="matchmovetimingupdate" style="display:none">
+				 <div class="panel" >        
+					<div class="row">  
+        				<div class="col-md-12">
+                        <div class="col-md-10">
+   						Matchmove Timing
+  						</div>
+<form role="form" name="formshotallocmatchmovetimeupdate" id="formshotallocmatchmovetimeupdate"   class="form-inline">
+
+    <div ng-repeat="value in timedetailsmatchmove">
+   <div  class="col-xs-3 form-group">
+       		 <div class="col-sm-3">ID:{{value.shotallocationmatchmoveartistid}}</div>
+    	</div>	
+       	 <div  class="col-xs-3 form-group">
+        	<label class="col-sm-3">Work start date<em  class="rclass">*</em> </label>    			
+              <div class="input-append date form_datetime col-sm-6"  datetimepicker >
+                <input class="form-control" size="16" type="text" name="workstartdatematch{{$index+1}}" value="{{value.workstartdatematch}}">
+                <span class="add-on"><i class="icon-th"></i></span>
+              </div>
+          </div>
+        <div  class="col-xs-3 form-group">
+            <label class="col-sm-3">Time to complete<em  class="rclass">*</em> </label> 
+    			 <div class="input-append date form_datetime col-sm-6" datetimepicker  >
+                   <input class="form-control" size="16" type="text"  value="{{value.targettimematch}}"  name="targettimematch{{$index+1}}">
+    			 <span class="add-on"><i class="icon-th"></i></span>
+                 </div>                 	
+		</div>
+ 	  <div  class="col-xs-3 form-group">
+        	<label class="col-sm-3">Completed time</label>
+    			<div class="input-append date form_datetime col-sm-6" datetimepicker >
+   				  <input class="form-control"  size="16" type="text"  value="{{value.completedtimematch}}" name="completedtimematch{{$index+1}}"  >
+   				 <span class="add-on"><i class="icon-th"></i></span>
+				</div>         
+       </div>
+        <input type="hidden"  value="{{$index+1}}" name="multiid{{$index+1}}" />   
+        <input type="hidden"  value="{{$index}}" name="length" />   
+        <input type="hidden"  value="{{value.shotallocationmatchmoveartistid}}" name="artistid{{$index+1}}" />   
+		<input type="hidden"  value="{{entity.version}}" name="version{{$index+1}}" />      
+		<input type="hidden"  value="12" name="entityid{{$index+1}}" />
+		<input type="hidden"  value="{{editshotallocid}}" name="editshotallocid{{$index+1}}" />  
+		</div> 
+      
+	<div class= "col-xs-12 form-group">   
+    <div class="col-md-6 cancel">
+    <a href="#/shotallocation/12" class="btn">Cancel</a>
+    </div>
+    <div class="col-md-3">
+    <button type="submit" ng-disabled="isClean() || formshotallocmatchmovetimeupdate.$invalid"  class="btn btn-primary">update time</button>
+    </div>
+	</div>
+</form>
+					</div>
+     			</div>   		
+            </div> 
+         </div> 
+         </div>    
+                <!-- /* COMPOSITING FORM   */ --> 
+                <div id="comp" style="display:none">        
+                 <div  class="panel">         
+					<div class="row">   
+        				<div class="col-md-12">
+                        	<div class="col-md-10">
+  										 COMPOSITING
+  										 </div>
+  
+<form role="form" name="formshotalloccomp" id="formshotalloccomp" class="form-horizontal">
+<div class="form inline">
+	<div ng-repeat="field in fieldsallocate">
+		<span ng-switch on="field.type">
+  			<span ng-switch-when="text">
+    			<div class="col-xs-6 form-group">
+    				<label class="col-sm-3">{{ field.title }}<em  class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div  class="col-sm-6">
+   							 <input type="text" ng-model="entityshotalloc4[field.name]"     class= "form-control"   name="shotallocation{{field.name}}" ng-pattern="{{field.validation}}" ng-required="field.required"/>
+    							<span ng-show="{{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}" class="help-inline">Required</span>                         
+    					</div>
+   				</div>
+  		</span> 
+    	
+    <div ng-hide ng-if="field.name == 'artistdepartmentid'" >
+         <span ng-switch-when="select"> 
+           <div class="col-xs-6 form-group">
+    		<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   				<div  class="col-sm-6">                   
+   				<select  id="artistcompdepartmentid" multiple="true" title="letters should be white to select" ng-model="entityshotalloc4"  name="shotallocationcompartistid[]" ng-options="{{'item as item.shotallocationcompartistname for item in' + ' ' +'shotallocationcompartistid'+ ' ' +'track by item.shotallocationcompartistid'}}" class= "form-control" ng-required="{{field.required}}">
+                <option value="">Select</option></select>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+                
+   </span>
+   </div>
+   
+    <div ng-hide ng-if="field.name == 'vendordepartmentid'" >
+         <span ng-switch-when="select"> 
+           <div class="col-xs-6 form-group">
+    		<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   				<div  class="col-sm-6">
+                <select  id="vendorcompdepartmentid" ng-model="entityshotalloc4"  name="shotallocationcompvendorid" ng-options="{{'item as item.shotallocationcompvendorname for item in' + ' ' +'shotallocationcompvendorid'+ ' ' +'track by item.shotallocationcompvendorid'}}" class= "form-control" ng-required="{{field.required}}"><option value="">Select</option></select> 
+    						<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+                
+   </span>
+   </div>
+   
+    <div ng-hide ng-if="field.name == 'freelancerdepartmentid'" >
+         <span ng-switch-when="select"> 
+           <div class="col-xs-6 form-group">
+    		<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   				<div  class="col-sm-6">
+                <select  id="freelancercompdepartmentid" ng-model="entityshotalloc4"  name="shotallocationcompfreelancerid" ng-options="{{'item as item.shotallocationcompfreelancername for item in' + ' ' +'shotallocationcompfreelancerid'+ ' ' +'track by item.shotallocationcompfreelancerid'}}" class= "form-control" ng-required="{{field.required}}"><option value="">Select</option></select> 
+    						<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+                
+   </span>
+   </div>
+   
+     <div ng-hide ng-if="field.name == 'teamtypeid'" >
+         <span ng-switch-when="select"> 
+           <div class="col-xs-6 form-group">
+    		<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   				<div  class="col-sm-6">                   
+   				<select  ng-disabled="{{field.disabled}}" ng-model="entityshotalloc4"  id="compteamtypeid" name="compteamtypeid" ng-init="selectAction()" ng-change="selectAction()" ng-options="item as item.name for item in compteamtypeid track by item.compteamtypeid" class= "form-control" ng-required="field.required"><option value="">Select</option></select>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+                
+   </span>
+   </div>
+   
+    <div ng-hide ng-if="field.name == 'shotstatus'" >
+         <span ng-switch-when="select"> 
+           <div class="col-xs-6 form-group">
+    		<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   				<div  class="col-sm-6">                   
+   				<select  ng-model="entityshotalloc4"  name="shotallocation{{field.name}}" ng-options="{{'item as item.name for item in' + ' ' +'shotallocation'+field.endpoint+ ' ' +'track by item.'+'shotallocation'+field.endpoint}}" class= "form-control" ng-required="field.required"><option value="">Select</option></select>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+                
+   </span>
+   </div>
+   
+    <div ng-hide ng-if="field.name != 'projectdetailsid' && field.name != 'shotdetailsid' && field.name != 'artistdepartmentid' && field.name != 'vendordepartmentid' && field.name != 'freelancerdepartmentid' && field.name != 'shotstatus' && field.name != 'teamtypeid'" >
+         <span ng-switch-when="select"> 
+           <div class="col-xs-6 form-group">
+    		<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   				<div  class="col-sm-6">                
+   				<select  ng-disabled="{{field.disabled}}" ng-model="entityshotalloc4"  id="{{field.name}}" name="shotallocation{{field.name}}" ng-init="selectAction()" ng-change="selectAction()" ng-options="{{'item as item.name for item in' + ' ' +'shotallocation'+field.endpoint+ ' ' +'track by item.'+'shotallocation'+field.endpoint}}" class= "form-control" ng-required="field.required"><option value="">Select</option></select>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+                
+   </span>
+   </div>
+ 	<span ng-switch-when="textarea"> 
+            <div  class="col-xs-6 form-group">
+    				<label class= "col-sm-3">{{ field.title }}<em   class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						<div  class="col-sm-6">
+   							 <textarea  name="shotallocation{{field.name}}" ng-model="entityshotalloc4[field.name]"    class= "form-control" ng-required="field.required"/></textarea>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+   </span> 
+</div>	
+       	 <div  class="col-xs-6 form-group">
+        	<label class="col-sm-3">Work start date<em  class="rclass">*</em> </label>
+    			<div class="input-append date form_datetime col-sm-6"  data-link-field="shotalloccomp1">
+                 <input class="form-control" size="16" type="text" value="{{entityshotalloc4.workstartdatecomp}}" id="workstartdatecomp" >
+    				<span class="add-on"><i class="icon-th"></i></span>
+          </div>
+           <input  type="hidden"  id="shotalloccomp1" value="{{entityshotalloc4.workstartdatecomp}}" name="workstartdatecomp">
+  		</div>
+        <div  class="col-xs-6 form-group">
+            <label class="col-sm-3">Time to complete<em  class="rclass">*</em> </label> 
+    			 <div class="input-append date form_datetime col-sm-6"  data-link-field="shotalloccomp2">
+                   <input class="form-control" size="16" type="text" value="{{entityshotalloc4.targettimecomp}}" id="targettimecomp" >
+    			 <span class="add-on"><i class="icon-th"></i></span>
+                 </div>
+                  <input  type="hidden"  id="shotalloccomp2" value="{{entityshotalloc4.targettimecomp}}" name="targettimecomp" >
+                  		
+		</div>
+ 	  <div  class="col-xs-6 form-group">
+        	<label class="col-sm-3">Completed time</label>
+    			<div class="input-append date form_datetime col-sm-6"  data-link-field="shotalloccomp3">
+   				  <input class="form-control"  size="16" value="{{entityshotalloc4.completedtimecomp}}" id="completedtimecomp" type="text">
+   				 <span class="add-on"><i class="icon-th"></i></span>
+		</div>
+         <input  type="hidden"  id="shotalloccomp3" value="{{entityshotalloc4.completedtimecomp}}" name="completedtimecomp" >
+     </div>
+     
+     
+     <input type="hidden"  value="{{entity.version}}" name="version" />      
+     <input type="hidden"  value="4" name="department" />
+<input type="hidden"  value="12" name="entityid" />
+<input type="hidden"  value="{{editshotallocid}}" name="editshotallocid" />
+
+<div class= "col-xs-12 form-group">   
+    <div class="col-md-6 cancel">
+    <a href="#/shotallocation/12" class="btn">Cancel</a>
+    </div>
+      <div class="col-md-3">
+    <button type="submit" ng-disabled="isClean() || formshotalloccomp.$invalid"  class="btn btn-primary">{{buttonText}}</button>
+    </div>
+   
+</div>
+</div>
+</div>
+</form>
+     		   		</div>
+                    </div>
+       			 <!--comp timing --> 
+             <div  id="comptiming" style="display:none">
+				 <div class="panel" >        
+					<div class="row">  
+        				<div class="col-md-12">
+                        <div class="col-md-10">
+   						Comp Timing
+  						</div>
+<form role="form" name="formshotalloccomptime" id="formshotalloccomptime"   class="form-inline">
+
+    <div ng-repeat="value in entityids4 | commaBreak">  
+		 <div  class="col-xs-3 form-group">
+       		 <div class="col-sm-3">ID:{{value}}</div>
+    	</div>		       
+  		 <div  class="col-xs-3 form-group">
+        	<label class="col-sm-3">Work start date<em  class="rclass">*</em> </label>    			
+              <div class="input-append date form_datetime col-sm-6"  datetimepicker >
+                <input class="form-control" size="16" type="text" name="workstartdatecomp{{$index+1}}" value="">
+                <span class="add-on"><i class="icon-th"></i></span>
+              </div>
+          </div>
+        <div  class="col-xs-3 form-group">
+            <label class="col-sm-3">Time to complete<em  class="rclass">*</em> </label> 
+    			 <div class="input-append date form_datetime col-sm-6" datetimepicker  >
+                   <input class="form-control" size="16" type="text"  value=""  name="targettimecomp{{$index+1}}">
+    			 <span class="add-on"><i class="icon-th"></i></span>
+                 </div>                 	
+		</div>
+ 	  <div  class="col-xs-3 form-group">
+        	<label class="col-sm-3">Completed time</label>
+    			<div class="input-append date form_datetime col-sm-6" datetimepicker >
+   				  <input class="form-control"  size="16" type="text"  value="" name="completedtimecomp{{$index+1}}"  >
+   				 <span class="add-on"><i class="icon-th"></i></span>
+				</div>         
+       </div>
+        <input type="hidden"  value="{{$index+1}}" name="multiid{{$index+1}}" />   
+        <input type="hidden"  value="{{$index}}" name="length" />   
+        <input type="hidden"  value="{{value}}" name="artistid{{$index+1}}" />   
+		<input type="hidden"  value="{{entity.version}}" name="version{{$index+1}}" />      
+		<input type="hidden"  value="12" name="entityid{{$index+1}}" />
+		<input type="hidden"  value="{{editshotallocid}}" name="editshotallocid{{$index+1}}" />  
+		</div> 
+      
+       <div  class="col-xs-12 form-group">
+       		 <div class="col-md-9" style="float:right" ng-if="!entityids4"> no artist selected</div>
+    	</div>
+        
+	<div class= "col-xs-12 form-group">   
+    <div class="col-md-6 cancel">
+    <a href="#/shotallocation/12" class="btn">Cancel</a>
+    </div>
+    <div class="col-md-3">
+    <button type="submit" ng-disabled="isClean() || formshotalloccomptime.$invalid"  class="btn btn-primary">update time</button>
+    </div>
+	</div>
+</form>
+						
+					</div>
+     			</div>   		
+            </div> 
+         </div>      
+          <!--comp timing --> 
+             <div  id="comptimingupdate" style="display:none">
+				 <div class="panel" >        
+					<div class="row">  
+        				<div class="col-md-12">
+                        <div class="col-md-10">
+   						Comp Timing
+  						</div>
+<form role="form" name="formshotalloccomptime" id="formshotalloccomptime"   class="form-inline">
+
+    <div ng-repeat="value in timedetailscomp ">  
+		 <div  class="col-xs-3 form-group">
+       		 <div class="col-sm-3">ID:{{value.shotallocationcompartistid}}</div>
+    	</div>		       
+  		 <div  class="col-xs-3 form-group">
+        	<label class="col-sm-3">Work start date<em  class="rclass">*</em> </label>    			
+              <div class="input-append date form_datetime col-sm-6"  datetimepicker >
+                <input class="form-control" size="16" type="text" name="workstartdatecomp{{$index+1}}" value="{{value.workstartdatecomp}}">
+                <span class="add-on"><i class="icon-th"></i></span>
+              </div>
+          </div>
+        <div  class="col-xs-3 form-group">
+            <label class="col-sm-3">Time to complete<em  class="rclass">*</em> </label> 
+    			 <div class="input-append date form_datetime col-sm-6" datetimepicker  >
+                   <input class="form-control" size="16" type="text"  value="{{value.targettimecomp}}"  name="targettimecomp{{$index+1}}">
+    			 <span class="add-on"><i class="icon-th"></i></span>
+                 </div>                 	
+		</div>
+ 	  <div  class="col-xs-3 form-group">
+        	<label class="col-sm-3">Completed time</label>
+    			<div class="input-append date form_datetime col-sm-6" datetimepicker >
+   				  <input class="form-control"  size="16" type="text"  value="{{value.completedtimecomp}}" name="completedtimecomp{{$index+1}}"  >
+   				 <span class="add-on"><i class="icon-th"></i></span>
+				</div>         
+       </div>
+        <input type="hidden"  value="{{$index+1}}" name="multiid{{$index+1}}" />   
+        <input type="hidden"  value="{{$index}}" name="length" />   
+        <input type="hidden"  value="{{value.shotallocationcompartistid}}" name="artistid{{$index+1}}" />   
+		<input type="hidden"  value="{{entity.version}}" name="version{{$index+1}}" />      
+		<input type="hidden"  value="12" name="entityid{{$index+1}}" />
+		<input type="hidden"  value="{{editshotallocid}}" name="editshotallocid{{$index+1}}" />  
+		</div> 
+      
+	<div class= "col-xs-12 form-group">   
+    <div class="col-md-6 cancel">
+    <a href="#/shotallocation/12" class="btn">Cancel</a>
+    </div>
+    <div class="col-md-3">
+    <button type="submit" ng-disabled="isClean() || formshotalloccomptime.$invalid"  class="btn btn-primary">update time</button>
+    </div>
+	</div>
+</form>
+						</div>
+					</div>
+     			</div>   		
+            </div> 
+         </div>      
+                <!-- /* 3D FORM   */ --> 
+               <div id="3d" style="display:none">         
+                 <div class="panel">         
+					<div class="row">   
+        				<div class="col-md-12">
+                        	<div class="col-md-10">
+  										 3D
+  										 </div>
+  
+  
+<form role="form" name="formshotalloc3d" id="formshotalloc3d" class="form-horizontal">
+<div class="form inline">
+	<div ng-repeat="field in fieldsallocate">
+		<span ng-switch on="field.type">
+  			<span ng-switch-when="text">
+    			<div class="col-xs-6 form-group">
+    				<label class="col-sm-3">{{ field.title }}<em  class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div  class="col-sm-6">
+   							 <input type="text" ng-model="entityshotalloc5[field.name]"     class= "form-control"   name="shotallocation{{field.name}}" ng-pattern="{{field.validation}}" ng-required="field.required"/>
+    							<span ng-show="{{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}" class="help-inline">Required</span>                         
+    					</div>
+   				</div>
+  		</span> 
+    	
+    <div ng-hide ng-if="field.name == 'artistdepartmentid'" >
+         <span ng-switch-when="select"> 
+           <div class="col-xs-6 form-group">
+    		<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   				<div  class="col-sm-6">                   
+   				<select  id="artist3ddepartmentid" multiple="true" ng-model="entityshotalloc5" title="letters should be white to select" name="shotallocation3dartistid[]" ng-options="{{'item as item.shotallocation3dartistname for item in' + ' ' +'shotallocation3dartistid'+ ' ' +'track by item.shotallocation3dartistid'}}" class= "form-control" ng-required="{{field.required}}">
+                <option value="">Select</option></select>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+                
+   </span>
+   </div>
+   
+    <div ng-hide ng-if="field.name == 'vendordepartmentid'" >
+         <span ng-switch-when="select"> 
+           <div class="col-xs-6 form-group">
+    		<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   				<div  class="col-sm-6">
+                <select  id="shotallocation3dvendorid" ng-model="entityshotalloc5"  name="shotallocation3dvendorid" ng-options="{{'item as item.shotallocation3dvendorname for item in' + ' ' +'shotallocation3dvendorid'+ ' ' +'track by item.shotallocation3dvendorid'}}" class= "form-control" ng-required="{{field.required}}"><option value="">Select</option></select> 
+    						<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+                
+   </span>
+   </div>
+   
+    <div ng-hide ng-if="field.name == 'freelancerdepartmentid'" >
+         <span ng-switch-when="select"> 
+           <div class="col-xs-6 form-group">
+    		<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   				<div  class="col-sm-6">
+                <select  id="freelancer3ddepartmentid" ng-model="entityshotalloc5"  name="shotallocation3dfreelancerid" ng-options="{{'item as item.shotallocation3dfreelancername for item in' + ' ' +'shotallocation3dfreelancerid'+ ' ' +'track by item.shotallocation3dfreelancerid'}}" class= "form-control" ng-required="{{field.required}}"><option value="">Select</option></select> 
+    						<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+                
+   </span>
+   </div>
+   
+    <div ng-hide ng-if="field.name == 'teamtypeid'" >
+         <span ng-switch-when="select"> 
+           <div class="col-xs-6 form-group">
+    		<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   				<div  class="col-sm-6">                   
+   				<select  ng-disabled="{{field.disabled}}" ng-model="entityshotalloc5"  id="3dteamtypeid" name="3dteamtypeid" ng-init="selectAction()" ng-change="selectAction()" ng-options="item as item.name for item in dteamtypeid track by item.dteamtypeid" class= "form-control" ng-required="field.required"><option value="">Select</option></select>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+                
+   </span>
+   </div>
+   
+    <div ng-hide ng-if="field.name == 'shotstatus'" >
+         <span ng-switch-when="select"> 
+           <div class="col-xs-6 form-group">
+    		<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   				<div  class="col-sm-6">                   
+   				<select  ng-model="entityshotalloc5"  name="shotallocation{{field.name}}" ng-options="{{'item as item.name for item in' + ' ' +'shotallocation'+field.endpoint+ ' ' +'track by item.'+'shotallocation'+field.endpoint}}" class= "form-control" ng-required="field.required"><option value="">Select</option></select>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+                
+   </span>
+   </div>
+   
+    <div ng-hide ng-if="field.name != 'projectdetailsid' && field.name != 'shotdetailsid' && field.name != 'artistdepartmentid' && field.name != 'vendordepartmentid' && field.name != 'freelancerdepartmentid' && field.name != 'shotstatus'  && field.name != 'teamtypeid'" >
+         <span ng-switch-when="select"> 
+           <div class="col-xs-6 form-group">
+    		<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   				<div  class="col-sm-6">                
+   				<select  ng-disabled="{{field.disabled}}" ng-model="entityshotalloc5"  id="{{field.name}}" name="shotallocation{{field.name}}" ng-init="selectAction()" ng-change="selectAction()" ng-options="{{'item as item.name for item in' + ' ' +'shotallocation'+field.endpoint+ ' ' +'track by item.'+'shotallocation'+field.endpoint}}" class= "form-control" ng-required="field.required"><option value="">Select</option></select>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+                
+   </span>
+   </div>
+ 	<span ng-switch-when="textarea"> 
+            <div  class="col-xs-6 form-group">
+    				<label class= "col-sm-3">{{ field.title }}<em   class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						<div  class="col-sm-6">
+   							 <textarea  name="shotallocation{{field.name}}" ng-model="entityshotalloc5[field.name]"    class= "form-control" ng-required="field.required"/></textarea>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+   </span> 
+</div>	
+       	 <div  class="col-xs-6 form-group">
+        	<label class="col-sm-3">Work start date<em  class="rclass">*</em> </label>
+    			<div class="input-append date form_datetime col-sm-6"  data-link-field="shotalloc3d1">
+                 <input class="form-control" size="16" type="text"  id="workstartdate3d" ng-model="entityshotalloc5.workstartdate3d"  >
+    				<span class="add-on"><i class="icon-th"></i></span>
+          </div>
+           <input  type="hidden"  id="shotalloc3d1" value="{{entityshotalloc5.workstartdate3d}}" name="workstartdate3d">
+  		</div>
+        <div  class="col-xs-6 form-group">
+            <label class="col-sm-3">Time to complete<em  class="rclass">*</em> </label> 
+    			 <div class="input-append date form_datetime col-sm-6"  data-link-field="shotalloc3d2">
+                   <input class="form-control" size="16" type="text"  id="targettime3d" ng-model="entityshotalloc5.targettime3d"  >
+    			 <span class="add-on"><i class="icon-th"></i></span>
+                 </div>
+                  <input  type="hidden"  id="shotalloc3d2" value="{{entityshotalloc5.targettime3d}}" name="targettime3d" >
+                  		
+		</div>
+ 	  <div  class="col-xs-6 form-group">
+        	<label class="col-sm-3">Completed time</label>
+    			<div class="input-append date form_datetime col-sm-6"  data-link-field="shotalloc3d3">
+   				  <input class="form-control"  size="16" id="completedtime3d" ng-model="entityshotalloc5.completedtime3d" type="text">
+   				 <span class="add-on"><i class="icon-th"></i></span>
+		</div>
+         <input  type="hidden"  id="shotalloc3d3" value="{{entityshotalloc5.completedtime3d}}" name="completedtime3d" >
+     </div>
+ 
+ 
+<input type="hidden"  value="5" name="department" />
+<input type="hidden"  value="{{entity.version}}" name="version" />      
+<input type="hidden"  value="12" name="entityid" />
+<input type="hidden"  value="{{editshotallocid}}" name="editshotallocid" />
+    
+     
+
+<div class= "col-xs-12 form-group">   
+    <div class="col-md-6 cancel">
+    <a href="#/shotallocation/12" class="btn">Cancel</a>
+    </div>
+      <div class="col-md-3">
+    <button type="submit" ng-disabled="isClean() || formshotalloc3d.$invalid"  class="btn btn-primary">{{buttonText}}</button>
+    </div>
+   
+</div>
+</div>
+</div>
+</form>
+     		   		</div>
+       			</div>
+   		 <!--3d timing --> 
+             <div  id="3dtiming" style="display:none">
+				 <div class="panel" >        
+					<div class="row">  
+        				<div class="col-md-12">
+                        <div class="col-md-10">
+   						3D Timing
+  						</div>
+<form role="form" name="formshotalloc3dtime" id="formshotalloc3dtime"   class="form-inline">
+
+    <div ng-repeat="value in entityids5 | commaBreak">
+  
+  
+		 <div  class="col-xs-3 form-group">
+       		 <div class="col-sm-3">ID:{{value}}</div>
+    	</div>	
+       	 <div  class="col-xs-3 form-group">
+        	<label class="col-sm-3">Work start date<em  class="rclass">*</em> </label>    			
+              <div class="input-append date form_datetime col-sm-6"  datetimepicker >
+                <input class="form-control" size="16" type="text" name="workstartdate3d{{$index+1}}" value="">
+                <span class="add-on"><i class="icon-th"></i></span>
+              </div>
+          </div>
+        <div  class="col-xs-3 form-group">
+            <label class="col-sm-3">Time to complete<em  class="rclass">*</em> </label> 
+    			 <div class="input-append date form_datetime col-sm-6" datetimepicker  >
+                   <input class="form-control" size="16" type="text"  value=""  name=" 	targettime3d{{$index+1}}">
+    			 <span class="add-on"><i class="icon-th"></i></span>
+                 </div>                 	
+		</div>
+ 	  <div  class="col-xs-3 form-group">
+        	<label class="col-sm-3">Completed time</label>
+    			<div class="input-append date form_datetime col-sm-6" datetimepicker >
+   				  <input class="form-control"  size="16" type="text"  value="" name="completedtime3d{{$index+1}}"  >
+   				 <span class="add-on"><i class="icon-th"></i></span>
+				</div>         
+       </div>
+
+        <input type="hidden"  value="{{$index+1}}" name="multiid{{$index+1}}" />   
+        <input type="hidden"  value="{{$index}}" name="length" />   
+        <input type="hidden"  value="{{value}}" name="artistid{{$index+1}}" />   
+		<input type="hidden"  value="{{entity.version}}" name="version{{$index+1}}" />      
+		<input type="hidden"  value="12" name="entityid{{$index+1}}" />
+		<input type="hidden"  value="{{editshotallocid}}" name="editshotallocid{{$index+1}}" />  
+		</div> 
+      
+      
+       <div  class="col-xs-12 form-group">
+       		 <div class="col-md-9" style="float:right" ng-if="!entityids5"> no artist selected</div>
+    	</div>
+        
+	<div class= "col-xs-12 form-group">   
+    <div class="col-md-6 cancel">
+    <a href="#/shotallocation/12" class="btn">Cancel</a>
+    </div>
+    <div class="col-md-3">
+    <button type="submit" ng-disabled="isClean() || formshotalloc3dtime.$invalid"  class="btn btn-primary">update time</button>
+    </div>
+	</div>
+</form>
+						
+					</div>
+     			</div>   		
+            </div> 
+         </div>      
+          <!--3d timing --> 
+             <div  id="3dtimingupdate" style="display:none">
+				 <div class="panel" >        
+					<div class="row">  
+        				<div class="col-md-12">
+                        <div class="col-md-10">
+   						3D Timing
+  						</div>
+<form role="form" name="formshotalloc3dtimeupdate" id="formshotalloc3dtimeupdate"   class="form-inline">
+
+    <div ng-repeat="value in timedetails3d ">
+  
+  
+		 <div  class="col-xs-3 form-group">
+       		 <div class="col-sm-3">ID:{{value.shotallocation3dartistid}}</div>
+    	</div>	
+       	 <div  class="col-xs-3 form-group">
+        	<label class="col-sm-3">Work start date<em  class="rclass">*</em> </label>    			
+              <div class="input-append date form_datetime col-sm-6"  datetimepicker >
+                <input class="form-control" size="16" type="text" name="workstartdate3d{{$index+1}}" value="{{value.workstartdate3d}}">
+                <span class="add-on"><i class="icon-th"></i></span>
+              </div>
+          </div>
+        <div  class="col-xs-3 form-group">
+            <label class="col-sm-3">Time to complete<em  class="rclass">*</em> </label> 
+    			 <div class="input-append date form_datetime col-sm-6" datetimepicker  >
+                   <input class="form-control" size="16" type="text"  value="{{value.targettime3d}}"  name=" 	targettime3d{{$index+1}}">
+    			 <span class="add-on"><i class="icon-th"></i></span>
+                 </div>                 	
+		</div>
+ 	  <div  class="col-xs-3 form-group">
+        	<label class="col-sm-3">Completed time</label>
+    			<div class="input-append date form_datetime col-sm-6" datetimepicker >
+   				  <input class="form-control"  size="16" type="text"  value="{{value.completedtime3d}}" name="completedtime3d{{$index+1}}"  >
+   				 <span class="add-on"><i class="icon-th"></i></span>
+				</div>         
+       </div>
+
+        <input type="hidden"  value="{{$index+1}}" name="multiid{{$index+1}}" />   
+        <input type="hidden"  value="{{$index}}" name="length" />   
+        <input type="hidden"  value="{{value.shotallocation3dartistid}}" name="artistid{{$index+1}}" />   
+		<input type="hidden"  value="{{entity.version}}" name="version{{$index+1}}" />      
+		<input type="hidden"  value="12" name="entityid{{$index+1}}" />
+		<input type="hidden"  value="{{editshotallocid}}" name="editshotallocid{{$index+1}}" />  
+		</div> 
+      
+	<div class= "col-xs-12 form-group">   
+    <div class="col-md-6 cancel">
+    <a href="#/shotallocation/12" class="btn">Cancel</a>
+    </div>
+    <div class="col-md-3">
+    <button type="submit" ng-disabled="isClean() || formshotalloc3dtimeupdate.$invalid"  class="btn btn-primary">update time</button>
+    </div>
+	</div>
+</form>
+						
+					</div>
+     			</div>   		
+            </div> 
+         </div>      
+       </div>
+</div>	
+</div>	
+<div ng:show="selected == 3">
+ <div class="panel">         
+					<div class="row">   
+       					 <div class="col-md-12">
+  
+<form role="form" name="interim" id="interim" class="form-horizontal">
+<div class="form inline">
+	<div ng-repeat="field in fieldstatus">
+		<span ng-switch on="field.type">
+  			<span ng-switch-when="text">
+    			<div class="col-xs-6 form-group">
+    				<label class="col-sm-3">{{ field.title }}<em  class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div  class="col-sm-6">
+   							 <input type="text" ng-model="entity[field.name]"  ng-disabled="{{field.disabled}}"   class= "form-control"   name="{{field.name}}" ng-pattern="{{field.validation}}" ng-required="{{field.required}}"/>
+    							<span ng-show="{{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}" class="help-inline">Required</span>                         
+    					</div>
+   				</div>
+  		</span> 
+    		<span ng-switch-when="date">
+    			<div  class="col-xs-6 form-group">
+    				<label class="col-sm-3">{{ field.title }}<em  class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div  class="col-sm-6">
+                         <datepicker date-format="yyyy-MM-dd">
+   							<input type="date" class= "form-control" ng-model="entity[field.name]" name="{{field.name}}"   ng-required="{{field.required}}"/>
+                             </datepicker>
+    							
+   						</div>
+   				</div>
+  		</span>
+        <span ng-switch-when="email">
+    			<div class="col-xs-6 form-group">
+    				<label class= "col-sm-3">{{ field.title }}<em  class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-sm-6">
+                       			 <input type="email" class= "form-control" ng-model="entity[field.name]" name="{{field.name}}"   ng-required="{{field.required}}"/> 
+                                  <span ng-show="{{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}" class="help-inline">Email Required</span>
+   								 <span ng-show="{{'myForm.'+field.name+'.$error.'+field.name}}" class="help-inline">Email is not valid</span>                         
+    					</div>
+   				</div>
+  		</span> 
+        
+      <span ng-switch-when="select"> 
+         <div  class="col-xs-6 form-group">
+    		<label class= "col-sm-3">{{ field.title }}<em   class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   				<div class="col-sm-6">
+   					<select  ng-model="entity" id="{{field.name}}" name="{{field.name}}" ng-options="{{'item as item.shotallocation'+field.name+'name for item in' + ' ' +'shotallocation'+field.endpoint+ ' ' +'track by item.'+'shotallocation'+field.endpoint}}" class= "form-control" ng-required="{{field.required}}"/></select>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+              	</div>
+   		</div>
+   </span>
+   
+ 	<span ng-switch-when="textarea"> 
+            <div  class="col-xs-6 form-group">
+    				<label class= "col-sm-3">{{ field.title }}<em   class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-sm-6">
+   							 <textarea  name="{{field.name}}" ng-model="entity[field.name]"    class= "form-control" ng-required="{{field.required}}"/></textarea>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+   </span> 
+</div>
+
+<input type="hidden"  value="{{entity.version}}" name="version" />      
+<input type="hidden"  value="12" name="entityid" />
+<input type="hidden"  value="{{editshotallocid}}" name="editshotallocid" />
+<div class= "col-xs-12 form-group">   
+    <div class="col-md-6 cancel">
+    <a href="#/shotallocation/12" class="btn">Cancel</a>
+    </div>
+      <div class="col-md-3">
+    <button type="submit" ng-disabled="isClean() || interim.$invalid"  class="btn btn-primary">{{buttonText}}</button>
+    </div>
+   
+</div>
+</div>
+</div>
+</form>
+     		   		</div>
+       			</div>
+    		</div>
+	
+<div ng:show="selected == 4">
+ <div class="panel">         
+					<div class="row">   
+       					 <div class="col-md-12">
+<form role="form" name="final" id="final" class="form-horizontal">
+<div class="form inline">
+	<div ng-repeat="field in final">
+		<span ng-switch on="field.type">
+  			<span ng-switch-when="text">
+    			<div class="col-xs-6 form-group">
+    				<label class="col-sm-3">{{ field.title }}<em  class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div  class="col-sm-7">
+   							 <input type="text" ng-model="entity[field.name]"     class= "form-control"   name="{{field.name}}" ng-pattern="{{field.validation}}" ng-required="{{field.required}}"/>
+    							                      
+    					</div>
+   				</div>
+  		</span> 
+    		<span ng-switch-when="date">
+    			<div  class="col-xs-6 form-group">
+    				<label class="col-sm-3">{{ field.title }}<em  class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div  class="col-sm-7">
+                         <datepicker date-format="yyyy-MM-dd">
+   							 <input type="date" class= "form-control" ng-model="entity[field.name]"  name="{{field.name}}"   ng-required="{{field.required}}"/>
+                             </datepicker>
+    							
+   						</div>
+   				</div>
+  		</span>
+        <span ng-switch-when="email">
+    			<div class="col-xs-6 form-group">
+    				<label class= "col-sm-3">{{ field.title }}<em  class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-sm-7">
+                       			 <input type="email" class= "form-control" ng-model="entity[field.name]"    name="{{field.name}}"  
+                                  ng-required="{{field.required}}"/> 
+                                  <span ng-show="{{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}" class="help-inline">Email Required</span>
+   								 <span ng-show="{{'myForm.'+field.name+'.$error.'+field.name}}" class="help-inline">Email is not valid</span>                         
+    					</div>
+   				</div>
+  		</span> 
+        
+      <span ng-switch-when="select"> 
+         <div  class="col-xs-6 form-group">
+    		<label class= "col-sm-3">{{ field.title }} </label>
+   				<div class="col-sm-7">
+   					<select  ng-model="entity" id="{{field.name}}" name="{{field.name}}" ng-options="{{'item as item.shotallocation'+field.name+'name for item in' + ' ' +'shotallocation'+field.endpoint+ ' ' +'track by item.'+'shotallocation'+field.endpoint}}" class= "form-control" /></select>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+              	</div>
+   		</div>
+   </span>
+   
+ 	<span ng-switch-when="textarea"> 
+            <div  class="col-xs-6 form-group">
+    				<label class= "col-sm-3">{{ field.title }}<em   class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-sm-7">
+   							 <textarea  name="{{field.name}}" ng-model="entity[field.name]"    class= "form-control" ng-required="{{field.required}}"/></textarea>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+   </span> 
+</div>
+
+<input type="hidden"  value="{{entity.version}}" name="version" />      
+<input type="hidden"  value="12" name="entityid" />
+<input type="hidden"  value="{{editshotallocid}}" name="editshotallocid" />
+<div class= "col-xs-12 form-group">   
+    <div class="col-md-6 cancel">
+    <a href="#/shotallocation/{{entityid}}" class="btn">Cancel</a>
+    </div>
+      <div class="col-md-3">
+    <button type="submit" ng-disabled="isClean() || final.$invalid"  class="btn btn-primary">{{buttonText}}</button>
+    </div>
+   
+</div>
+</div>
+</div>
+</form>
+     		   		</div>
+       			</div>
+    		</div>
+		</div>
+	</div>
+</div>
+ </div>

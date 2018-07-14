@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script>
+	$(function() {
+		$("#headContent").load("views/header.view.html");
+	});
+
+</script>
+<script>
+var specialElementHandlers = {
+		  '.no-export': function(element, renderer) {
+		    return true;
+		  }
+		};
+
+$('#generatePDF').click(function () {
+
+	  var doc = new jsPDF('p', 'pt', 'a4');
+
+	  var source = document.getElementById('content').innerHTML;
+
+	  var margins = {
+	    top: 10,
+	    bottom: 10,
+	    left: 10,
+	    width: 595
+	  };
+
+	  doc.fromHTML(
+	    source, 
+	    margins.left,
+	    margins.top, {
+	      'width': margins.width,
+	      'elementHandlers': specialElementHandlers
+	    },
+
+	    function(dispose) {
+      doc.save('PurchaseOrder.pdf');
+	    }, margins);
+
+
+
+
+});
+</script>
+
+
+
+
+
+
+
+
+<style>
+#submenu a {
+    color: black;   
+}
+
+#generatePDF
+{
+float: right;
+margin-right: 48px;
+margin-top: 40px;
+}
+
+#History{
+float: right;
+margin-right: 279px;
+margin-top: 10px;
+}
+
+
+#submenu
+{
+background-color:white;
+position:relative;
+top:35px;
+left:1.5%;
+}
+#submenu ul li{
+display:block;
+float: left;
+color:black;
+    border: 0px solid #8d929c;
+    border-bottom-width: 0;
+
+    
+          margin: -74px 79px 40px 0;
+    padding: 18px 21px 6px 15px;
+    margin-left: -78px;
+    background-color: #eef1f7;
+
+}
+	
+</style>
+<style>
+
+
+
+#content{
+    margin-right: 45px;
+	margin-left:50px;
+    margin-top:36px;
+}
+</style>
+<script>
+/* $(document).ready(function() {
+    $('#example').DataTable( {
+        "paging":   false,
+        "ordering": false,
+        "info":     false
+    } );
+} );
+ */
+
+</script>
+
+
+</head>
+<body>
+<div id="headContent"></div>
+<div class="content-wrapper">
+	<div class="section_layout">
+					<div class="main-content">
+			<div class="title" style="padding-bottom: 9px;margin-left: 0px;">
+				<nav id='submenu'>
+		<ul style="margin-top:25px;">
+				
+				<li id="pending_order" style="padding-top:17px;" onmouseover="this.style.backgroundColor='#d5dae5'" onmouseout="this.style.backgroundColor='#eef1f7'"><a href="#/pending_order" style="text-decoration:none;">Pending Order</a></li>
+				<li id="raised_order" style="background-color:#d5dae5;"><a href="#/raised_order" style="text-decoration:none;">Raised Order</a></li>
+				</ul>
+				</nav>
+				<!-- <div class="raiseorder" style="float: right;margin-right: -7px;margin-top: -27px;">
+					<button ng-click="raiseOrder()">
+						<image>
+						<img src="app/images/add.png" style="width: 25px; height: 25px;"></image>
+					</button>
+				</div> -->
+				
+				</div>
+				</div>
+				
+	
+    						<button id="History" data-toggle="modal" data-target="#myHistory"  data-backdrop="static" data-keyboard="false" ng-click="payment_history()">Payment History</button>
+
+		
+			<form id="raised_order" method="post" style="margin-right:0px;padding-top:0px;background-color: #d5dae5;">
+				 
+				
+				<table  datatable="ng"
+					id="raisedordertable" dt-options="vm.dtOptions">
+					<thead  class="widget" style="background:#C0C0C0;">
+					<th class="title" style="width:260px;text-align:center"><input type="checkbox" onClick="toggle(this)"/></th>
+						<th class="title" style="width:260px;text-align:center">Vendor Name</th>
+						<th class="title" style="width:260px;text-align:center">Purchase Order#</th>
+						<th class="title" style="width:260px;text-align:center">PO Date</th>
+						<th class="title" style="width:260px;text-align:center"> Amount</th>
+						<th class="title" style="width:260px;text-align:center">Status</th>
+						
+					</thead>
+				
+					<tr ng-repeat="raisedorder in raisedorders">
+					<td style="text-align:-webkit-center"><input type="checkbox" name="checked_id[]" class="checkbox"
+							value="{{raisedorder.identify_id}}" /></td>
+						<td style="text-align:center">{{raisedorder.vendorname}}</td>
+						<td id="show" style="text-align:center"><a data-toggle="modal" data-target="#myModal" href="#/po_details/:{{raisedorder.identify_id}}" style="text-decoration: none;">{{raisedorder.identify_id}}</a></td>
+						<td style="text-align:center">{{raisedorder.po_date}}</td>
+						<td style="text-align:center">Rs.{{raisedorder.amount}}</td>
+						<td style="text-align:center">{{raisedorder.shot_status}}</td>
+					
+					</tr>
+				</table>
+			</form>
+					
+		
+					
+					</div>
+										
+					  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+    <div class="title">
+														<span>PurchaseOrder Details</span>
+															
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+																
+															</div>
+															<div style="text-align: center;">
+				<p id="responseMessage"></p>
+			</div>
+														
+    						<button id="generatePDF">Download PDF</button>
+    						
+				
+				<div id="content">
+				
+				<img src="app/images/logo.jpg" width=200px  >
+				<h3>NEW VERSION STUDIOS</h3>
+				<p>#25, Laxmipuram 4th street</p>
+				<p>Peelamedu</p>
+				<p>Coimbatore 641004</p>
+				<p>India</p>
+				<table class="table table-striped" id="order_details">
+				<thead class="widget" style="background:#C0C0C0;">
+				<th class="title" style="width:260px;text-align:center" >IdentityId</th>
+				<th class="title" style="width:260px;text-align:center">PO date&nbsp;</th>
+				<th class="title" style="width:260px;text-align:center">Amount</th>
+				<th class="title" style="width:260px;text-align:center">Status</th>
+				<th class="title" style="width:260px;text-align:center">Balance Due</th>
+				<th class="title" style="width:260px;text-align:center">Payment</th>
+					</thead>
+				<tr ng-repeat="purchasedetail in purchaseDetails">
+						<td style="text-align:center"><input type="hidden" id="identifyId" name="identifyId" value="{{purchasedetail.identify_id}}">{{purchasedetail.identify_id}}</td>
+						<td style="text-align:center">{{purchasedetail.po_date}}</td>
+						<td style="text-align:center"><input type="hidden" id="totalAmount" name="totalAmount" value="{{purchasedetail.amount}}" >$.{{purchasedetail.amount}}</td>
+						<td ng-repeat="state in statusValue" ng-if="(state.id==purchasedetail.status) " style="text-align:center">{{state.status}}</td>
+						<td style="text-align:center">{{purchasedetail.amount-purchasedetail.paid}}</td>
+						<td style="text-align:center"><input type="text" id="paid" name="paid" ></td>
+					</tr>
+				
+				
+				</table>
+				<button ng-click="balancePaymentForPO()" style="float:right">Update Payment</button>
+
+				</div>
+    
+        
+       </div>
+      
+    </div>
+  </div>
+  
+  
+  <div class="modal fade" id="myHistory" role="dialog" >
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+    <div class="title">
+														<span>Payment History</span>
+															
+										<button type="button" class="close" data-dismiss="modal">&times;</button>
+																
+															</div>
+															
+														
+    						<div><input type="hidden"></div>
+    						
+				
+				<div id="history_content">
+				
+				
+				<table class="table table-hover" id="order_details">
+				<thead class="widget" style="background:#C0C0C0;">
+				<th class="title" style="width:260px;text-align:center" >IdentityId</th>
+				<th class="title" style="width:260px;text-align:center">Total Amount</th>
+				<th class="title" style="width:260px;text-align:center">Paid Amount</th>
+				<th class="title" style="width:260px;text-align:center">Paid Date</th>
+					</thead>
+				<tr ng-repeat="paymentDetail in paymentDetails">
+						<td style="text-align:center">{{paymentDetail.identify_id}}</td>
+						<td style="text-align:center">$.{{paymentDetail.total_amount}}</td>
+						<td style="text-align:center">{{paymentDetail.paid_amount}}</td>
+						<td style="text-align:center">{{paymentDetail.paid_date}}</td>
+					</tr>
+				
+				
+				</table>
+				</div>
+    
+        
+       </div>
+      
+    </div>
+  </div>
+  
+</div>
+					
+							
+			</div>
+			
+	</div>
+	
+</body>
+</html>

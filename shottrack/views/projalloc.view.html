@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html ng-app="app" >
+<head>
+	<title id="page">projectallocation</title>   
+</head>
+<body>
+<div class="wrapper">
+<header class="clearfix">
+<div class="main-header container">
+<img  ng-src="app/images/logo.jpg"/>
+<a href="#/login" class="btn btn-primary pull-right">Logout</a>
+</div>
+</header>
+<!-- sidebar view Begins-->
+<div>
+<div class="side-bardiv section_layout">
+				<div class="sidebar">
+				<div class="user-panel">
+				<div class="pull-left info">
+				<h5><p>Welcome ! {{username}}</p></h5>
+				</div>
+				</div>
+				<div class="list" id="list">
+				<li class="header">MENU NAVIGATION</li>
+				<nav>
+   				 <ul id="menu" class="nav" ng-repeat="row in useraccess">
+   				 <li><a  ng-class="{active : activeMenu === row.name}" href="#/{{row.name}}/{{row.id}}" >
+				{{row.title}}</a></li>        
+   				 </ul>
+   				 	</nav>
+                        </div>
+</div> 
+</div>
+</div>
+<style>
+li.active {
+    color: red;
+}
+</style>
+<!-- sidebar view Ends-->
+
+<div class="content-wrapper style="min-height: 491px;"">  
+			<div class="section_layout">
+            <section class="content-header">
+                    <h3>Project Allocations</h3>
+                    </section> 
+                    <div class="panel">         
+					<div class="row">                  
+   						 <div class="panel-body" >                         
+                         <div class="col-md-12" > 
+                         <div class="col-md-8" >     
+   						 					   <button class="btn btn-lg btn-success" ng-click="exportToExcel('#emptable')"><span class="glyphicon glyphicon-share"></span>Export to Excel</button>
+                                               </div>                                               
+                                               <div class="col-md-1" > 
+   	   										   <a class="btn btn-lg btn-success" href="#/edit_projectallocation/0"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add Allocation</a>
+                                               </div>
+    					
+    				</div>
+                     <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
+    <!-- Search Bar Begins-->
+   <div id="search">
+    		<table>   
+    		<tr>
+            <td align="right">Search : </td>&nbsp;
+            <td><input class="form-control" ng-model="search" style="margin-left:0.5em"/></td>
+        	</tr>     
+     </table> 
+        </div>
+      <!-- Listing of Users-->
+             
+     <form id="empform" method="post"> 
+        <table class="table table-striped table-bordered" id="emptable">
+        <thead>   		
+          		<!-- <th><input type="checkbox" name="select_all" id="select_all" value=""/></th>   -->
+        	  
+                <th ng-click="sort('name')">Name<span class="glyphicon sort-icon" ng-show="sortKey=='username'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span></th>
+         		<th>Edit</th>
+         		<th>Delete</th>
+               
+        </thead>
+        <tbody>    
+        		<tr dir-paginate="row in users | filter:search | orderBy:sortKey:reverse | itemsPerPage:5"> 
+              <!--  <td align="center"><input type="checkbox" name="checked_id[]" class="checkbox" value="{{row.projectallocationid}}"/></td>   -->            		
+                <td>{{row.projectallocationname}}</td>
+                <td><a href="#/edit_projectallocation/{{row.projectallocationid}}" class="btnaction">&nbsp;<i class="glyphicon glyphicon-edit"></i>&nbsp;</a></td>
+                <td><a href="#/projectallocation/{{projallocid}}" class="btnaction" ng-click="vm.deleteEmp(row.projectallocationid,row.projectallocationprojectdetailsid)">&nbsp;<i class="glyphicon glyphicon-remove"></i>&nbsp;</a></td>                 
+            	</tr>
+        </tbody>
+        </table>
+           			<dir-pagination-controls max-size="5"	direction-links="true"	boundary-links="true" >	</dir-pagination-controls> 
+                      <input type="submit" class="deletelogg" name="bulk_delete_submit" value="Delete Selected"/>       
+           </form>         
+  </div>
+  </div>
+ </div>
+ </div>
+ </div>   
+ </body>
+ 

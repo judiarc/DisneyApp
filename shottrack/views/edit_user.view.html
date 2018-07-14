@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+
+<script>
+	$(function() {
+		$("#headContent").load("views/header.view.html");
+	});
+	$('#user')
+			.submit(
+					function(event) {
+						$('button[type=submit], input[type=submit]')
+						.val("Please wait..")
+						.prop('disabled',true);
+						$.ajax({
+									type : 'POST',
+									url : 'services/user.php?function=addOrUpdateUser',
+									data : $(this).serialize(),
+									dataType : 'json',
+									success : function(data) {
+										if (data.success) {
+											//alert("success");
+											$('button[type=submit], input[type=submit]')
+											.val("Save")
+											.prop('disabled',false);
+											//alert('data'+data);
+											document.getElementById('userId').value = data.userId;
+											document
+													.getElementById("responseMessage").innerHTML = "<span style=color:'green'>"
+													+ data.message + "</span>";
+											document
+													.getElementById("responseMessage").style.color = '#008000'; // red or #ffffff
+											document
+													.getElementById("responseMessage").style.fontWeight = 'bold';
+											window.scrollTo(500, 0);
+										} else {
+											$('button[type=submit], input[type=submit]')
+											.val("Save")
+											.prop('disabled',false);
+											//alert('failure'+data);
+											document
+													.getElementById("responseMessage").innerHTML = "<span style=color:'red'>"
+													+ data.message + "</span>";
+											document
+													.getElementById("responseMessage").style.color = 'red'; // red or #ffffff
+											document
+													.getElementById("responseMessage").style.fontWeight = 'bold';
+											window.scrollTo(500, 0);
+										}
+									}
+								});
+						// stop the form from submitting and refreshing
+						event.preventDefault();
+					});
+	var back = function() {
+		window.location = "/shottrack/#/users";
+	}
+	
+	 var editPermission = function() {
+		 document.getElementById('entityDiv').innerHTML = "";
+		 document.getElementById('entitySaveResponse').innerHTML = "";
+		 document.getElementById('entityFieldSaveResponse').innerHTML = "";
+		 var userId = document.getElementById('userId').value;
+		 var roleId = document.getElementById('roleid').value;
+		 if(userId != '') {
+		 var xmlHttp = new XMLHttpRequest();
+		    xmlHttp.onreadystatechange = function() { 
+		    	
+		        if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+		        	var obj = JSON.parse(xmlHttp.responseText);
+		        	var ul = document.createElement('ul');
+		    		document.getElementById('entityDiv').appendChild(ul);						           
+		             for(var i=0; i < obj.length; i++) {
+		            var li = document.createElement('li');
+		 			ul.appendChild(li);
+					var checkbox = document.createElement('input');
+					checkbox.setAttribute("class", "checkboxentity");					
+						        checkbox.type = "checkbox";						       
+						        checkbox.name = obj[i].title;						        
+						        checkbox.id = obj[i].id;	
+						        checkbox.checked = obj[i].checked;		               
+		                var aTag = document.createElement('a');
+					aTag.setAttribute('href',"javascript:getAllFields(" + obj[i].id + ");");
+					aTag.innerHTML = obj[i].title;
+				li.appendChild(checkbox); 
+				li.appendChild(aTag); 			        
+		        }
+		        } 
+		    }
+		    xmlHttp.open("GET", 'services/entity?userId='+userId+'&roleId=' + roleId, true); // true for asynchronous 
+		    xmlHttp.send(null);
+		    document.getElementById('permissionDiv').style.display = "block";
+		 }
+	} 
+	 
+	 function getAllFields(entityId){
+		 document.getElementById('selectedEntity').value = entityId;
+		 document.getElementById('entityFieldsDiv').innerHTML = "";		
+		 var userId = document.getElementById('userId').value;
+		 var roleId = document.getElementById('roleid').value;
+		 if(userId != '') {
+		 var xmlHttp = new XMLHttpRequest();
+		    xmlHttp.onreadystatechange = function() { 		    	
+		        if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+		        	var obj = JSON.parse(xmlHttp.responseText);
+		        	var ul = document.createElement('ul');
+		    		document.getElementById('entityFieldsDiv').appendChild(ul);	
+		    		document.getElementById('entityFieldSaveResponse').innerHTML = "";		    		
+		             for(var i=0; i < obj.length; i++) {
+		            var li = document.createElement('li');
+		 			ul.appendChild(li);
+					var checkbox = document.createElement('input');
+					checkbox.setAttribute("class", "checkboxentityfield");					
+						        checkbox.type = "checkbox";						       
+						        checkbox.name = obj[i].title;
+						        checkbox.value = obj[i].title;
+						        checkbox.id = obj[i].id;
+						        checkbox.checked = obj[i].checked;
+		                var labelTag = document.createElement('label');					
+					labelTag.innerHTML = obj[i].title;
+				li.appendChild(checkbox); 
+				li.appendChild(labelTag); 			        
+		        }
+		             
+		        } 
+		    }
+		    xmlHttp.open("GET", 'services/getAllFields?entity=' + entityId 
+		    		+'&userId=' + userId +"&roleId="+ roleId , true); // true for asynchronous 
+		    xmlHttp.send(null);
+		 } 
+		   // document.getElementById('permissionDiv').style.display = "block";      
+	   }
+	 function saveEntity(){  
+		
+		var checkedValue = '';		
+		document
+		.getElementById("entitySaveResponse").innerHTML =  "";
+		var inputElements = document.getElementsByClassName('checkboxentity');
+		 	for(var i=0; inputElements[i]; ++i){	 		
+		 	     
+		 	    	 checkedValue += inputElements[i].id + ":" + inputElements[i].checked + ",";			 	           
+		 	    
+		 	}		 	
+		 	checkedValue = checkedValue.substr(0, checkedValue.length-1); 
+		 	var userId = document.getElementById('userId').value;
+		 	//alert(userId);
+		 	//if(userId != '') {
+		 	$.ajax({
+				type : 'POST',
+				url : 'services/user.php?function=saveUserEntityAssoc&checkedValue='
+						+ checkedValue +'&userId='+userId,
+				data : $(this).serialize(),
+				dataType : 'json',
+				success : function(data) {					
+					document
+							.getElementById("entitySaveResponse").innerHTML = "<span style=color:'green'>"
+							+ data + "</span>";
+					document
+							.getElementById("entitySaveResponse").style.color = '#008000'; // red or #ffffff
+					document
+							.getElementById("entitySaveResponse").style.fontWeight = 'bold';
+					
+				}
+		 	});			    
+		//}	     
+		 	
+	   }
+	 function saveEntityFields(){ 
+				var checkedValue = '';		 
+				var inputElements = document.getElementsByClassName('checkboxentityfield');
+				var entity = document.getElementById('selectedEntity').value;
+				document
+				.getElementById("entityFieldSaveResponse").innerHTML = "";
+				//alert("entity"+entity);
+				 	for(var i=0; inputElements[i]; ++i){
+				 	   checkedValue += inputElements[i].id + ":" + inputElements[i].checked + ",";
+				 	}		 	
+				 	checkedValue = checkedValue.substr(0, checkedValue.length-1); 
+				 	var userId = document.getElementById('userId').value;
+				 	
+				 	//if(userId != '') {
+				 	$.ajax({
+						type : 'POST',
+						url : 'services/user.php?function=saveUserEntityFieldAssoc&checkedValue='
+								+ checkedValue +'&userId='+userId + '&entity='+entity,
+						data : $(this).serialize(),
+						dataType : 'json',
+						success : function(data) {
+							document
+							.getElementById("entityFieldSaveResponse").innerHTML = "<span style=color:'green'>"
+							+ data + "</span>";
+					document
+							.getElementById("entityFieldSaveResponse").style.color = '#008000'; // red or #ffffff
+					document
+							.getElementById("entityFieldSaveResponse").style.fontWeight = 'bold';
+						}
+				 	});	
+			 	
+	   }
+</script>
+<style>
+.row {
+    margin-right: 11px;
+    margin-left: -10px;
+        
+}
+
+</style>
+</head>
+<body>
+	<!-- Header Section -->
+	<div id="headContent"></div>
+	<!--Header Section  Ends-->
+
+	<!-- Add artist form starts here-->
+
+<div class="main-content" style="margin-right: 1px;    margin-left: 200px;margin-top: auto;">
+			<div class="title" >
+			<span>Edit User</span>
+			</div>
+			</div>
+	<div ng-app="app" class="content-wrapper" style="min-height: 450px;padding-left: 180px;padding-right: 0px;margin-top: 145px;">
+
+		<div class="panel" style="    margin-top: -82px;">
+			<div style="text-align: center;">
+				<p id="responseMessage"></p>
+			</div>
+
+			<div>
+				<form name="user" id="user" class="form-horizontal" autocomplete="off">
+					<div class="row">
+						<div id="responseMessage" class="col-sm-12 col-md-12"></div>
+						<div class="col-sm-12 col-md-12">
+
+							<div ng-repeat="userField in userFields">
+								<div ng-if="userField.type == 'text'"
+									class="col-xs-6 form-group">
+									<label class="col-sm-3">{{userField.title}}<em
+											class="rclass" ng-hide ng-if="userField.required =='true'">*</em>
+											</label>
+									<div class="col-sm-6">
+										<input type="text" id="{{userField.name}}" 
+											placeholder="{{userField.title}}" name="{{userField.name}}"
+											ng-model="usersDetails[userField.name]" class="form-control" 
+											ng-required="{{userField.required}}" />
+									</div>
+									</div>
+								
+								
+							
+								<div ng-if="userField.type == 'email'"
+									class="col-xs-6 form-group">
+									<label class="col-sm-3">{{userField.title}}</label>
+									<div class="col-sm-6">
+										<input type="email" id="{{userField.name}}"
+											placeholder="{{userField.title}}" name="{{userField.name}}"
+											ng-model="usersDetails[userField.name]" class="form-control" />
+									</div>
+									</div>
+								
+
+								<div>
+									<div ng-if="userField.name == 'roleid'"
+										class="col-xs-6 form-group">
+										<label class="col-sm-3">{{userField.title}}<em
+											class="rclass" ng-hide ng-if="userField.required =='true'">*</em>
+											</label>
+										<div class="col-sm-6">
+											<select id="{{userField.name}}" name="{{userField.name}}"
+												ng-model="usersDetails.userroleid" ng-required="{{userField.required}}" >
+												<option value="">Select Role</option>
+												<option ng-repeat="role in roles"
+													ng-selected="{{role.id==usersDetails.userroleid}}"
+													value="{{role.id}}">{{role.access}}</option>
+											</select>
+										</div>
+									</div>
+								</div>
+								<div ng-hide ng-if="userField.name == 'entitystatus'">
+
+									<div class="col-xs-6 form-group">
+										<label class="col-sm-3">{{ userField.title }}<em
+											class="rclass" ng-hide ng-if="userField.required =='true'">*</em>
+										</label>
+										<div class="col-sm-6">
+											<select id="{{userField.name}}" name="{{userField.name}}"
+												ng-model="usersDetails[userField.name]" 
+												ng-required="{{userField.required}}">
+												<option value="">Select Status</option>
+												<option ng-repeat="dropdown in entitystatus"
+													ng-selected="dropdown.id==usersDetails.status"
+													value="{{dropdown.id}}">{{dropdown.value}}</option>
+											</select> <span
+												ng-show=" {{'myForm.'+userField.name+'.$dirty && myForm.'+userField.name+'.$invalid'}}">Required!</span>
+										</div>
+									</div>
+
+								</div>
+								<div ng-if="userRole == '0' && userField.name == 'companyid'">
+									<div class="col-xs-6 form-group">
+										<label class="col-sm-3">{{userField.title}}</label>
+										<div class="col-sm-6">
+											<select id="{{userField.name}}" name="{{userField.name}}"
+												ng-model="usersDetails.company_name">
+												<option value="">Select Company</option>
+												<option ng-repeat="company in companies"
+													ng-selected="{{company.id==usersDetails.company_name}}"
+													value="{{company.id}}">{{company.name}}</option>
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+
+
+							<div>
+								<div class="col-xs-6 form-group"></div>
+							</div>
+							<div>
+								<input type="hidden" name="userId" id="userId"
+									value="{{usersDetails.id}}" class="form-control" /> <input
+									type="hidden" name="permissionEnable" id="permissionEnable"
+									value=false class="form-control" />
+							</div>
+							<div>
+								<div class="col-xs-6 form-group">
+									<input type="hidden" value="done" id="additional"
+										ng-model="additional">
+								</div>
+								<div class="col-xs-6 form-group"></div>
+							</div>
+							<div>
+								<div class="col-xs-4 form-group">
+									<div class="col-sm-2">
+										<input type="submit" style="size: 20px" value="Save">
+									</div>
+
+									<label class="col-sm-2"> <input type="button"
+										style="size: 20px" onClick="back()" value="Back" size="20px">
+									</label> <label class="col-sm-2"> <input type="button"
+										style="size: 20px" onClick="editPermission()"
+										value="EditPermission" size="20px">
+									</label>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+				</form>
+
+			</div>
+		</div>
+		
+		
+		<div id="permissionDiv" style="display: none;" class="row">
+			<div class="col-xs-12 col-sm-6">
+				<form id="entityForm">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							Entity <input type="button" style="size: 20px; float: right;"
+								name="entitySave" id="entitySave" value="Save"
+								onClick="saveEntity()"></input>
+						</div>
+						<div style="text-align: center;">
+							<p id="entitySaveResponse"></p>
+						</div>
+						<div id="entityDiv" class="panel-body"></div>
+					</div>
+				</form>
+			</div>
+			
+			<div class="col-xs-12 col-sm-6">
+				<form id="entityFieldForm">
+					<div class="panel panel-primary" style="overflow:true">
+						<div class="panel-heading">
+							<label id="entityFieldsLabel"> Entity Fields </label> <input
+								type="button" style="size: 20px; float: right;"
+								name="entitySave" id="entitySave" value="Save"
+								onClick="saveEntityFields()"></input>
+						</div>
+						<input type="hidden" name="selectedEntity" id="selectedEntity"
+							value="">
+						<div style="text-align: center;">
+							<p id="entityFieldSaveResponse"></p>
+						</div>
+						<div id="entityFieldsDiv" class="panel-body"></div>
+					</div>
+				</form>
+			</div>
+		</div>
+		</div>
+</body>
+</html>

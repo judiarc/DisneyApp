@@ -1,0 +1,101 @@
+﻿<style type="text/css">
+  .form-horizontal input.ng-invalid.ng-dirty {
+    border-color: #FA787E;
+  }
+
+  .form-horizontal input.ng-valid.ng-dirty {
+    border-color: #78FA89;
+  }
+</style>
+<div class="wrapper1">
+<header class="clearfix">
+<div class="main-header container">
+<img  ng-src="app/images/logo.jpg"/>
+<a href="#/login" class="btn btn-primary pull-right">Logout</a>
+</div>
+</header>
+<!-- sidebar view Begins-->
+<div>
+<div class="side-bardiv section_layout">
+				<div class="sidebar">
+				<div class="user-panel">
+				<div class="pull-left info">
+				<h5><p>Welcome ! {{username}}</p></h5>
+				</div>
+				</div>
+				<div class="list" id="list">
+				<li class="header">MENU NAVIGATION</li>
+				<nav>
+   					 <ul id="menu" class="nav" ng-repeat="row in useraccess">
+   						 <li><a  ng-class="{active : activeMenu === row.name}" href="#/{{row.name}}/{{row.id}}" >{{row.title}}</a></li>        
+   					 </ul>
+   				 </nav>
+                        </div>
+</div> 
+</div>
+</div>
+<style>
+li.active {
+    color: red;
+}
+</style>
+<!-- sidebar view Ends-->
+<div class="content-wrapper" style="min-height: 491px;">  
+<div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
+<div class="section_layout">
+<div class="view">
+    <div class="">
+        <div class="">
+        <nav class= "navbar" role= "navigation" >
+        <div class= "navbar-header" >
+        <h3>{{title}}</h3>
+        </div>
+        </nav>
+       
+	<div class="modal-body">
+		<div class="panel-body">
+		<div class="col-md-10">
+				<form id="assessment_form" name="assessment_form" action="" method="POST" class="form-horizontal" role="form" autocomplete="off">
+							<div class="row">
+                         
+					<div class="col-sm-12 col-md-12">
+						<table class="table table-hover">
+							<tbody>
+                            <tr>
+								<th>Client Name</th>
+								<td><b>{{projectdetails.clientname}}</b></td>
+								</tr>	
+								<tr>
+								<th>Project Name</th>
+								<td><b>{{projectdetails.name}}</b></td>
+								</tr>					                                
+                                <tr>
+								<th>No of Shots</th>
+								<td><b>{{shotscount}}</b></td>
+								</tr>					
+                                 <tr>
+								<th>Received Date</th>
+								<td><b>{{projectdetails.receiveddate}}</b></td>
+								</tr>
+                                <tr>
+								<th   ng-if="userroleid == 0 || userroleid == 3 || userroleid == 6">Target Date</th>
+								<td  ng-if="userroleid == 0 || userroleid == 3 || userroleid == 6"><b>{{projectdetails.targetdate}}</b></td>
+								</tr>					
+                                 <tr  ng-if="userroleid == 0 || userroleid == 3">
+								<th>Cost of the Project</th>
+								<td><b>{{projectdetails.cost}}</b></td>
+								</tr>                              			
+                                 
+								</tbody>
+						</table> 
+				 <div class="col-md-6 cancel">
+    <a href="#/projectdetails/{{entityid}}" class="btn">back</a>
+    </div>		
+					
+					
+				</div></form>
+		</div>
+	</div>
+	
+</div></div>
+ 

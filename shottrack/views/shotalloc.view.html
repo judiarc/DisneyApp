@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html ng-app="app" >
+<head>
+<script>
+	$(function() {
+		$("#headContent").load("views/header.view.html");
+	});
+</script>
+
+</head>
+<body>
+<!-- sidebar view Ends-->
+
+<div id="headContent"></div>
+<div class="content-wrapper style="min-height: 491px;"">  
+	<div class="section_layout">
+	
+	<div class="main-content">
+			<div style="width: 100%;" class="title">
+				<span>Shot Allocations</span>
+				<div class="addButton">
+					<button onclick="location.href = '#/edit_shotallocation/0'">
+						<image>
+						<img src="app/images/add.png"  style="width: 25px; height: 25px;"></image>
+					</button>
+				</div>
+				<div class="deleteButton">
+					<button ng-click="vm.deleteShot()">
+						<image>
+						<img src="app/images/delete.png"
+							style="width: 25px; height: 25px;"></image>
+					</button>
+				</div>
+				</div>
+				</div>       
+	 <table style="margin-top: 25px;"> 
+ 	 <tr>
+  	 <td style="padding:10px;"><select id="departmentid" name="departmentid"  ng-model="search.shotallocationdepartmentid"   ng-options="item.shotallocationdepartmentid as item.name for item in shotallocationdepartmentid" class= "form-control" ng-change="selectAction()"><option value="">Filter by Department</option></select><br>
+     </td>
+	 
+     <td style="padding:10px;"><select id="projectid" name="projectid"  ng-model="search.shotallocationprojectdetailsid"   ng-options="item.id as item.name for item in shotallocationprojectdetailsid" class= "form-control"  ng-change="selectAction()"><option value="">Filter by Project</option></select><br>
+     </td>
+     
+     
+	 <!-- <td style="padding:10px;"><select id="shotid" name="shotid"  ng-model="search.entity_id"   ng-options="item.shotcode as item.shotcodename for item in shotcode" class= "form-control"><option value="">Filter by Shot</option></select><br></td> -->	
+     
+     
+    </tr>
+    </table>
+    
+      <!-- Listing of Users-->
+      <form id="empform" method="post">
+<div class="dataTables_wrapper"   style="padding-top: 0px;">
+        <table  id="artiststable" datatable="ng"  dt-options="vm.dtOptions">
+        <thead class="widget">   		
+          		<th class="title" sty><input type="checkbox" onClick="toggle(this)"/></th>
+          		<th class="title">Id</th>
+                <th class="title">Department</th>
+                <th class="title">Project Name</th>
+        	    <th class="title">Name</th>
+                <th class="title">Version</th>
+                <th class="title">Shot Status</th>
+               <!--  <th>View</th>
+         		<th>Edit</th>
+         		<th>Delete</th> -->
+        </thead>
+        <tbody>  
+        
+        		<tr ng-repeat="row in users  track by $index "> 
+                <td style="text-align:-webkit-center"><input type="checkbox" name="checked_id[]" class="checkbox" value="{{row.identify_id}}"/></td> 
+               	<td><a href="#/edit_shotallocation/{{row.id}}">{{row.id}}</a></td>
+                <td>{{row.dept}}</td>  
+                <td>{{row.projectname}}</td>    		
+                <td>{{row.shotcode}}</td>
+                <td>{{row.version}}</td>
+                 <td>{{row.status}}</td>
+
+                
+                           
+            	</tr>
+        </tbody>
+        </table>
+           			                           
+                 
+					</div>
+  				</div>
+ </body>
+ 

@@ -1,0 +1,86 @@
+<div class="wrapper">
+<header class="clearfix">
+<div class="main-header container">
+<img  ng-src="app/images/logo.jpg"/>
+<a href="#/login" class="btn btn-primary pull-right">Logout</a>
+</div>
+</header>
+<!-- sidebar view Begins-->
+<div>
+<div class="side-bardiv section_layout">
+				<div class="sidebar">
+				<div class="user-panel">
+				<div class="pull-left info">
+				<h5><p>Welcome ! {{username}}</p></h5>
+				</div>
+				</div>
+				<div class="list" id="list">
+				<li class="header">MENU NAVIGATION</li>
+				<nav>
+   				 <ul id="menu" class="nav" ng-repeat="row in useraccess">
+   				 <li><a  ng-class="{active : activeMenu === row.name}" href="#/{{row.name}}/{{row.id}}" >
+				{{row.title}}</a></li>        
+   				 </ul>
+   				 	</nav>
+                        </div>
+</div> 
+</div>
+</div>
+<style>
+li.active {
+    color: red;
+}
+
+</style>
+
+<!-- sidebar view Ends-->
+<div class="content-wrapper style="min-height: 491px;"">  
+	<div class="section_layout"> 
+          <section class="content-header">
+                <h3>Payment Details</h3>
+                   </section> 
+                    	<div class="panel">         
+							<div class="row">                  
+   								 <div class="panel-body" >                         
+                         				<div class="col-md-12" > 
+                        					 <div class="col-md-10" >    
+   						 					    <button class="btn btn-lg btn-success" ng-click="exportToExcel('#userstable')"><span class="glyphicon glyphicon-share"></span>Export to Excel</button>
+                                               </div>
+    									</div>
+        <!-- Listing of Users-->      
+    <form id="empform" method="post">   
+                  
+        <table class="table table-striped table-bordered" id="paymenttable" datatable="ng"  dt-options="vm.dtOptions" >
+        <thead>   		 
+          	     <th>project name</th>
+         		 <th>project cost</th>
+                 <th>Date</th>
+                 <th>Amount received</th>
+         		 <th>Amount pending</th>  
+                 <th>Payment Mode</th>              
+                 <th>next follow date</th>
+                  <th>Edit</th>
+                
+               
+        </thead>
+        <tbody>    
+                <tr ng-repeat="row in clientpayments "> 
+                  	<td>{{row.name}}</td>
+                  	<td>{{row.cost}}</td>
+                   	<td>{{row.receiveddate}}</td>
+                   	<td>{{row.amountreceived}}</td>
+                    <td>{{row.amtpending}}</td>
+                     <td ng-if="row.transfermodeid==1">cash</td>
+                                <td ng-if="row.transfermodeid==2">cheque</td>
+                                <td ng-if="row.transfermodeid==3">NEFT</td>
+                    <td>{{row.followdate}}</td>   
+                    <td ng-show="$first"><a href="#/edit_projectdetails/{{row.entity_id}}/dueid/{{row.due_id}}" class="btnaction">&nbsp;<i class="glyphicon glyphicon-edit"></i>&nbsp;</a></td>                                
+            	</tr>
+        </tbody>
+        </table>
+        </form>
+  </div>
+  </div>
+ </div>   
+ </div>
+ </div>

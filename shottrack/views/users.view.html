@@ -1,0 +1,59 @@
+  <script> 
+    $(function(){
+      $("#headContent").load("views/header.view.html");
+    });
+    </script>
+
+
+<!-- Header Section -->
+<div id="headContent"></div>
+<!--Header Section  Ends-->
+<div class="content-wrapper style="min-height: 491px;"">  
+			<div class="section_layout">
+            <section class="content-header">
+                    <h3>Users</h3>
+                    </section> 
+                     <div class="panel">         
+					<div class="row">                  
+   						 <div class="panel-body" >                         
+                         <div class="col-md-12" > 
+                         <div class="col-md-10" >      
+   						 		<button class="btn btn-lg btn-success" ng-click="exportToExcel('#userstable')"><span class="glyphicon glyphicon-share"></span>Export to Excel</button>
+                          </div>                          
+                                  <div class="col-md-2" > 
+   	   							<a class="btn btn-lg btn-success" href="#/edit_user/0"><i class="glyphicon glyphicon-plus"></i>&nbsp;Add new User</a>
+                          </div>    						
+    			</div>
+    	
+      <!-- Listing of Users-->      
+     <form id="usersform" method="post"> 
+         <table class="table table-striped table-bordered" datatable="ng" id="userstable" dt-options="vm.dtOptions">
+       		 <thead> 
+             <th></th>	 
+                <th>Username</th>
+                <th>View</th>
+         		<th>Edit</th>
+         		<th>Delete</th>
+        	 </thead>
+       		 <tbody>  
+           
+        		<tr ng-repeat="row in users" >
+          		<td align="center"><input type="checkbox" name="checked_id[]" class="checkbox" value="{{row.id}}"/></td>
+                <td>{{row.name}}</td>
+                 <td><a href="#/view_user/{{row.id}}" class="btnaction">&nbsp;<i class="glyphicon glyphicon-eye-open"></i>&nbsp;</a></td>
+                <td><a href="#/edit_user/{{row.id}}" class="btnaction">&nbsp;<i class="glyphicon glyphicon-edit"></i>&nbsp;</a></td>
+                <td><a href="#/users/{{row.id}}" class="btnaction" ng-click="vm.deleteUser(row.id)">&nbsp;<i class="glyphicon glyphicon-remove"></i>&nbsp;</a></td>
+            	</tr>
+               
+       		  </tbody>
+        </table>
+             		
+          		<div><input type="checkbox" name="select_all" id="select_all" value=""/> Check all</div>
+            <input type="submit" class="deletelogg" name="bulk_delete_submit" value="Delete Selected"/>       
+    </form>
+   
+   </div>
+  </div>
+ </div>   
+ </div>
+ </div>

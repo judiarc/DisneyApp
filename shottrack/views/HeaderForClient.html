@@ -1,0 +1,46 @@
+<head>
+	<style>
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    float: left;
+    border: 2px solid #036;
+    border-bottom-width: 0;
+    margin: 2px 0px 0px 0px;
+    padding: 6px 8px 1px 2px;
+    background-color: #114f8e;
+    
+}
+#mainmenu a {
+    color: white;   
+}
+nav > ul {margin: 0}
+
+</style>
+</head>
+<header id='header'>
+	<div>
+		<div class ="pull-right" id='topnav'>
+			<a href='#/login' style="text-decoration:none" class="logout"><font color="white" size="3">Logout</font></a> 		
+		</div>
+		<h8 id='companyname'><font color="white" size="4">KnitVFX</font></h8>
+	<div></div>
+	<nav id='mainmenu'>
+		<ul>
+			<li data-id='my'><a href='#/dashboard/1' ><i
+					class="icon-home" style="text-decoration:none"></i><span>Dashboard</span></a></li>
+			<li data-id='product'><a href="#/users" style="text-decoration:none">User</a></li>
+			<li ng-if="(users.userroleid == '0' || users.userroleid == '1'|| users.userroleid == '2' || users.userroleid == '5')" data-id='artist'><a href="#/artist" style="text-decoration:none">Artist</a></li>
+			<li class='active' data-id='project' ><a href='#/users' class='active' style="text-decoration:none">Client</a></li>
+			<li data-id='qa'><a href='#/users' style="text-decoration:none">Vendor</a></li>
+			<li data-id='doc'><a href='#/users' style="text-decoration:none">Freelancer</a></li>
+			<li data-id='report'><a href='#/users' style="text-decoration:none">Project</a></li>
+			<li data-id='company'><a href='#/users' style="text-decoration:none">Shot</a></li>	
+		</ul>		
+	</nav>
+	</div>
+</header>

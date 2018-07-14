@@ -1,0 +1,744 @@
+﻿<style type="text/css">
+  .form-horizontal input.ng-invalid.ng-dirty {
+    border-color: #FA787E;
+  }
+
+  .form-horizontal input.ng-valid.ng-dirty {
+    border-color: #78FA89;
+  }
+</style>
+<!-- PROCESS FORM WITH AJAX (OLD) -->
+<script>
+$(".click").click(function()
+{
+	alert("please add Freelancer");
+});
+</script>
+<script>
+$(document).ready(function() {
+// process the form
+$('#formedit').submit(function(event) {
+  // process the form
+  $.ajax({
+	type        : 'POST',
+    url         : 'services/process.php?function=freelancer',
+    data        : $(this).serialize(),
+    dataType    : 'json',
+    success     : function(data) {
+
+      // log data to the console so we can see
+      console.log(data);
+
+        // if validation is good add success message
+		if ( data.success) {		
+       			
+				alert(data.message);
+				var freelancerid=data.id;
+				window.location = "#/edit_freelancers/"+freelancerid;
+		}
+      }
+  });
+  // stop the form from submitting and refreshing
+  event.preventDefault();
+});
+
+// process the form
+$('#formbank').submit(function(event) {
+  // process the form
+  $.ajax({
+    type        : 'POST',
+    url         : 'services/process.php?function=formbankfreelancer',
+    data        : $(this).serialize(),
+	 dataType    : 'json',  
+    success     : function(data) {
+
+      // log data to the console so we can see
+      console.log(data);
+
+        // if validation is good add success message
+		if ( data.success) {		
+       			
+				alert(data.message);
+				var freelancerid=data.id;
+				window.location = "#/edit_freelancers/"+freelancerid;
+		}
+      }
+  });
+
+  // stop the form from submitting and refreshing
+  event.preventDefault();
+});
+
+
+// process the form
+$('#formftp').submit(function(event) {
+  // process the form
+  $.ajax({
+    type        : 'POST',
+    url         : 'services/process.php?function=formftpfreelancer',
+    data        : $(this).serialize(),
+	 dataType    : 'json',  
+    success     : function(data) {
+
+      // log data to the console so we can see
+      console.log(data);
+
+        // if validation is good add success message
+		if ( data.success) {		
+       			alert(data.message);
+				window.location = "#/freelancers/17";
+		}
+      }
+  });
+
+  // stop the form from submitting and refreshing
+  event.preventDefault();
+});
+});
+</script>
+
+<div class="wrapper1">
+<header class="clearfix">
+<div class="main-header container">
+<img  ng-src="app/images/logo.jpg"/>
+<a href="#/login" class="btn btn-primary pull-right">Logout</a>
+</div>
+</header>
+<!-- sidebar view Begins-->
+<div>
+<div class="side-bardiv section_layout">
+	<div class="sidebar">
+		<div class="user-panel">
+			<div class="pull-left info">
+				<h5><p>Welcome !  {{username}}</p></h5>
+			</div>
+		</div>
+		<div class="list" id="list">
+			<li class="header">MENU NAVIGATION</li>
+				<nav>
+   					 <ul id="menu" class="nav" ng-repeat="row in useraccess">
+   				 	 <li><a  ng-class="{active : activeMenu === row.name}" href="#/{{row.name}}/{{row.id}}" >{{row.title}}</a></li>        
+   				 	 </ul>
+   				 </nav>
+        </div>
+	</div> 
+</div>
+</div>
+<style>
+li.active {
+    color: red;
+}
+</style>
+<!-- sidebar view Ends-->
+<div class="content-wrapper" style="min-height: 491px;">
+<div class="section_layout">
+	<div class="view">
+    	<div class="">     		       		
+        <nav class= "navbar" role= "navigation" >
+        <div class= "navbar-header" >
+        <h3>{{title}}</h3>
+        </div>
+        </nav>
+        </div>
+        <div ng:show="editfreelancersid > 0">
+				<nav role="tablist" id="tablist">              
+				<a href ng:click="selected=1" ng-class="{active: selected == 1}" ng-init="selected=1">Add Freelancers</a>
+				<a href ng:click="selected=2" ng-class="{active: selected == 2}">Bank Details</a>	
+                <a href ng:click="selected=3" ng-class="{active: selected == 3}">Ftp (or) Aspera</a>	
+				</nav>
+        </div>
+         <div ng:show="editfreelancersid == 0">
+				<nav role="tablist" id="tablist">              
+				<a href ng:click="selected=1" ng-class="{active: selected == 1}" ng-init="selected=1">Add Freelancers</a>
+				<a class="click" href  ng-class="{active: selected == 2}">Bank Details</a>	
+                <a class="click" href  ng-class="{active: selected == 3}">Ftp (or) Aspera</a>					
+				</nav>
+        </div>       
+  <div ng:show="selected == 1">      
+          <div class="panel">         
+					<div class="row">   
+        <div class="col-md-12">
+      
+<form role="form" name="myForm" id="formedit" class="form-horizontal">
+<div class="form inline">
+	<div ng-repeat="field in fields">
+		<span  ng-switch on="field.type">
+        
+       	<div ng-hide ng-if="field.name != 'priceroto' && field.name != 'pricepaint' && field.name != 'pricematch' && field.name != 'pricecomp'&& field.name != 'price3d'&& field.name != 'priorityroto'&& field.name != 'prioritypaint'&& field.name != 'prioritymatch'&& field.name != 'prioritycomp'&& field.name != 'priority3d' && field.name != 'mobile' && field.name != 'mobile1' && field.name != 'mobile2' && field.name != 'mobile3' && field.name != 'mobile4'" >
+  			<span ng-switch-when="text">
+    			<div class="col-xs-6 form-group">
+    				<label  class="col-sm-3">{{ field.title }}<em  class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-sm-6">
+   							 <input type="text" id="{{field.name}}" ng-model="entity['freelancer'+field.name]"   class= "form-control"  ng-pattern="{{field.validation}}"  name="freelancer{{field.name}}"  ng-required="{{field.required}}"/>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+  		</span>
+     </div> 
+     	<div ng-hide ng-if="field.name == 'priceroto'&& entity.freelancerpriceroto" >
+  			<span id="{{field.name}}" ng-switch-when="text">
+    			<div class="col-xs-6 form-group">
+    				<label  class="col-sm-3">{{ field.title }}<em  class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-sm-6">
+   							 <input type="text" id="{{field.name}}" ng-model="entity['freelancer'+field.name]"   class= "form-control"  ng-pattern="{{field.validation}}"  name="freelancer{{field.name}}"  ng-required="{{field.required}}"/>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+  		</span>
+     </div>  
+     <div ng-hide ng-if="field.name == 'pricepaint'&& entity.freelancerpricepaint" >
+  			<span id="{{field.name}}" ng-switch-when="text">
+    			<div class="col-xs-6 form-group">
+    				<label  class="col-sm-3">{{ field.title }}<em  class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-sm-6">
+   							 <input type="text" id="{{field.name}}" ng-model="entity['freelancer'+field.name]"   class= "form-control"  ng-pattern="{{field.validation}}"  name="freelancer{{field.name}}"  ng-required="{{field.required}}"/>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+  		</span>
+     </div>  
+      <div ng-hide ng-if="field.name == 'pricematch'&& entity.freelancerpricematch" >
+  			<span id="{{field.name}}" ng-switch-when="text">
+    			<div class="col-xs-6 form-group">
+    				<label  class="col-sm-3">{{ field.title }}<em  class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-sm-6">
+   							 <input type="text" id="{{field.name}}" ng-model="entity['freelancer'+field.name]"   class= "form-control"  ng-pattern="{{field.validation}}"  name="freelancer{{field.name}}"  ng-required="{{field.required}}"/>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+  		</span>
+     </div>  
+      <div ng-hide ng-if="field.name == 'pricecomp'&& entity.freelancerpricecomp" >
+  			<span id="{{field.name}}" ng-switch-when="text">
+    			<div class="col-xs-6 form-group">
+    				<label  class="col-sm-3">{{ field.title }}<em  class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-sm-6">
+   							 <input type="text" id="{{field.name}}" ng-model="entity['freelancer'+field.name]"   class= "form-control"  ng-pattern="{{field.validation}}"  name="freelancer{{field.name}}"  ng-required="{{field.required}}"/>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+  		</span>
+     </div>  
+      <div ng-hide ng-if="field.name == 'price3d'&& entity.freelancerprice3d" >
+  			<span id="{{field.name}}" ng-switch-when="text">
+    			<div class="col-xs-6 form-group">
+    				<label  class="col-sm-3">{{ field.title }}<em  class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-sm-6">
+   							 <input type="text" id="{{field.name}}" ng-model="entity['freelancer'+field.name]"   class= "form-control"  ng-pattern="{{field.validation}}"  name="freelancer{{field.name}}"  ng-required="{{field.required}}"/>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+  		</span>
+     </div>  
+     	<div ng-hide ng-if="field.name == 'priorityroto'&& entity.freelancerpriorityroto" >
+  			<span id="{{field.name}}" ng-switch-when="text">
+    			<div class="col-xs-6 form-group">
+    				<label  class="col-sm-3">{{ field.title }}<em  class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-sm-6">
+   							 <input type="text" id="{{field.name}}" ng-model="entity['freelancer'+field.name]"   class= "form-control"  ng-pattern="{{field.validation}}"  name="freelancer{{field.name}}"  ng-required="{{field.required}}"/>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+  		</span>
+     </div>  
+     <div ng-hide ng-if="field.name == 'prioritypaint'&& entity.freelancerprioritypaint" >
+  			<span id="{{field.name}}" ng-switch-when="text">
+    			<div class="col-xs-6 form-group">
+    				<label  class="col-sm-3">{{ field.title }}<em  class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-sm-6">
+   							 <input type="text" id="{{field.name}}" ng-model="entity['freelancer'+field.name]"   class= "form-control"  ng-pattern="{{field.validation}}"  name="freelancer{{field.name}}"  ng-required="{{field.required}}"/>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+  		</span>
+     </div>  
+      <div ng-hide ng-if="field.name == 'prioritymatch'&& entity.freelancerprioritymatch" >
+  			<span id="{{field.name}}" ng-switch-when="text">
+    			<div class="col-xs-6 form-group">
+    				<label  class="col-sm-3">{{ field.title }}<em  class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-sm-6">
+   							 <input type="text" id="{{field.name}}" ng-model="entity['freelancer'+field.name]"   class= "form-control"  ng-pattern="{{field.validation}}"  name="freelancer{{field.name}}"  ng-required="{{field.required}}"/>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+  		</span>
+     </div>  
+      <div ng-hide ng-if="field.name == 'prioritycomp'&& entity.freelancerprioritycomp" >
+  			<span id="{{field.name}}"  ng-switch-when="text">
+    			<div class="col-xs-6 form-group">
+    				<label  class="col-sm-3">{{ field.title }}<em  class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-sm-6">
+   							 <input type="text" id="{{field.name}}" ng-model="entity['freelancer'+field.name]"   class= "form-control"  ng-pattern="{{field.validation}}"  name="freelancer{{field.name}}"  ng-required="{{field.required}}"/>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+  		</span>
+     </div>  
+      <div ng-hide ng-if="field.name == 'priority3d'&& entity.freelancerpriority3d" >
+  			<span id="{{field.name}}" ng-switch-when="text">
+    			<div class="col-xs-6 form-group">
+    				<label  class="col-sm-3">{{ field.title }}<em  class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-sm-6">
+   							 <input type="text" id="{{field.name}}" ng-model="entity['freelancer'+field.name]"   class= "form-control"  ng-pattern="{{field.validation}}"  name="freelancer{{field.name}}"  ng-required="{{field.required}}"/>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+  		</span>
+     </div>  
+    <div ng-hide ng-if="field.name == 'mobile'" >
+  			<span ng-switch-when="text">
+    			<div class="col-xs-6 form-group">
+    				<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-sm-5">
+   							 <input type="text" ng-model="entity['freelancer'+field.name]"   class= "form-control"   ng-pattern="{{field.validation}}"  name="freelancer{{field.name}}"  ng-required="{{field.required}}"/></div><div class="col-sm-1"><a href><i class="glyphicon glyphicon-plus" ng-click="addmobile()"></i></a></div>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						
+   				</div>
+  			</span>
+        </div>
+        
+          <div ng-hide ng-if="field.name == 'mobile1'" >
+  			<span id="{{field.name}}" style="display:none" ng-switch-when="text">
+    			<div class="col-xs-6 form-group">
+    				<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-sm-5">
+   							 <input type="text" ng-model="entity['freelancer'+field.name]"   class= "form-control"   ng-pattern="{{field.validation}}"  name="freelancer{{field.name}}"  ng-required="{{field.required}}"/></div><div class="col-sm-1"><a href><i class="glyphicon glyphicon-plus" ng-click="addmobile1()"></i></a></div>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						
+   				</div>
+  			</span>
+        </div>
+          <div ng-hide ng-if="field.name == 'mobile1' && entity.freelancermobile1" >
+  			<span id="{{field.name}}" ng-switch-when="text">
+    			<div class="col-xs-6 form-group">
+    				<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-sm-5">
+   							 <input type="text" ng-model="entity['freelancer'+field.name]"   class= "form-control"   ng-pattern="{{field.validation}}"  name="freelancer{{field.name}}"  ng-required="{{field.required}}"/></div><div class="col-sm-1"><a href><i class="glyphicon glyphicon-plus" ng-click="addmobile1()"></i></a></div>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						
+   				</div>
+  			</span>
+        </div>
+        
+        <div ng-hide ng-if="field.name == 'mobile2'" >
+        <span id="{{field.name}}" style="display:none" ng-switch-when="text">  			
+    			<div class="col-xs-6 form-group">
+    				<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-sm-5">
+   							 <input type="text" ng-model="entity['freelancer'+field.name]"   class= "form-control"   ng-pattern="{{field.validation}}"  name="freelancer{{field.name}}"  ng-required="{{field.required}}"/></div><div class="col-sm-1"><a href><i class="glyphicon glyphicon-plus" ng-click="addmobile2()"></i></a></div>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						
+   				</div>
+  			</span>
+        </div>
+          <div ng-hide ng-if="field.name == 'mobile2' && entity.freelancermobile2" >
+  			<span id="{{field.name}}" ng-switch-when="text">
+    			<div class="col-xs-6 form-group">
+    				<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-sm-5">
+   							 <input type="text" ng-model="entity['freelancer'+field.name]"   class= "form-control"   ng-pattern="{{field.validation}}"  name="freelancer{{field.name}}"  ng-required="{{field.required}}"/></div><div class="col-sm-1"><a href><i class="glyphicon glyphicon-plus" ng-click="addmobile2()"></i></a></div>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						
+   				</div>
+  			</span>
+        </div>
+        <div ng-hide ng-if="field.name == 'mobile3'" >
+        <span id="{{field.name}}" style="display:none" ng-switch-when="text">  			
+    			<div class="col-xs-6 form-group">
+    				<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-sm-5">
+   							 <input type="text" ng-model="entity['freelancer'+field.name]"   class= "form-control"   ng-pattern="{{field.validation}}"  name="freelancer{{field.name}}"  ng-required="{{field.required}}"/></div><div class="col-sm-1"><a href><i class="glyphicon glyphicon-plus" ng-click="addmobile3()"></i></a></div>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						
+   				</div>
+  			</span>
+        </div>
+         <div ng-hide ng-if="field.name == 'mobile3' && entity.freelancermobile3" >
+  			<span id="{{field.name}}" ng-switch-when="text">
+    			<div class="col-xs-6 form-group">
+    				<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-sm-5">
+   							 <input type="text" ng-model="entity['freelancer'+field.name]"   class= "form-control"   ng-pattern="{{field.validation}}"  name="freelancer{{field.name}}"  ng-required="{{field.required}}"/></div><div class="col-sm-1"><a href><i class="glyphicon glyphicon-plus" ng-click="addmobile3()"></i></a></div>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						
+   				</div>
+  			</span>
+        </div>
+        <div ng-hide ng-if="field.name == 'mobile4'" >
+       		 <span id="{{field.name}}" style="display:none" ng-switch-when="text">  			
+    			<div class="col-xs-6 form-group">
+    				<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-sm-5">
+   							 <input type="text" ng-model="entity['freelancer'+field.name]"   class= "form-control"   ng-pattern="{{field.validation}}"  name="freelancer{{field.name}}"  ng-required="{{field.required}}"/></div>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						
+   				</div>
+  			</span>
+        </div>
+         <div ng-hide ng-if="field.name == 'mobile4' && entity.freelancermobile4" >
+  			<span id="{{field.name}}" ng-switch-when="text">
+    			<div class="col-xs-6 form-group">
+    				<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-sm-5">
+   							 <input type="text" ng-model="entity['freelancer'+field.name]"   class= "form-control"   ng-pattern="{{field.validation}}"  name="freelancer{{field.name}}"  ng-required="{{field.required}}"/></div>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						
+   				</div>
+  			</span>
+        </div>
+        
+     <div ng-hide ng-if="field.name == 'priceroto' || field.name == 'pricepaint' || field.name == 'pricematch' || field.name == 'pricecomp'|| field.name == 'price3D' || field.name == 'priorityroto' || field.name == 'prioritypaint' || field.name == 'prioritymatch' || field.name == 'prioritycomp' || field.name == 'priority3d'" >
+     
+  			<span id="{{field.name}}" style="display:none" ng-switch-when="text">
+    			<div class="col-xs-6 form-group">
+    				<label  class="col-sm-3">{{ field.title }}<em  class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-sm-6">
+   							 <input type="text" ng-model="entity['freelancer'+field.name]"   class= "form-control"  ng-pattern="{{field.validation}}"  name="freelancer{{field.name}}" />
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+  		</span>
+     </div> 
+    
+    		<span ng-switch-when="date">
+    			<div class="col-xs-6 form-group">
+    				<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-sm-6">
+                         <datepicker date-format="yyyy-MM-dd">
+   							 <input type="date" class= "form-control" ng-model="entity['freelancer'+field.name]"   name="freelancer{{field.name}}"   ng-required="{{field.required}}"/>
+                             </datepicker>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+  		</span>
+        
+         <div ng-hide ng-if="field.name != 'email1' && field.name != 'email2' && field.name != 'email3' && field.name != 'email4'" >
+        <span ng-switch-when="email">
+    			<div class="col-xs-6 form-group">
+    				<label class="col-sm-3">{{ field.title }}<em  class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-sm-6">
+                       			 <input type="email" class= "form-control" ng-model="entity['freelancer'+field.name]"  ng-pattern="{{field.validation}}" name="freelancer{{field.name}}"   ng-required="{{field.required}}"/></div> <div class="col-sm-1"><a href><i class="glyphicon glyphicon-plus" ng-click="addChoice()"></i></a></div> 
+                                  <span ng-show="{{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}" class="help-inline">Email Required</span>
+   								 <span ng-show="{{'myForm.'+field.name+'.$error.'+field.name}}" class="help-inline">Email is not valid</span>                         
+    					</div>
+   				
+  		</span>
+        </div>
+        <div ng-hide ng-if="field.name == 'email1'" >
+        <span id="{{field.name}}" style="display:none" ng-switch-when="email">
+    			<div class="col-xs-6 form-group">
+               
+    				<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   						 <div class="col-sm-5">
+                  			<input type="email" class= "form-control" ng-model="entity['freelancer'+field.name]" ng-pattern="{{field.validation}}" name="freelancer{{field.name}}"   
+                            ng-required="{{field.required}}"/> </div> <div class="col-sm-1"><a href><i class="glyphicon glyphicon-plus" ng-click="addChoice1()"></i></a></div>
+                                  <span ng-show="{{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}" class="help-inline">Email Required</span>
+   								 <span ng-show="{{'myForm.'+field.name+'.$error.'+field.name}}" class="help-inline">Email is not valid</span>                         
+    					</div>
+   				
+  		</span>
+   </div>  
+    <div ng-hide ng-if="field.name == 'email1' && entity.freelanceremail1" >
+  			<span id="{{field.name}}" ng-switch-when="email">
+    			<div class="col-xs-6 form-group">
+    				<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-sm-5">
+   							 <input type="email" ng-model="entity['freelancer'+field.name]"   class= "form-control"   ng-pattern="{{field.validation}}"  name="freelancer{{field.name}}"  ng-required="{{field.required}}"/></div> <div class="col-sm-1"><a href><i class="glyphicon glyphicon-plus" ng-click="addChoice1()"></i></a></div>
+    							 <span ng-show="{{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}" class="help-inline">Email Required</span>
+   								 <span ng-show="{{'myForm.'+field.name+'.$error.'+field.name}}" class="help-inline">Email is not valid</span> 
+   						
+   				</div>
+  			</span>
+        </div>
+     <div ng-hide ng-if="field.name == 'email2'" >
+        <span id="{{field.name}}" style="display:none" ng-switch-when="email">
+    			<div class="col-xs-6 form-group">
+               
+    				<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   						 <div class="col-sm-5">
+                  			<input type="email" class= "form-control" ng-model="entity['freelancer'+field.name]" ng-pattern="{{field.validation}}" name="freelancer{{field.name}}"   
+                            ng-required="{{field.required}}"/> </div> <div class="col-sm-1"><a href><i class="glyphicon glyphicon-plus" ng-click="addChoice2()"></i></a></div>
+                                  <span ng-show="{{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}" class="help-inline">Email Required</span>
+   								 <span ng-show="{{'myForm.'+field.name+'.$error.'+field.name}}" class="help-inline">Email is not valid</span>                         
+    					</div>
+   				
+  		</span>
+   </div>  
+     <div ng-hide ng-if="field.name == 'email2' && entity.freelanceremail2" >
+  			<span id="{{field.name}}" ng-switch-when="email">
+    			<div class="col-xs-6 form-group">
+    				<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-sm-5">
+   							 <input type="email" ng-model="entity['freelancer'+field.name]"   class= "form-control"   ng-pattern="{{field.validation}}"  name="freelancer{{field.name}}"  ng-required="{{field.required}}"/></div> <div class="col-sm-1"><a href><i class="glyphicon glyphicon-plus" ng-click="addChoice2()"></i></a></div>
+    							 <span ng-show="{{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}" class="help-inline">Email Required</span>
+   								 <span ng-show="{{'myForm.'+field.name+'.$error.'+field.name}}" class="help-inline">Email is not valid</span> 
+   						
+   				</div>
+  			</span>
+        </div>
+    <div ng-hide ng-if="field.name == 'email3'" >
+        <span id="{{field.name}}" style="display:none" ng-switch-when="email">
+    			<div class="col-xs-6 form-group">
+               
+    				<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   						 <div class="col-sm-5">
+                  			<input type="email" class= "form-control" ng-model="entity['freelancer'+field.name]" ng-pattern="{{field.validation}}" name="freelancer{{field.name}}"  
+                             ng-required="{{field.required}}"/> </div> <div class="col-sm-1"><a href><i class="glyphicon glyphicon-plus" ng-click="addChoice3()"></i></a></div>
+                                  <span ng-show="{{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}" class="help-inline">Email Required</span>
+   								 <span ng-show="{{'myForm.'+field.name+'.$error.'+field.name}}" class="help-inline">Email is not valid</span>                         
+    					</div>
+   				
+  		</span>
+   </div> 
+   <div ng-hide ng-if="field.name == 'email3' && entity.freelanceremail3" >
+  			<span id="{{field.name}}" ng-switch-when="email">
+    			<div class="col-xs-6 form-group">
+    				<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-sm-5">
+   							 <input type="email" ng-model="entity['freelancer'+field.name]"   class= "form-control"   ng-pattern="{{field.validation}}"  name="freelancer{{field.name}}"  ng-required="{{field.required}}"/></div> <div class="col-sm-1"><a href><i class="glyphicon glyphicon-plus" ng-click="addChoice3()"></i></a></div>
+    							 <span ng-show="{{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}" class="help-inline">Email Required</span>
+   								 <span ng-show="{{'myForm.'+field.name+'.$error.'+field.name}}" class="help-inline">Email is not valid</span> 
+   						
+   				</div>
+  			</span>
+        </div> 
+   <div ng-hide ng-if="field.name == 'email4'" >
+        <span id="{{field.name}}" style="display:none" ng-switch-when="email">
+    			<div class="col-xs-6 form-group">
+               
+    				<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   						 <div class="col-sm-5">
+                  			<input type="email" class= "form-control" ng-model="entity['freelancer'+field.name]" ng-pattern="{{field.validation}}" name="freelancer{{field.name}}"  
+                             ng-required="{{field.required}}"/> </div> <div class="col-sm-1"></div>
+                                  <span ng-show="{{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}" class="help-inline">Email Required</span>
+   								 <span ng-show="{{'myForm.'+field.name+'.$error.'+field.name}}" class="help-inline">Email is not valid</span>                         
+    					</div>
+   				
+  		</span>
+   </div>  
+    <div ng-hide ng-if="field.name == 'email4' && entity.freelanceremail4" >
+  			<span id="{{field.name}}" ng-switch-when="email">
+    			<div class="col-xs-6 form-group">
+    				<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-sm-5">
+   							 <input type="email" ng-model="entity['freelancer'+field.name]"   class= "form-control"   ng-pattern="{{field.validation}}"  name="freelancer{{field.name}}"  ng-required="{{field.required}}"/></div> 
+    							 <span ng-show="{{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}" class="help-inline">Email Required</span>
+   								 <span ng-show="{{'myForm.'+field.name+'.$error.'+field.name}}" class="help-inline">Email is not valid</span> 
+   						
+   				</div>
+  			</span>
+        </div>   
+         
+         
+         <div ng-hide ng-if="field.name == 'departmentid'" >
+         <span ng-switch-when="select"> 
+            <div class= "col-xs-6 form-group">
+    				<label class="col-xs-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-xs-6">
+   							 <select id="freelancerdepartmentid" name="freelancerdepartmentid[]"  multiple="true" ng-required="{{field.required}}"  ng-model="entity['freelancerdepartmentid']"    ng-options="{{'item as item.name for item in' + ' ' +'freelancer'+field.endpoint+ ' ' +'track by item.'+'freelancer'+field.endpoint}}"  class= "form-control"  
+                             ng-change="selectAction()"><option value="">select</option></select>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+   </span>
+ </div> 
+ <div ng-hide ng-if="field.name != 'departmentid'" >
+         <span ng-switch-when="select"> 
+            <div class="col-xs-6 form-group">
+    				<label  class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div  class="col-sm-6">
+   							 <select  ng-model="entity"  name="freelancer{{field.name}}" ng-options="{{'item as item.name for item in' + ' ' +'freelancer'+field.endpoint+ ' ' +'track by item.'+'freelancer'+field.endpoint}}" class= "form-control" ng-required="{{field.required}}"/></select>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+   </span>
+  </div> 
+ 	<span ng-switch-when="textarea"> 
+            <div class="col-xs-6 form-group">
+    				<label  class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div  class="col-sm-6">
+   							 <textarea  name="freelancer{{field.name}}" ng-model="entity['freelancer'+field.name]"  class= "form-control" ng-required="{{field.required}}"/></textarea>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+   </span> 
+</div>
+<input type="hidden"  value="{{entityid}}" name="entityid" />
+<input type="hidden"  value="{{editfreelancersid}}" name="editfreelancerid" />
+<div class= "col-xs-12 form-group">   
+    <div class="col-md-6 cancel">
+    <a href="#/freelancers/{{entityid}}" class="btn">Cancel</a>
+   </div>
+     <div class="col-md-3">
+    <button type="submit"  ng-disabled="isClean() || myForm.$invalid" class="btn btn-primary">{{buttonText}}</button>
+    </div>
+   
+   
+</div>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
+
+<div ng:show="selected == 2">
+
+ <div class="panel">         
+					<div class="row">   
+       					 <div class="col-md-12">
+<form role="form" name="formbank" id="formbank" class="form-horizontal">
+<div class="form inline">
+	<div ng-repeat="field in fieldsbank">
+		<span ng-switch on="field.type">
+  			<span ng-switch-when="text">
+    			<div class="col-xs-6 form-group">
+    				<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-sm-6">
+   							 <input type="text" ng-model="entity['freelancer'+field.name]"   class= "form-control"   ng-pattern="{{field.validation}}" name="freelancer{{field.name}}"  ng-required="field.required"/>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+  		</span>
+    		<span ng-switch-when="date">
+    			<div class="col-xs-6 form-group">
+    				<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   						 <div class="col-sm-6">
+                         <datepicker date-format="yyyy-MM-dd">
+   							 <input type="date" class= "form-control" ng-model="entity['freelancer'+field.name]"   name="freelancer{{field.name}}"   ng-required="field.required"/>
+                             </datepicker>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+  		</span>
+        <span ng-switch-when="email">
+    			<div class="col-xs-6 form-group">
+    				<label  class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   						 <div  class="col-sm-6">
+                       			 <input type="email" class= "form-control" ng-model="entity['freelancer'+field.name]"  name="freelancer{{field.name}}"   ng-required="field.required"/> 
+                                  <span ng-show="{{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}" class="help-inline">Email Required</span>
+   								 <span ng-show="{{'myForm.'+field.name+'.$error.'+field.name}}" class="help-inline">Email is not valid</span>                         
+    					</div>
+   				</div>
+  		</span> 
+         <span ng-switch-when="select"> 
+         <div  class="col-xs-6 form-group">
+    		<label class= "col-sm-3">{{ field.title }}<em   class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   				<div class="col-sm-6">
+   					<select  ng-model="entity" id="{{field.name}}" name="freelancer{{field.name}}" ng-options="{{'item as item.freelancer'+field.name+'name for item in' + ' ' +'freelancer'+field.endpoint+ ' ' +'track by item.'+'freelancer'+field.endpoint}}" class= "form-control" ng-required="field.required"/></select>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+              	</div>
+   		</div>
+   </span>
+   
+ 	<span ng-switch-when="textarea"> 
+            <div  class="col-xs-6 form-group">
+    				<label class= "col-sm-3">{{ field.title }}<em   class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-sm-6">
+   							 <textarea  name="freelancer{{field.name}}" ng-model="entity['freelancer'+field.name]"    class= "form-control" ng-required="field.required"/></textarea>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+   </span> 
+</div>
+<input type="hidden"  value="{{entityid}}" name="entityid" />
+<input type="hidden"  value="{{editfreelancersid}}" name="editfreelancerid" />
+<div class= "col-xs-12 form-group">   
+    <div class="col-md-6 cancel">
+    <a href="#/freelancers/{{entityid}}" class="btn">Cancel</a>
+    </div>
+      <div class="col-md-3">
+    <button type="submit" ng-disabled="isClean() || formbank.$invalid"  class="btn btn-primary">{{buttonText}}</button>
+    </div>
+   
+</div>
+</div>
+</div>
+</form>
+</div>
+     		   		</div>
+       			</div>
+                
+                
+ <div ng:show="selected == 3">
+ <div class="panel">         
+					<div class="row">   
+       					 <div class="col-md-12">
+<form role="form" name="formftp" id="formftp" class="form-horizontal">
+<div class="form inline">
+	<div ng-repeat="field in fieldsftp">
+		<span ng-switch on="field.type">
+  			<span ng-switch-when="text">
+    			<div class="col-xs-6 form-group">
+    				<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-sm-6">
+   							 <input type="text" id="{{field.name}}" ng-disabled="{{field.disabled}}" ng-model="entity['freelancer'+field.name]"   class= "form-control"   ng-pattern="{{field.validation}}" name="freelancer{{field.name}}"  ng-required="{{field.required}}"/>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+  		</span>
+    		<span ng-switch-when="date">
+    			<div class="col-xs-6 form-group">
+    				<label class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   						 <div class="col-sm-6">
+                         <datepicker date-format="yyyy-MM-dd">
+   							 <input type="date" class= "form-control" ng-model="entity['freelancer'+field.name]"   name="freelancer{{field.name}}"   ng-required="{{field.required}}"/>
+                             </datepicker>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+  		</span>
+        <span ng-switch-when="email">
+    			<div class="col-xs-6 form-group">
+    				<label  class="col-sm-3">{{ field.title }}<em class="rclass" ng-hide ng-if="field.required =='true'">*</em> </label>
+   						 <div  class="col-sm-6">
+                       			 <input type="email" class= "form-control" ng-model="entity['freelancer'+field.name]"  name="freelancer{{field.name}}"  ng-required="{{field.required}}"/> 
+                                  <span ng-show="{{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}" class="help-inline">Email Required</span>
+   								 <span ng-show="{{'myForm.'+field.name+'.$error.'+field.name}}" class="help-inline">Email is not valid</span>                         
+    					</div>
+   				</div>
+  		</span> 
+         <span ng-switch-when="select"> 
+         <div  class="col-xs-6 form-group">
+    		<label class= "col-sm-3">{{ field.title }}<em   class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   				<div class="col-sm-6">
+   					<select  ng-model="entity" id="{{field.name}}" name="freelancer{{field.name}}" ng-options="{{'item as item.name for item in' + ' ' +'freelancer'+field.endpoint+ ' ' +'track by item.'+'freelancer'+field.endpoint}}" ng-change="selectaccess()" class= "form-control"  ng-required="{{field.required}}"/></select>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+              	</div>
+   		</div>
+   </span>
+   
+ 	<span ng-switch-when="textarea"> 
+            <div  class="col-xs-6 form-group">
+    				<label class= "col-sm-3">{{ field.title }}<em   class="rclass" ng-hide ng-if="field.required == 'true'">*</em> </label>
+   						 <div class="col-sm-6">
+   							 <textarea  name="freelancer{{field.name}}" ng-model="entity['freelancer'+field.name]"    class= "form-control" ng-required="{{field.required}}"/></textarea>
+    							<span  ng-show=" {{'myForm.'+field.name+'.$dirty && myForm.'+field.name+'.$invalid'}}">Required!</span>
+   						</div>
+   				</div>
+   </span> 
+</div>
+<input type="hidden"  value="{{entityid}}" name="entityid" />
+<input type="hidden"  value="{{editfreelancersid}}" name="editfreelancerid" />
+<div class= "col-xs-12 form-group">   
+    <div class="col-md-6 cancel">
+    <a href="#/freelancers/{{entityid}}" class="btn">Cancel</a>
+    </div>
+      <div class="col-md-3">
+    <button type="submit" ng-disabled="isClean() || formftp.$invalid"  class="btn btn-primary">{{buttonText}}</button>
+    </div>
+   
+</div>
+</div>
+</div>
+</form>
+</div>
+     		   		</div>
+       			</div>
+    	
+    		</div>
+		</div>
+	</div>
+</div>
+
+ 

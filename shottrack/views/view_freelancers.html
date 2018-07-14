@@ -1,0 +1,252 @@
+﻿<style type="text/css">
+  .form-horizontal input.ng-invalid.ng-dirty {
+    border-color: #FA787E;
+  }
+
+  .form-horizontal input.ng-valid.ng-dirty {
+    border-color: #78FA89;
+  }
+</style>
+<div class="wrapper1">
+<header class="clearfix">
+<div class="main-header container">
+<img  ng-src="app/images/logo.jpg"/>
+<a href="#/login" class="btn btn-primary pull-right">Logout</a>
+</div>
+</header>
+<!-- sidebar view Begins-->
+<div>
+<div class="side-bardiv section_layout">
+				<div class="sidebar">
+				<div class="user-panel">
+				<div class="pull-left info">
+				<h5><p>Welcome ! {{username}}</p></h5>
+				</div>
+				</div>
+				<div class="list" id="list">
+				<li class="header">MENU NAVIGATION</li>
+				<nav>
+   				 <ul id="menu" class="nav" ng-repeat="row in useraccess">
+   				 <li><a  ng-class="{active : activeMenu === row.name}" href="#/{{row.name}}/{{row.id}}" >
+				{{row.title}}</a></li>        
+   				 </ul>
+   				 	</nav>
+                        </div>
+</div> 
+</div>
+</div>
+<style>
+li.active {
+    color: red;
+}
+</style>
+<!-- sidebar view Ends-->
+<div class="content-wrapper" style="min-height: 491px;">  
+<div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
+<div class="section_layout">
+<div class="view">
+    <div class="">
+        <div class="">
+        <nav class= "navbar" role= "navigation" >
+        <div class= "navbar-header" >
+        <h3>{{title}}</h3>
+        </div>
+        </nav>
+       
+	<div class="modal-body">
+		<div class="panel-body">
+			<div class="col-md-10">
+				<div class="row">
+					<div class="col-sm-12 col-md-12">
+						<table class="table table-hover">
+							<tbody>
+								<tr>
+								<th>Name</th>
+								<td><b>{{freelancers.freelancername}}</b></td>
+								</tr>					
+                                 <tr>
+								<th>Email</th>
+								<td><b>{{freelancers.freelanceremail}}</b></td>
+								</tr>	
+                                <tr>
+                                 <tr ng-if="freelancers.freelanceremail1">
+								<th>Email1</th>
+								<td><b>{{freelancers.freelanceremail1}}</b></td>
+								</tr>	
+                                <tr>
+                                  <tr ng-if="freelancers.freelanceremail2">
+								<th>Email2</th>
+								<td><b>{{freelancers.freelanceremail2}}</b></td>
+								</tr>	
+                                <tr>
+                                  <tr ng-if="freelancers.freelanceremail3">
+								<th>Email3</th>
+								<td><b>{{freelancers.freelanceremail3}}</b></td>
+								</tr>	
+                                <tr>
+                                  <tr ng-if="freelancers.freelanceremail4">
+								<th>Email4</th>
+								<td><b>{{freelancers.freelanceremail4}}</b></td>
+								</tr>						
+                                 <tr>
+								<th>Mobile</th>
+								<td><b>{{freelancers.freelancermobile}}</b></td>
+								</tr>	
+                                 <tr ng-if="freelancers.freelancermobile1">
+								<th>Mobile1</th>
+								<td><b>{{freelancers.freelancermobile1}}</b></td>
+								</tr>	
+                                <tr>
+                                  <tr ng-if="freelancers.freelancermobile2">
+								<th>Mobile2</th>
+								<td><b>{{freelancers.freelancermobile2}}</b></td>
+								</tr>	
+                                <tr>
+                                  <tr ng-if="freelancers.freelancermobile3">
+								<th>Mobile3</th>
+								<td><b>{{freelancers.freelancermobile3}}</b></td>
+								</tr>	
+                                <tr>
+                                  <tr ng-if="freelancers.freelancermobile4">
+								<th>Mobile4</th>
+								<td><b>{{freelancers.freelancermobile4}}</b></td>
+								</tr>	
+                                <tr>
+                                <tr>
+								<th>Address</th>
+								<td><b>{{freelancers.freelanceraddress}}</b></td>
+								</tr>					
+                                 <tr>
+								<th>City</th>
+								<td><b>{{freelancers.freelancercity}}</b></td>
+								</tr>
+                                 <tr>
+								<th>State</th>
+								<td><b>{{freelancers.freelancerstate}}</b></td>
+								</tr>
+                                <tr>
+								<th>Country</th>
+								<td><b>{{freelancers.freelancercountry}}</b></td>
+								</tr>					
+                                 <tr>
+                                <th>Department</th>
+                                <td ng-if="freelancers.freelancerdepartmentid.indexOf('1') > -1"><b>Roto</b>
+                                 <td ng-if="freelancers.freelancerdepartmentid.indexOf('2') > -1"><b>Paint</b></td>
+                                  <td ng-if="freelancers.freelancerdepartmentid.indexOf('3') > -1"><b>Match move</b></td>
+                                   <td ng-if="freelancers.freelancerdepartmentid.indexOf('4') > -1"><b>Compositing</b></td>
+                                    <td ng-if="freelancers.freelancerdepartmentid.indexOf('5') > -1"><b>3D</b></td>
+								</tr>
+                                 <tr ng-if="freelancers.freelancerpriceroto">
+                                <th>Price Per Manday for Roto</th>
+                                <td><b>{{freelancers.freelancerpriceroto}}</b></td>
+								</tr>
+                                 <tr ng-if="freelancers.freelancerpriorityroto">
+                                <th>Priority for Roto</th>
+                                <td><b>{{freelancers.freelancerpriorityroto}}</b></td>
+								</tr>
+                                 <tr ng-if="freelancers.freelancerpricepaint">
+                                <th>Price Per Manday for Paint</th>
+                                <td><b>{{freelancers.freelancerpricepaint}}</b></td>
+								</tr>
+                                 <tr ng-if="freelancers.freelancerprioritypaint">
+                                <th>Priority for Paint</th>
+                                <td><b>{{freelancers.freelancerprioritypaint}}</b></td>
+								</tr>
+                                 <tr ng-if="freelancers.freelancerpricematch">
+                                <th>Price Per Manday for MatchMove</th>
+                                <td><b>{{freelancers.freelancerpricematch}}</b></td>
+								</tr>
+                                 <tr ng-if="freelancers.freelancerprioritymatch">
+                                <th>Priority for MatchMove</th>
+                                <td><b>{{freelancers.freelancerprioritymatch}}</b></td>
+								</tr>
+                                <tr ng-if="freelancers.freelancerpricecomp">
+                                <th>Price Per Manday for Compositing</th>
+                                <td><b>{{freelancers.freelancerpricecomp}}</b></td>
+								</tr>
+                                 <tr ng-if="freelancers.freelancerprioritycomp">
+                                <th>Priority for Compositing</th>
+                                <td><b>{{freelancers.freelancerprioritycomp}}</b></td>
+								</tr>
+                                <tr ng-if="freelancers.freelancerprice3d">
+                                <th>Price Per Manday for 3D</th>
+                                <td><b>{{freelancers.freelancerprice3d}}</b></td>
+								</tr>
+                                 <tr ng-if="freelancers.freelancerpriority3d">
+                                <th>Priority for 3D</th>
+                                <td><b>{{freelancers.freelancerpriority3d}}</b></td>
+								</tr>
+							
+								</tbody>
+						</table> 
+				</div>
+                 <nav class= "navbar" role= "navigation" >
+        <div  ng-if="userroleid == 0 || userroleid == 3 || userroleid == 2" class= "navbar-header" >
+        <h3>Bank Details</h3>
+        </div>
+        </nav>
+        
+        
+        <table  ng-if="userroleid == 0 || userroleid == 3 || userroleid == 2" class="table table-hover">
+							<tbody>
+								<tr>
+								<th>Account No</th>
+								<td><b>{{freelancers.freelanceraccountno}}</b></td>
+                                 <td>{{freelancers.freelanceraccountno ? '' : 'nill'}}</td>
+								</tr>					
+                                 <tr>
+								<th>Account Name</th>
+								<td><b>{{freelancers.freelanceraccountname}}</b></td>
+                                 <td>{{freelancers.freelanceraccountname ? '' : 'nill'}}</td>
+								</tr>	
+                                <tr>
+								<th>IFSC CODE</th>
+								<td><b>{{freelancers.freelancerifsc}}</b></td>
+                                 <td>{{freelancers.freelancerifsc ? '' :'nill'}}</td>
+								</tr>
+                                </tbody>	
+            </table>
+             <nav class= "navbar" role= "navigation" >
+        <div  ng-if="userroleid == 0 || userroleid == 3 || userroleid == 2" class= "navbar-header" >
+        <h3>FTP or ASPERA</h3>
+        </div>
+        </nav>        
+        <table  ng-if="userroleid == 0 || userroleid == 3 || userroleid == 2" class="table table-hover">
+							<tbody>
+								<tr>
+								<th>Url</th>
+								<td  ng-if ="freelancers.freelancerurl"><b>{{freelancers.freelancerurl}}</b></td>
+                                <td>{{freelancers.freelancerurl ? 'yes' : 'nill'}}</td>
+								</tr>					
+                                 <tr>
+								<th>HostName</th>
+								<td   ng-if="freelancers.freelancerhostname"><b>{{freelancers.freelancerhostname}}</b></td>
+                                 <td>{{freelancers.freelancerhostname ? '' : 'nill'}}</td>
+								</tr>	
+                                <tr >
+								<th>Username</th>
+								<td  ng-if="freelancers.freelancerusername"><b>{{freelancers.freelancerusername}}</b></td>
+                                <td>{{freelancers.freelancerusername ? '' : 'nill'}}</td>
+								</tr>
+                                 <tr>
+								<th>Password</th>
+								<td  ng-if="freelancers.freelancerpassword"><b>{{freelancers.freelancerpassword}}</b></td>
+                                <td>{{freelancers.freelancerpassword ? '' : 'nill'}}</td>
+								</tr>
+                                <tr>
+								<th>Port</th>
+								<td  ng-if="freelancers.freelancerport"><b>{{freelancers.freelancerport}}</b></td>
+                                <td>{{freelancers.freelancerport ? '' : 'nill'}}</td>
+								</tr>
+                              </tbody>	
+            </table>
+            	
+					 <div class="col-md-6 cancel">
+    <a href="#/freelancers/{{entityid}}" class="btn">back</a>
+    </div>
+					
+		</div>
+	</div>
+	
+</div></div>
+ 

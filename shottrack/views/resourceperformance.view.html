@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html ng-app="app" >
+<head>
+	<title id="page">resourceperformance</title>   
+</head>
+<body>
+<div class="wrapper">
+<header class="clearfix">
+<div class="main-header container">
+<img  ng-src="app/images/logo.jpg"/>
+<a href="#/login" class="btn btn-primary pull-right">Logout</a>
+</div>
+</header>
+<!-- sidebar view Begins-->
+<div>
+<div class="side-bardiv section_layout">
+				<div class="sidebar">
+				<div class="user-panel">
+				<div class="pull-left info">
+				<h5><p>Welcome ! {{username}}</p></h5>
+				</div>
+				</div>
+				<div class="list" id="list">
+				<li class="header">MENU NAVIGATION</li>
+				<nav>
+   				 <ul id="menu" class="nav" ng-repeat="row in useraccess">
+   				 <li><a  ng-class="{active : activeMenu === row.name}" href="#/{{row.name}}/{{row.id}}">{{row.title}}</a></li>        
+   				 </ul>
+   				 	</nav>
+                        </div>
+</div> 
+</div>
+</div>
+<style>
+li.active {
+    color: red;
+}
+</style>
+<!-- sidebar view Ends-->
+	<div class="content-wrapper style="min-height: 491px;"">  
+		<div class="section_layout">
+              <section class="content-header">
+               <h3>Resource Performance</h3>
+               </section> 
+                     	 <div class="panel">         
+					 		 <div class="row">                  
+   						 		<div class="panel-body" >                         
+                        			 <div class="col-md-12" > 
+                        					 <div class="col-md-11" >     
+   						 					   <button class="btn btn-lg btn-success" ng-click="exportToExcel('#emptable')"><span class="glyphicon glyphicon-share"></span>Export to Excel</button>
+                                               </div> 
+    									</div>
+     
+    <!-- Listing of Users-->      
+    <form id="empform" method="post"> 
+      <table class="table table-striped table-bordered" datatable="ng" id="emptable" dt-options="vm.dtOptions">
+        <thead>   		
+          		 <th>Resource</th>         	                  
+         		 <th>Department</th>         		
+                 <th>no.of.frames</th> 
+                 <th>Feedback</th> 
+        </thead>
+        <tbody>    
+        		<tr ng-repeat="row in projects"> 
+                <td>{{row.artistname}}</td>
+                <td>{{row.artistskill}}</td>
+                <td>{{row.projectallocationframesgiven}}</td>
+                <td>good</td>
+            	</tr>
+        </tbody>
+        </table>
+           	                      
+     </form>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>   
+  </body>
+ 

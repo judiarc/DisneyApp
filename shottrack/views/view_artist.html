@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script> 
+    $(function(){
+      $("#headContent").load("views/HeaderForArtist.html");
+      $("#actionContent").load("views/actionHeaderForArtist.html");
+    });
+    </script>
+</head>	
+<body>
+	<!-- Header Section -->
+<div id="headContent"></div>
+<!--Header Section  Ends-->
+
+ <!-- Add user form starts here-->
+
+
+<div class="content-wrapper" style="min-height: 450px;">
+
+<div class="panel" style="min-height: 650px;">
+
+<section class="content-header">
+<h3>Add Artist Details</h3>
+</section>
+<div></div>	
+<div class="">
+		<div class="col-md-10">
+		<form action="" id="adduser" ng-submit="addartist(addname,addemail,adddob,addmobile,addaddress1,addaddress2,addcity,addstate,addcountry,adddoj,addexperience,addgender,addctc,addrole,addsupervisor,addprojecthead,addlevel,addoutputmanday,adddol,addstatus)" class="form-horizontal">
+		<div class="row">
+		<div class="col-sm-12 col-md-12">
+			<div>
+					<div class="col-xs-6 form-group">
+					<label class="col-sm-3">Name</label>
+					<div class="col-sm-6">
+					<input type="text" ng-init="addname=artist.name" id="addname" name="add_name" ng-model="addname" placeholder="EnterName"   class= "form-control" required>
+					</div>
+		 			</div>
+			</div>
+			
+			<div>
+					<div class="col-xs-6 form-group">
+					<label class="col-sm-3">Email</label>
+					<div class="col-sm-6">
+					<input type="email" ng-init="addemail=artist.email" id="addemail" name="add_email" ng-model="addemail" placeholder="EnterEmail"   class= "form-control">
+					</div>
+		 			</div>
+			</div>
+			
+			<div>
+					<div class="col-xs-6 form-group">
+					<label class="col-sm-3">DateOfBirth</label>
+					<div class="col-sm-6">
+					<input type="date" ng-init="adddob=artist.dob" id="adddob" name="add_dob" ng-model="adddob" placeholder="DOB"   class= "form-control">
+					</div>
+		 			</div>
+			</div>
+			
+			<div>
+					<div class="col-xs-6 form-group">
+					<label class="col-sm-3">Mobile</label>
+					<div class="col-sm-6">
+					<input type="number" ng-init="addmobile=artist.mobile" id="addmobile" name="add_mobile" ng-model="addmobile" placeholder="ContactNo"   class= "form-control">
+					</div>
+		 			</div>
+			</div>
+			
+			<div>
+					<div class="col-xs-6 form-group">
+					<label class="col-sm-3">Address 1</label>
+					<div class="col-sm-6">
+					<input type="text" ng-init="addaddress=artist.address_line1" id="addaddress1" name="add_address1" ng-model="addaddress1" placeholder="Address"   class= "form-control">
+					</div>
+		 			</div>
+			</div>
+			
+			<div>
+					<div class="col-xs-6 form-group">
+					<label class="col-sm-3">Address 2</label>
+					<div class="col-sm-6">
+					<input type="text" ng-init="addaddress2=artist.address_line2" id="addaddress2" name="add_address2" ng-model="addaddress2" placeholder="Address"   class= "form-control">
+					</div>
+		 			</div>
+			</div>
+			
+			<div>
+					<div class="col-xs-6 form-group">
+					<label class="col-sm-3">City</label>
+					<div class="col-sm-6">
+					<input type="text" ng-init="addcity=artist.city" id="addcity" name="add_city" ng-model="addcity" placeholder="City"   class= "form-control">
+					</div>
+		 			</div>
+			</div>
+			
+			<div>
+					<div class="col-xs-6 form-group">
+					<label class="col-sm-3">State</label>
+					<div class="col-sm-6">
+					<input type="text" ng-init="addstate=artist.state" id="addstate" name="add_state" ng-model="addstate" placeholder="State"   class= "form-control">
+					</div>
+		 			</div>
+			</div>
+			
+			<div>
+					<div class="col-xs-6 form-group">
+					<label class="col-sm-3">Country</label>
+					<div class="col-sm-6">
+					<input type="text" ng-init="addcountry=artist.country" id="addcountry" name="add_country" ng-model="addcountry" placeholder="Country"   class= "form-control">
+					</div>
+		 			</div>
+			</div>
+			
+			<div>
+					<div class="col-xs-6 form-group">
+					<label class="col-sm-3">DateOfJoining</label>
+					<div class="col-sm-6">
+					<input type="date" ng-init="adddoj=artist.doj" id="adddoj" name="add_doj" ng-model="adddoj" placeholder="doj"   class= "form-control">
+					</div>
+		 			</div>
+			</div>
+			
+			<div>
+					<div class="col-xs-6 form-group">
+					<label class="col-sm-3">Experience</label>
+					<div class="col-sm-6">
+					<input type="number" ng-init="addexperience=artist.experience" id="addexperience" name="add_experience" ng-model="addexperience" placeholder="Experience"   class= "form-control">
+					</div>
+		 			</div>
+			</div>
+			
+			<div>
+					<div class="col-xs-6 form-group">
+					<label class="col-sm-3">gender</label>
+					<div class="col-sm-6">
+					<input type="text" ng-init="addgender=artist.gender" id="addgender" name="add_gender" ng-model="addgender" placeholder=""   class= "form-control">
+					</div>
+		 			</div>
+			</div>
+			
+			<div>
+					<div class="col-xs-6 form-group">
+					<label class="col-sm-3">CTC</label>
+					<div class="col-sm-6">
+					<input type="number" ng-init="addctc=artist.ctc" id="addctc" name="add_ctc" ng-model="addctc" placeholder="Ctc"   class= "form-control">
+					</div>
+		 			</div>
+			</div>
+			
+			<div>
+					<div class="col-xs-6 form-group">
+					<label class="col-sm-3">Role</label>
+					<div class="col-sm-6">
+					<select id="addrole" ng-model="addrole" required  >
+						<option value="">Select role</option>
+						<option value="0">SuperAdmin</option>
+						<option value="1">Admin</option>
+						<option value="2">Management</option>
+						<option value="3">Project head</option>
+						<option value="4">Project coordinator</option>
+						<option value="5">Supervisor</option>
+						<option value="6">Lead</option>
+						<option value="7">Artist</option>
+						<option value="8">HR</option>
+					</select>
+					</div>
+		 			</div>
+			</div>
+			
+			<div>
+					<div class="col-xs-6 form-group">
+					<label class="col-sm-3">lead</label>
+					<div class="col-sm-6">
+					<select id="addlead" ng-model="addlead" required  >
+						<option value="">Select lead</option>
+						<option value="0">Management</option>
+						<option value="1">Project Head</option>
+						<option value="2">Project coordinator</option>
+						<option value="3">VP</option>
+						<option value="4">Artist</option>
+					</select>	
+					</div>
+		 			</div>
+			</div>
+			
+			<div>
+					<div class="col-xs-6 form-group">
+					<label class="col-sm-3">Supervisor</label>
+					<div class="col-sm-6">
+						<select id="addsupervisor" ng-model="addsupervisor" required  >
+						<option value="">Select supervisor</option>
+						<option value="0">Management</option>
+						<option value="1">Project Head</option>
+						<option value="2">Project coordinator</option>
+						<option value="3">VP</option>
+						<option value="4">Artist</option>
+						</select>				
+					</div>
+		 			</div>
+			</div>
+			
+			<div>
+					<div class="col-xs-6 form-group">
+					<label class="col-sm-3">Project Head</label>
+					<div class="col-sm-6">
+					<select id="addprojecthead" ng-model="addprojecthead" required  >
+						<option value="">Select ProjectHead</option>
+						<option value="0">Management</option>
+						<option value="1">Project Head</option>
+						<option value="2">Project coordinator</option>
+						<option value="3">VP</option>
+						<option value="4">Artist</option>
+					</select>					
+					</div>
+		 			</div>
+			</div>
+			
+			<div>
+					<div class="col-xs-6 form-group">
+					<label class="col-sm-3">level</label>
+					<div class="col-sm-6">
+					<select id="addlevel" ng-model="addlevel" required  >
+						<option value="">Select level</option>
+						<option value="0">Management</option>
+						<option value="1">Project Head</option>
+						<option value="2">Project coordinator</option>
+						<option value="3">VP</option>
+						<option value="4">Artist</option>
+					</select>					
+					</div>
+		 			</div>
+			</div>
+			
+			<div>
+					<div class="col-xs-6 form-group">
+					<label class="col-sm-3">Output Manday</label>
+					<div class="col-sm-6">
+					<input type="float" ng-init="addoutputmanday=artist.output_manday" id="addoutputmanday" name="add_outputmanday" ng-model="addoutputmanday" placeholder=""   class= "form-control">
+					</div>
+		 			</div>
+			</div>
+			
+			<div>
+					<div class="col-xs-6 form-group">
+					<label class="col-sm-3">DOL</label>
+					<div class="col-sm-6">
+					<input type="date" ng-init="adddol=artist.dol" id="adddol" name="add_dol" ng-model="adddol" placeholder="Date Of Leaving"   class= "form-control">
+					</div>
+		 			</div>
+			</div>
+			
+	
+			
+			<div>
+					<div class="col-xs-6 form-group">
+					<label class="col-sm-3">Status</label>
+					<div class="col-sm-6">
+					<select id="addstatus" required  >
+						<option value="">Select status</option>
+						<option  ng-repeat="item in status" value="item.id">{{item.status}}</option>						
+					</select>					
+					</div>
+		 			</div>
+			</div>
+			
+			
+			
+			
+			<div>
+<div class="col-xs-6 form-group">
+</div>
+</div>
+	<div>
+		<div class="col-xs-6 form-group">
+			<label class="col-sm-3">			
+			<a href="#/users" class="btn">back</a>
+			</label><input type="hidden" ng-model="artistid" id="artistid" name="artist_id" ng-init="artistid=artist.id">
+			<div class="col-sm-6">
+			<input type="submit" ng-click="editartist(artistid,addname,addemail,adddob,addmobile,addaddress1,addaddress2,addcity,addstate,addcountry,adddoj,addexperience,addgender,addctc,addrole,addsupervisor,addprojecthead,addlevel,addoutputmanday,adddol,addstatus)" value="Update"  size="20px">									
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>
+		
+</form>
+		</div>
+		</div>
+
+</div>
+</div>
+</body>
+</html>

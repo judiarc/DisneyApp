@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<script>
+	$(function() {
+		$("#headContent").load("views/header.view.html");
+	});
+</script>
+</head>
+<body>
+	<div id="headContent"></div>	
+	<div class="content-wrapper">
+	<!-- 	<div class="panel">		
+			<form id="vendor" method="post">	 -->		
+				<div class="section_layout">
+					<div class="main-content">
+			<div class="title">
+				<span>Vendor</span>				
+				<div class="addButton"><button onclick="location.href = '#/edit_vendor/';"><image>	
+				<img src="app/images/add.png" style="width:25px;height:25px;"></image></button></div>
+				<div class="deleteButton">
+					<button ng-click="vm.deleteEmp()">
+						<image>
+						<img src="app/images/delete.png"
+							style="width: 25px; height: 25px;"></image>
+					</button>
+				</div>
+				</div>
+				</div>
+			
+			
+				<table datatable="ng"
+					id="clientstable" dt-options="vm.dtOptions">
+					<thead  class="widget" style="background:#C0C0C0;">
+						<th class="title" ><input type="checkbox" id="select_all" onClick="toggle(this)"></th>
+						<th class="title">Id</th>
+						<th class="title" style="width:260px;">Name</th>
+						<th class="title" style="width:260px;">Email</th>
+						<th class="title" style="width:260px;">status</th>
+						
+					</thead>
+					<tr ng-repeat="row in vendors">
+						<td align="center"><input type="checkbox" name="checked_id[]" class="checkbox"
+							value="{{row.id}}" /></td>
+						<td><a href="#/edit_vendor/:{{row.id}}">{{row.id}}</td>
+						<td>{{row.name}}</a></td>
+						<td>{{row.email}}</td>
+						<td>
+						<span ng-if="row.entitystatus.indexOf('1') > -1">Active</span>&nbsp;
+                         <span ng-if="row.entitystatus.indexOf('2') > -1">InActive</span>&nbsp;
+						
+						</td>
+					</tr>
+				</table>
+		
+		</div>
+	</div>
+</body>
+</html>

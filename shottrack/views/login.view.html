@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<title>Login Form</title>
+</head>
+
+<body>
+
+	<div class="login">
+		<div class="login-triangle"></div>
+
+		<h2 class="login-header">Log in</h2>
+		<div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
+		<form class="login-container" ng-submit="vm.login()" role="form">
+			<div
+				ng-class="{ 'has-error': form.username.$dirty && form.username.$error.required }">
+				<p>
+					<input type="username" name="username" id="username" ng-model="vm.username" placeholder="User Name" required>
+				</p>
+				<span
+					ng-show="form.username.$dirty && form.username.$error.required"
+					class="help-block">Username is required</span>
+			</div>
+			<div
+				ng-class="{ 'has-error': form.password.$dirty && form.password.$error.required }">
+				<p>
+					<input type="password" name="password" id="password" ng-model="vm.password" placeholder="Password" required>
+				</p>
+				<span
+					ng-show="form.password.$dirty && form.password.$error.required"
+					class="help-block">Password is required</span>
+			</div>
+			<p>
+				<input type="submit" ng-disabled="form.$invalid || vm.dataLoading" value="Log in">
+			</p>
+		</form>
+	</div>
+	
+
+
+</body>
+
+</html>
